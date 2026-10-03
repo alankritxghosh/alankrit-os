@@ -42,6 +42,21 @@ On macOS, if Google/X rejects Chrome for Testing during login, use your installe
 python3 -m brand_agents.providers.x_playwright.login --channel chrome
 ```
 
+If Google SSO is still blocked, use the local cookie fallback. Do not paste cookies into chat.
+
+1. Open your normal Chrome where X is already logged in.
+2. Go to `https://x.com/home`.
+3. Open DevTools: `Option + Command + I`.
+4. Go to Application -> Cookies -> `https://x.com`.
+5. Copy the `auth_token` cookie value, and `ct0` if present.
+6. Run:
+
+```bash
+python3 -m brand_agents.providers.x_playwright.save_cookies
+```
+
+The script prompts locally and hides your input.
+
 ## Find X targets
 
 ```bash

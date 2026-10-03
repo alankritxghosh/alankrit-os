@@ -7,6 +7,7 @@ from brand_agents.draft_agent import build_variants
 from brand_agents.issue_to_command import convert
 from brand_agents.mobile_runner import run
 from brand_agents.providers.x_playwright.find_posts import score_text, search_url
+from brand_agents.providers.x_playwright.save_cookies import build_state
 from brand_agents.reply_scout import load_targets
 from brand_agents.weekly_report import next_milestone
 
@@ -82,6 +83,12 @@ I build because it is fun.
         url = search_url('"AI agents" builders')
         self.assertTrue(url.startswith("https://x.com/search?q="))
         self.assertIn("f=live", url)
+
+    def test_x_cookie_state(self):
+        state = build_state("token", "csrf")
+        names = {cookie["name"] for cookie in state["cookies"]}
+        self.assertIn("auth_token", names)
+        self.assertIn("ct0", names)
 
 
 if __name__ == "__main__":
