@@ -29,6 +29,10 @@ def draft_reply(target: dict) -> str:
         return angle[:260].strip()
     post = " ".join(str(target["post_text"]).split())
     lowered = post.lower()
+    if all(term in lowered for term in ["claude code", "codex"]) and any(term in lowered for term in ["switching", "terminal", "parallel", "sessions"]):
+        return "The real pain is not picking one agent, it is managing the handoff between them without losing context."
+    if "parallel agent sessions" in lowered or "pr management" in lowered:
+        return "This feels useful because the messy part is not running agents, it is keeping their work comparable in one place."
     if "claude code" in lowered:
         return "The interesting bit with Claude Code is not speed, it is how quickly bad taste becomes visible."
     if "agent" in lowered and "workflow" in lowered:

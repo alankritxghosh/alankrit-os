@@ -104,6 +104,12 @@ I build because it is fun.
         reply = draft_reply({"post_text": "Claude Code changed how I build products"})
         self.assertIn("Claude Code", reply)
 
+    def test_reply_handles_multi_agent_tooling(self):
+        reply = draft_reply({
+            "post_text": "Switching between Claude Code, Codex, and Grok means juggling terminal windows. Parallel agent sessions and PR management in one Mac app."
+        })
+        self.assertIn("handoff", reply)
+
 
 if __name__ == "__main__":
     unittest.main()
