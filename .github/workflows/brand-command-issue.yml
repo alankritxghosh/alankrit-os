@@ -2,7 +2,7 @@ name: Brand Command Issue
 
 on:
   issues:
-    types: [opened, edited, labeled]
+    types: [opened, edited]
 
 permissions:
   contents: read
@@ -64,4 +64,3 @@ jobs:
         with:
           name: brand-agent-output
           path: brand/agent_outputs/mobile/output.md
-
