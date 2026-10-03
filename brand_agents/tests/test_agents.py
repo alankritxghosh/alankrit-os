@@ -7,6 +7,7 @@ from brand_agents.draft_agent import build_variants
 from brand_agents.issue_to_command import convert
 from brand_agents.mobile_runner import run
 from brand_agents.providers.x_playwright.find_posts import score_text, search_url
+from brand_agents.reply_scout import draft_reply
 from brand_agents.providers.x_playwright.save_cookies import build_state
 from brand_agents.reply_scout import load_targets
 from brand_agents.weekly_report import next_milestone
@@ -79,6 +80,10 @@ I build because it is fun.
         score, _ = score_text("AI agents and geopolitics in the election")
         self.assertLess(score, 0)
 
+    def test_x_scoring_blocks_crypto(self):
+        score, _ = score_text("AI agents need economic rails on Solana with token markets")
+        self.assertLess(score, 0)
+
     def test_x_search_url(self):
         url = search_url('"AI agents" builders')
         self.assertTrue(url.startswith("https://x.com/search?q="))
@@ -89,6 +94,10 @@ I build because it is fun.
         names = {cookie["name"] for cookie in state["cookies"]}
         self.assertIn("auth_token", names)
         self.assertIn("ct0", names)
+
+    def test_reply_mentions_claude_code(self):
+        reply = draft_reply({"post_text": "Claude Code changed how I build products"})
+        self.assertIn("Claude Code", reply)
 
 
 if __name__ == "__main__":

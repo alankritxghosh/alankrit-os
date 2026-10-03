@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 
 from .common import add_common_args, check_voice, output_path, render_checks, write_markdown
@@ -27,9 +28,33 @@ def draft_reply(target: dict) -> str:
     if angle:
         return angle[:260].strip()
     post = " ".join(str(target["post_text"]).split())
+    lowered = post.lower()
+    if "claude code" in lowered:
+        return "The interesting bit with Claude Code is not speed, it is how quickly bad taste becomes visible."
+    if "agent" in lowered and "workflow" in lowered:
+        return "This is where agents get useful for me too. Not replacing the workflow, but making the weak parts obvious."
+    if "vibe coding" in lowered:
+        return "The part people miss with vibe coding is that you still need taste. Otherwise you just ship confusion faster."
+    if "gtm" in lowered:
+        return "GTM with agents gets interesting when the agent is forced to show sources, not just produce more copy."
     if "?" in post:
-        return "This is worth asking because the answer changes what you build next."
-    return "The useful bit here is the specific example, not the generic lesson."
+        return "I think the real question is what result would make you stop and say this actually worked."
+    keywords = extract_keywords(post)
+    if keywords:
+        return f"The useful bit here is {keywords[0]}. That is usually where the generic advice starts becoming real."
+    return "This is useful because it points at the actual work, not just the clean lesson after it."
+
+
+def extract_keywords(text: str) -> list[str]:
+    candidates = []
+    for phrase in ["Claude Code", "AI agents", "workflow", "GTM", "vibe coding", "building in public", "product"]:
+        if phrase.lower() in text.lower():
+            candidates.append(phrase)
+    if candidates:
+        return candidates
+    words = re.findall(r"[A-Za-z][A-Za-z0-9+.-]{3,}", text)
+    blocked = {"this", "that", "with", "from", "have", "works", "show", "more", "just", "they", "your"}
+    return [word for word in words if word.lower() not in blocked][:2]
 
 
 def render_report(targets: list[dict]) -> str:
@@ -82,4 +107,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

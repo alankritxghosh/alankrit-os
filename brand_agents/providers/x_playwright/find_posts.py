@@ -11,7 +11,6 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import time
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -22,11 +21,11 @@ from typing import Any
 DEFAULT_STATE = Path.home() / ".alankrit-os" / "x-storage-state.json"
 
 DEFAULT_QUERIES = [
-    '"AI agents" builders -filter:replies',
-    '"Claude Code" -filter:replies',
-    '"building in public" agents -filter:replies',
-    '"GTM" "AI agents" -filter:replies',
-    '"vibe coding" -filter:replies',
+    '"Claude Code" ("built" OR "building") -crypto -web3 -solana -filter:replies',
+    '"AI agents" ("workflow" OR "workflows") -crypto -web3 -solana -filter:replies',
+    '"building with agents" -crypto -web3 -solana -filter:replies',
+    '"vibe coding" ("built" OR "learned") -crypto -web3 -solana -filter:replies',
+    '"GTM" "AI agents" -crypto -web3 -solana -filter:replies',
 ]
 
 BLOCKED_TERMS = [
@@ -39,6 +38,37 @@ BLOCKED_TERMS = [
     "join my cohort",
     "book a call",
     "growth hack",
+    "crypto",
+    "web3",
+    "solana",
+    "token",
+    "on-chain",
+    "onchain",
+    "defi",
+    "airdrop",
+    "nft",
+    "permissionless",
+    "gpu hours",
+    "compute markets",
+    "$",
+]
+
+HIGH_SIGNAL_TERMS = [
+    "claude code",
+    "ai agents",
+    "agent",
+    "build",
+    "building",
+    "built",
+    "builder",
+    "workflow",
+    "workflows",
+    "gtm",
+    "startup",
+    "product",
+    "vibe coding",
+    "cursor",
+    "codex",
 ]
 
 
@@ -89,20 +119,22 @@ def score_text(text: str) -> tuple[int, list[str]]:
     lowered = text.lower()
     reasons: list[str] = []
     score = 0
-    for term in ["agent", "build", "builder", "claude", "code", "gtm", "startup", "product", "workflow"]:
+    if any(term in lowered for term in BLOCKED_TERMS):
+        return -100, ["blocked topic"]
+    for term in HIGH_SIGNAL_TERMS:
         if term in lowered:
             score += 2
             reasons.append(term)
     if "?" in text:
         score += 2
         reasons.append("question")
-    if any(term in lowered for term in BLOCKED_TERMS):
-        score -= 100
-        reasons.append("blocked topic")
     word_count = len(text.split())
     if 20 <= word_count <= 180:
         score += 2
         reasons.append("commentable length")
+    if word_count > 220:
+        score -= 4
+        reasons.append("too long")
     return score, reasons
 
 
@@ -118,7 +150,7 @@ def extract_candidates(page: Any, checked_at: str) -> list[Candidate]:
         if not text:
             continue
         score, reasons = score_text(text)
-        if score < 4:
+        if score < 6:
             continue
         candidates.append(Candidate(
             url=url,
