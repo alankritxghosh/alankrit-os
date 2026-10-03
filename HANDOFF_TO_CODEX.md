@@ -2,6 +2,10 @@
 
 You are taking over a project from Claude, whose session is ending. Work carefully, change as little as needed, and ask Alankrit before any decision that is his to make. Today's date when this was written: 2026-10-04 (IST).
 
+## 0. Repository
+
+The workspace is now a git repo, pushed to the private GitHub repo `alankritxghosh/alankrit-os` (branch `main`). The per-project extractions under `context-extraction/` are **not** in it; they stay local. Commit your work in small steps and push; never make the repo public.
+
 ## 1. What Alankrit OS is
 
 A personal context layer for Alankrit Ghosh (21, Bangalore). Two stages:
@@ -32,7 +36,7 @@ The goal: let autonomous agents help run Alankrit's personal brand (X, LinkedIn,
 2. **Fix silent failures.** Every scheduled Claude job for the Icarus project (daily Work Queue status, weekly Gmail outreach sync) has failed with "OAuth session expired" since 2026-09-11. Re-authentication needs Alankrit; tell him. Then add a visible failure alert so silence never reads as success (policy section 8).
 3. **Build the agents the policy allows, all draft-only:** (a) a drafting agent that writes first drafts from his raw idea, using only his own typed words as voice examples, runs the voice checklist and shows its result, with sources for every fact; (b) a reply-target scout that returns post links with draft replies, 20–25 a day in October, every link opened and verified; (c) a weekly report of follower counts vs the milestone table, with check dates. Nothing posts, likes, follows, connects or messages. Hand every output to Alankrit.
 4. **Housekeeping:** update stale lines in `context-extraction/alankrit-os/HANDOFF_TO_ALANKRIT_OS.md` (it still says the compiler must read v2 files and that Icarus evidence stops 2026-09-10); keep `compiler/current_state.md` current whenever he states something newer; rerun the compiler after any change.
-5. **Ask Alankrit, do not decide for him:** review the input gates in policy section 7 (replies/day, posts/week, Substack date); what "on my command" means in practice; whether to update the old first-draft rule in his Personal Brand vault (`/Users/alankritghosh/Personal Brand /CLAUDE.md`); whether to `git init` the workspace; the revised Icarus thesis; start date and terms of the Campus Fund role; who wrote `alankrit-brand-playbook.md`.
+5. **Ask Alankrit, do not decide for him:** review the input gates in policy section 7 (replies/day, posts/week, Substack date); what "on my command" means in practice; whether to update the old first-draft rule in his Personal Brand vault (`/Users/alankritghosh/Personal Brand /CLAUDE.md`); the revised Icarus thesis; start date and terms of the Campus Fund role; who wrote `alankrit-brand-playbook.md`.
 
 ## 5. Out of scope on purpose
 
