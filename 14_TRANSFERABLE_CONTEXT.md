@@ -4,9 +4,8 @@
 
 Each project classifies its own insights as personal preference, strategic principle, technical, product, business, project-specific or uncertain. The global compiler does not re-classify. Read them per project:
 
-- `/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/alankrit-os/11_TRANSFERABLE_CONTEXT.md`
-- `/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/campus-fund/11_TRANSFERABLE_CONTEXT.md`
-- `/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/icarus/11_TRANSFERABLE_CONTEXT.md`
-- `/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/personal-brand/11_TRANSFERABLE_CONTEXT.md`
+- `/workspace/alankrit-os/context-extraction/alankrit-os/11_TRANSFERABLE_CONTEXT.md`
+- `/workspace/alankrit-os/context-extraction/icarus/11_TRANSFERABLE_CONTEXT.md`
+- `/workspace/alankrit-os/context-extraction/personal-brand/11_TRANSFERABLE_CONTEXT.md`
 
 Rule: a project decision is never promoted to a personal trait. An item is a likely personal preference only if it is evidenced in more than one project (see `13_EVIDENCE_AND_ECHOES.md`) or repeated across many sessions.

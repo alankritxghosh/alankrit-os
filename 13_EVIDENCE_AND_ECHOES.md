@@ -7,7 +7,6 @@ Frequency is not importance, and one project's echo of another is not independen
 | project | rows | derived from Icarus | independent |
 |---|---|---|---|
 | alankrit-os | 168 | 168 | 0 |
-| campus-fund | 14 | 0 | 14 |
 | icarus | 438 | 0 | 438 |
 | personal-brand | 102 | 0 | 102 |
 

@@ -19,7 +19,6 @@ Never reconciled here. Each keeps both positions.
 | alankrit-os:C09 | Icarus extraction uses the v1 schema | Alankrit OS uses the v2 schema | UNRESOLVED (schema drift; O05) |
 | alankrit-os:C10 | Compiler validation: 18 PASS | The judgments it validates (statuses, transitions, classifications) were made by the assistant and never reviewed by him | UNRESOLVED |
 | alankrit-os:C11 | "Extract the current project… investigate deeply" (source code, git, docs) | The current project has no git, one day of history, and mostly assistant-made files | EXPLAINED (scope accepted) |
-| campus-fund:C01 | Personal Brand D07 (2026-09-16): 'brand first, jobs come later, this project has nothing to do with jobs' | A Founders Office role at Campus Fund exists by 2026-10-04 (first note 09-25, nine days later) | UNKNOWN |
 | icarus:C01 | Vault/product docs: data "discarded after each request" | Audit: corpora and decisions durable until deletion; he ordered the website and repo docs fixed | DOCUMENTATION ERROR (vault) |
 | icarus:C02 | Private storage per user | One shared corpus per private repo | EXPLAINED BY TIME |
 | icarus:C03 | HANDOFF.md is "the one doc kept current" | last updated 08-11; the vault replaced it | DOCUMENTATION ERROR |
@@ -61,10 +60,9 @@ Never reconciled here. Each keeps both positions.
 | personal-brand:C07 | X baseline 31 | X baseline 28 | EVIDENCE CONFLICT |
 | personal-brand:C08 | A person brand needs one reason to follow; topic-hopping stalled growth (playbook, agent-written) | He wants to explore many industries and build at the intersection | UNRESOLVED |
 
-## Cross-project contradiction edges (3)
+## Cross-project contradiction edges (2)
 
 - alankrit-os:REL041: alankrit-os:C07 --contradicted--> icarus:B26
-- campus-fund:REL001: campus-fund:C01 --contradicted--> personal-brand:D07
 - personal-brand:REL002: personal-brand:B04 --contradicted--> icarus:B33
 
 ## Staleness (1)

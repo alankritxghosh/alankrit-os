@@ -1,0 +1,67 @@
+name: Brand Command Issue
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  run:
+    if: contains(github.event.issue.labels.*.name, 'brand-command')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Save issue body
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          printf '%s' "$ISSUE_BODY" > /tmp/issue-body.md
+
+      - name: Convert issue to command
+        run: |
+          python3 -m brand_agents.issue_to_command \
+            --issue-body /tmp/issue-body.md \
+            --out /tmp/brand-command.json
+          python3 -m json.tool /tmp/brand-command.json
+
+      - name: Test suite
+        run: python3 -m unittest brand_agents.tests.test_agents
+
+      - name: Run draft-only command
+        run: |
+          mkdir -p brand/agent_outputs/mobile
+          python3 -m brand_agents.mobile_runner \
+            --command-file /tmp/brand-command.json \
+            --out brand/agent_outputs/mobile/output.md
+
+      - name: Comment output
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('brand/agent_outputs/mobile/output.md', 'utf8');
+            const body = [
+              'Draft-only output. Nothing was posted, scheduled or sent.',
+              '',
+              output.length > 60000 ? output.slice(0, 59000) + '\n\n[truncated in comment; see workflow artifact]' : output
+            ].join('\n');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body
+            });
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: brand-agent-output
+          path: brand/agent_outputs/mobile/output.md
+

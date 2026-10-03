@@ -1,0 +1,12 @@
+{
+  "command": "draft",
+  "platform": "x",
+  "raw_idea": "I keep thinking that building with agents is less about being technical and more about knowing what to ask, what to reject, and when to stop polishing.",
+  "facts": [
+    {
+      "claim": "The actual result needs to be defined before the agent starts running.",
+      "source": "BRAND_AGENT_POLICY.md section 6 and Icarus reasoning pattern R2"
+    }
+  ]
+}
+

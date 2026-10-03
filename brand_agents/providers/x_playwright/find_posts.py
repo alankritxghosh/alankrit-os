@@ -1,0 +1,186 @@
+"""Find X reply targets with a logged-in Playwright browser.
+
+Read-only by design:
+- opens search pages
+- scrolls lightly
+- extracts visible post text and URLs
+- does not click like, reply, repost, follow, DM or post
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import time
+from dataclasses import dataclass
+from datetime import date
+from pathlib import Path
+from urllib.parse import quote
+
+from typing import Any
+
+DEFAULT_STATE = Path.home() / ".alankrit-os" / "x-storage-state.json"
+
+DEFAULT_QUERIES = [
+    '"AI agents" builders -filter:replies',
+    '"Claude Code" -filter:replies',
+    '"building in public" agents -filter:replies',
+    '"GTM" "AI agents" -filter:replies',
+    '"vibe coding" -filter:replies',
+]
+
+BLOCKED_TERMS = [
+    "geopolitics",
+    "election",
+    "war",
+    "left wing",
+    "right wing",
+    "dm me",
+    "join my cohort",
+    "book a call",
+    "growth hack",
+]
+
+
+@dataclass
+class Candidate:
+    url: str
+    author: str
+    post_text: str
+    why: str
+    checked_at: str
+
+    def to_target(self) -> dict:
+        return {
+            "url": self.url,
+            "opened": True,
+            "checked_at": self.checked_at,
+            "author": self.author,
+            "post_text": self.post_text,
+            "why": self.why,
+        }
+
+
+def normalize_text(text: str) -> str:
+    return " ".join(text.split())
+
+
+def post_url_from_article(article) -> str | None:
+    links = article.locator("a[href*='/status/']")
+    count = links.count()
+    for idx in range(count):
+        href = links.nth(idx).get_attribute("href")
+        if not href:
+            continue
+        match = re.search(r"^/([^/]+)/status/(\d+)", href)
+        if match:
+            return f"https://x.com{match.group(0)}"
+        if href.startswith("https://x.com/") and "/status/" in href:
+            return href.split("?")[0]
+    return None
+
+
+def author_from_url(url: str) -> str:
+    match = re.match(r"https://x.com/([^/]+)/status/", url)
+    return match.group(1) if match else "UNKNOWN"
+
+
+def score_text(text: str) -> tuple[int, list[str]]:
+    lowered = text.lower()
+    reasons: list[str] = []
+    score = 0
+    for term in ["agent", "build", "builder", "claude", "code", "gtm", "startup", "product", "workflow"]:
+        if term in lowered:
+            score += 2
+            reasons.append(term)
+    if "?" in text:
+        score += 2
+        reasons.append("question")
+    if any(term in lowered for term in BLOCKED_TERMS):
+        score -= 100
+        reasons.append("blocked topic")
+    word_count = len(text.split())
+    if 20 <= word_count <= 180:
+        score += 2
+        reasons.append("commentable length")
+    return score, reasons
+
+
+def extract_candidates(page: Any, checked_at: str) -> list[Candidate]:
+    candidates: list[Candidate] = []
+    articles = page.locator("article")
+    for idx in range(articles.count()):
+        article = articles.nth(idx)
+        url = post_url_from_article(article)
+        if not url:
+            continue
+        text = normalize_text(article.inner_text(timeout=2000))
+        if not text:
+            continue
+        score, reasons = score_text(text)
+        if score < 4:
+            continue
+        candidates.append(Candidate(
+            url=url,
+            author=author_from_url(url),
+            post_text=text[:1200],
+            why=f"X search candidate; score {score}; signals: {', '.join(reasons[:6])}",
+            checked_at=checked_at,
+        ))
+    return candidates
+
+
+def search_url(query: str) -> str:
+    return f"https://x.com/search?q={quote(query)}&src=typed_query&f=live"
+
+
+def find_posts(state: Path, queries: list[str], limit: int, headless: bool, scrolls: int) -> list[dict]:
+    seen: set[str] = set()
+    results: list[Candidate] = []
+    checked_at = date.today().isoformat()
+
+    from playwright.sync_api import sync_playwright
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=headless)
+        context = browser.new_context(storage_state=str(state))
+        page = context.new_page()
+        for query in queries:
+            page.goto(search_url(query), wait_until="domcontentloaded")
+            page.wait_for_timeout(2500)
+            for _ in range(scrolls):
+                for candidate in extract_candidates(page, checked_at):
+                    if candidate.url not in seen:
+                        seen.add(candidate.url)
+                        results.append(candidate)
+                        if len(results) >= limit:
+                            browser.close()
+                            return [item.to_target() for item in results]
+                page.mouse.wheel(0, 900)
+                page.wait_for_timeout(1200)
+        browser.close()
+    return [item.to_target() for item in results]
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--state", type=Path, default=DEFAULT_STATE)
+    parser.add_argument("--query", action="append", help="X search query. Can be repeated.")
+    parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--scrolls", type=int, default=4)
+    parser.add_argument("--headed", action="store_true", help="show browser window")
+    parser.add_argument("--out", type=Path, required=True)
+    args = parser.parse_args()
+
+    if not args.state.exists():
+        raise SystemExit(f"missing storage state. Run login first: {args.state}")
+    queries = args.query or DEFAULT_QUERIES
+    targets = find_posts(args.state, queries, args.limit, headless=not args.headed, scrolls=args.scrolls)
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    args.out.write_text(json.dumps(targets, indent=2) + "\n", encoding="utf-8")
+    print(args.out)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

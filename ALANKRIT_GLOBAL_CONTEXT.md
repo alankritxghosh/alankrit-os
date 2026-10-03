@@ -1,6 +1,6 @@
 # ALANKRIT GLOBAL CONTEXT
 
-Compiled 2026-10-04 from 4 complete extraction(s): alankrit-os, campus-fund, icarus, personal-brand. Incomplete/unmerged: none. Staleness: icarus evidence ends 2026-09-13.
+Compiled 2026-10-04 from 3 complete extraction(s): alankrit-os, icarus, personal-brand. Incomplete/unmerged: none. Staleness: icarus evidence ends 2026-09-13.
 
 **Read this first.** Two sources are authoritative and never merged: (1) `compiler/current_state.md`, Alankrit's own latest statement; (2) each project's handoff below. If they differ, the newer dated statement from Alankrit wins, and the older one stays as history.
 
@@ -9,16 +9,19 @@ Compiled 2026-10-04 from 4 complete extraction(s): alankrit-os, campus-fund, ica
 Last updated: 2026-10-04
 
 - **Brand goal (EXPLICIT):** 10k followers on X, 10k on LinkedIn, 1k on Substack. At the time: 31 on X, 840 on LinkedIn, 0 on Substack.
-- **Work (EXPLICIT):** he works in the Founders Office at a VC called Campus Fund. Start date and terms not given.
+- **Work (EXPLICIT):** he is joining Campus Fund as Founders Office on 2026-10-05. Terms beyond that are not to be recorded.
 - **Icarus (EXPLICIT):** the product thesis is still being revised. He is "working different possibilities that can become Icarus". Which one, if any, is chosen: UNKNOWN.
 - **Supersedes:** the 2026-09-13 goals of 1k X / 2k LinkedIn and the unknown outcome of the job search recorded in the Icarus extraction.
+- **Authorship (EXPLICIT):** `alankrit-brand-playbook.md` was written by Claude.
+- **Draft revisions (EXPLICIT):** after a draft is delivered, agents revise only when he says "revise" or gives a direct revision instruction.
+- **Icarus scheduled jobs (EXPLICIT):** the old failing Icarus scheduled jobs are to remain dead; do not re-authenticate or revive them.
 
 ## Brand agent policy (decided 2026-10-04)
 Full text: `BRAND_AGENT_POLICY.md`. Alankrit's choices:
 - **Agents draft and queue only; he posts everything himself.**
-- **Claude writes the first draft; he edits it on his command.** This supersedes the 2026-09-16 Personal Brand rule that he writes first drafts.
+- **Claude writes the first draft; he edits it on his command.** "On his command" means he says "revise" or gives a direct revision instruction. This supersedes the 2026-09-16 Personal Brand rule that he writes first drafts.
 - **Scout 5 organically built personal-brand accounts per platform (5 on X, 5 on LinkedIn)** and study their commenting patterns (read-only, sourced); swaps need his approval.
-- **Goal: 10k X / 10k LinkedIn / 1k Substack by 2027-10-04, back-loaded pace** (his choices). Monthly checkpoints and input gates are in the policy; he confirmed the checkpoint table on 2026-10-04; the input gates are still a proposal. First checkpoint 2026-10-31: X 140, LinkedIn 1,050, Substack first post. This replaces the 1,000-X-by-2026-10-31 target.
+- **Goal: 10k X / 10k LinkedIn / 1k Substack by 2027-10-04, back-loaded pace** (his choices). Monthly checkpoints and input gates are in the policy; he confirmed the checkpoint table on 2026-10-04 and approved the input gates on 2026-10-04. First checkpoint 2026-10-31: X 140, LinkedIn 1,050, Substack first post. This replaces the 1,000-X-by-2026-10-31 target.
 - **Privacy:** nothing about Campus Fund without asking; own failures only if funny and occasional; Icarus as evidence in stories only, no relaunch series; age, city and B.Com may be used as already public.
 
 ---
@@ -63,22 +66,15 @@ F01: the "global" layer could not be cross-project (one flat extraction) → v2 
 He is building infrastructure so that agents can represent him. EXPLICIT goal; HIGH. He cares most that agents do not misrepresent him: inference as fact, AI text as his words, latest statement as truth, project choices as personality. These prohibitions repeat across all three versions; HIGH. He works by spec and delegation at high autonomy; MEDIUM-HIGH, two-project.
 
 ### Unresolved
-Which projects next (O01). Does the brand system exist (O02). Compiler must read v2 files and two projects (O03, O06). Who drafted the protocols (O04). Re-extract Icarus under v2 (O05). Memory contract for the consumer (O07). Freshness cadence (O08). **Disclosure policy: the pipeline keeps full failure registers, but his public rule forbids showcasing his own failures (C07, O09).** No git (O10). No human review of compiled judgments (O11).
+Which projects next (O01). Does the brand system exist (O02). Who drafted the protocols (O04). Memory contract for the consumer (O07). Freshness cadence (O08). **Disclosure policy: the pipeline keeps full failure registers, but his public rule only allows occasional funny own-failure stories (C07, O09).** No human review of compiled judgments (O11).
 
 ### What future agents should remember
 1. Treat this extraction as metadata about the pipeline, not as new evidence about his personality.
 2. Before publishing anything for him, respect the public no-own-failures rule even though memory contains failures (C07).
 3. Keep authorship labels on everything you store about him; never promote assistant text to his voice.
 4. Tag derived claims; never count the same evidence twice across extractions.
-5. Every "current" fact has an as-of date; Icarus evidence stops at 2026-09-10.
+5. Every "current" fact has an as-of date; Icarus evidence stops at 2026-09-13.
 
----
-
-# Project: Campus Fund (`campus-fund`)
-
-_Confidential extraction: its contents are internal to the organisation and are not reproduced here._
-
-Known from Alankrit's own statement (`compiler/current_state.md`): he works in the Founders Office at this VC. Rule: nothing about its work, notes, people or investors goes into any public draft without his say-so for that item. Details are kept only in the local extraction.
 ---
 
 # Project: Icarus (formerly JARVIS Engineering Intelligence) (`icarus`)
@@ -185,8 +181,8 @@ Replies and comments are drafted with the direct clickable URL of the post (his 
 
 ### 2. How drafting works (changed 2026-10-04)
 
-- **Claude writes the first draft.** Alankrit edits it, and further revisions happen **on his command**: an agent does not keep iterating, posting or "improving" a draft on its own after delivering it.
-- This **supersedes** the 2026-09-16 rule in the Personal Brand vault (`CLAUDE.md`, Decisions) that "Alankrit writes first drafts; Claude never generates the first draft". That vault still contains the old rule; it needs updating by him or on his instruction.
+- **Claude writes the first draft.** Alankrit edits it, and further revisions happen **on his command**: an agent does not keep iterating, posting or "improving" a draft on its own after delivering it. On 2026-10-04, he clarified that the command is either saying "revise" or giving a direct revision instruction.
+- This **supersedes** the 2026-09-16 rule in the Personal Brand vault (`CLAUDE.md`, Decisions) that "Alankrit writes first drafts; Claude never generates the first draft". That vault still contains the old rule; on 2026-10-04 Alankrit said to leave it as-is.
 - Why this needs care: agent first drafts were rejected many times for sounding like AI ("screams fucking AI", 2026-09-09) and his own raw posts did better. So every first draft must:
   1. be built from examples he typed himself (the ALANKRIT voice examples, not agent text he approved);
   2. pass the voice checks in section 4 and show the result, naming any violation;
@@ -249,7 +245,7 @@ Every factual claim and number in a draft is traced to a source and read back be
 
 **Honest read:** the early targets are small on purpose, so the first test is not growth but output. From 2026-09-16 to 2026-10-04 X grew by about 3 and no post is recorded. The back half is steep: sustaining ~45 new X followers a day late in the year assumes the account has compounding reach by then. A shortfall in the first quarter makes the later months unrealistic rather than merely late.
 
-**Input gates (my proposal; he confirmed the milestones but has not yet commented on these gates):** these are what agents actually control. Outputs (followers) are not.
+**Input gates (approved by Alankrit on 2026-10-04):** these are what agents actually control. Outputs (followers) are not.
 
 | Input | Gate |
 |---|---|
@@ -271,16 +267,16 @@ Every factual claim and number in a draft is traced to a source and read back be
 
 ### 9. Open items for Alankrit
 
-1. Milestones are confirmed. Review the input gates in section 7 and edit any you disagree with.
-2. Update the Personal Brand vault's old first-draft rule (section 2).
-3. Name any role-model accounts you already want on the list (5 per platform; the agents propose the rest, you approve).
-4. Name what "on my command" means in practice (a word, a button, a reply) so agents know when they may revise.
+1. Name any role-model accounts you already want on the list (5 per platform; the agents propose the rest, you approve).
+2. State the revised Icarus thesis, if there is one.
 
 ### History
 
 - v1, 2026-10-04: created from his answers in chat.
 - v2, 2026-10-04: milestones fixed to his choices (12 months, back-loaded); checkpoint figures computed; input gates added as a proposal.
 - v3, 2026-10-04: milestones confirmed by him; role-model scouting set to 5 accounts per platform (X and LinkedIn).
+- v4, 2026-10-04: input gates approved; Personal Brand vault's old first-draft rule left unchanged by request.
+- v5, 2026-10-04: "on my command" clarified as "revise" or a direct revision instruction.
 
 ---
 

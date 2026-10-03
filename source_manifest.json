@@ -1,30 +1,26 @@
 {
-  "source_path": "/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction",
-  "scanned_at": "2026-10-03T20:10:24.436787+00:00",
+  "source_path": "/workspace/alankrit-os/context-extraction",
+  "scanned_at": "2026-10-03T21:46:52.398660+00:00",
   "directories": [
     ".",
     "alankrit-os",
     "alankrit-os/memory",
     "alankrit-os/voice_examples",
-    "campus-fund",
-    "campus-fund/memory",
-    "campus-fund/voice_examples",
     "icarus",
     "icarus/memory",
     "icarus/voice_examples",
     "personal-brand",
     "personal-brand/memory",
-    "personal-brand/voice_examples",
-    "thought-engine"
+    "personal-brand/voice_examples"
   ],
-  "file_count": 123,
-  "total_bytes": 696037,
+  "file_count": 103,
+  "total_bytes": 653792,
   "projects": [
     {
       "slug": "alankrit-os",
       "name": "Alankrit OS",
-      "root": "/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/alankrit-os",
-      "manifest": "/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/alankrit-os/extraction_manifest.json",
+      "root": "/workspace/alankrit-os/context-extraction/alankrit-os",
+      "manifest": "/workspace/alankrit-os/context-extraction/alankrit-os/extraction_manifest.json",
       "manifest_parses": true,
       "extraction_date": "2026-10-03",
       "latest_evidence_date": "2026-10-03",
@@ -63,49 +59,10 @@
       "unexpected_artifacts": []
     },
     {
-      "slug": "campus-fund",
-      "name": "Campus Fund",
-      "root": "/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/campus-fund",
-      "manifest": "/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/campus-fund/extraction_manifest.json",
-      "manifest_parses": true,
-      "extraction_date": "2026-10-04",
-      "latest_evidence_date": "2026-10-04",
-      "declared_confidence": null,
-      "declared_counts": {},
-      "coverage_gaps": [
-        "No session transcripts.",
-        "One 683-byte note; Welcome note is Obsidian default.",
-        "Nothing about the role beyond his one-line statement."
-      ],
-      "secondary_sources": [],
-      "present_artifacts": [
-        "00_PROJECT_CONTEXT.md",
-        "04_BELIEF_EVOLUTION.md",
-        "09_OPEN_LOOPS.md",
-        "10_CONTRADICTIONS.md",
-        "12_ALANKRIT_CONTEXT.md",
-        "HANDOFF_TO_ALANKRIT_OS.md",
-        "extraction_manifest.json"
-      ],
-      "schema": "v2",
-      "missing_artifacts": [
-        "01_PROJECT_TIMELINE.md",
-        "02_DECISION_REGISTER.md",
-        "03_BELIEF_SYSTEM.md",
-        "05_REASONING_PATTERNS.md",
-        "06_WORKING_STYLE.md",
-        "07_VOICE_PROFILE.md",
-        "08_FAILURES_AND_LESSONS.md",
-        "11_TRANSFERABLE_CONTEXT.md",
-        "13_KNOWLEDGE_GRAPH.md"
-      ],
-      "unexpected_artifacts": []
-    },
-    {
       "slug": "icarus",
       "name": "Icarus (formerly JARVIS Engineering Intelligence)",
-      "root": "/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/icarus",
-      "manifest": "/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/icarus/extraction_manifest.json",
+      "root": "/workspace/alankrit-os/context-extraction/icarus",
+      "manifest": "/workspace/alankrit-os/context-extraction/icarus/extraction_manifest.json",
       "manifest_parses": true,
       "extraction_date": "2026-10-03",
       "latest_evidence_date": "2026-09-13",
@@ -152,8 +109,8 @@
     {
       "slug": "personal-brand",
       "name": "Personal Brand",
-      "root": "/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/personal-brand",
-      "manifest": "/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/personal-brand/extraction_manifest.json",
+      "root": "/workspace/alankrit-os/context-extraction/personal-brand",
+      "manifest": "/workspace/alankrit-os/context-extraction/personal-brand/extraction_manifest.json",
       "manifest_parses": true,
       "extraction_date": "2026-10-04",
       "latest_evidence_date": "2026-09-22",
@@ -191,27 +148,27 @@
     }
   ],
   "unassigned_files": [
-    "thought-engine/00_PROJECT_CONTEXT.md",
-    "thought-engine/01_PROJECT_TIMELINE.md",
-    "thought-engine/02_DECISION_REGISTER.md"
+    "README.md"
   ],
-  "duplicates": [
-    [
-      "campus-fund/memory/beliefs.jsonl",
-      "campus-fund/memory/decisions.jsonl",
-      "campus-fund/memory/failures.jsonl",
-      "campus-fund/memory/lessons.jsonl",
-      "campus-fund/memory/voice_examples.jsonl"
-    ]
-  ],
+  "duplicates": [],
   "files": [
+    {
+      "path": "README.md",
+      "project": null,
+      "bytes": 493,
+      "lines": 8,
+      "sha256": "1f2f9231cca2b313362b131c58c147d9bb15f6a8194c9568548f7d51af323214",
+      "modified": "2026-10-03T20:12:36.037412+00:00",
+      "expected_artifact": false,
+      "issues": []
+    },
     {
       "path": "alankrit-os/00_PROJECT_CONTEXT.md",
       "project": "alankrit-os",
       "bytes": 7345,
       "lines": 90,
       "sha256": "72d6d3ebd48e88ef53163756052a9181bd8b92fc9275a6a728c336dde79660a5",
-      "modified": "2026-10-03T16:16:12.059861+00:00",
+      "modified": "2026-10-03T20:12:36.039017+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -221,7 +178,7 @@
       "bytes": 4113,
       "lines": 28,
       "sha256": "d432b3650fa0e43d9fbda6ec91cd2d9c20edad1fe4533641086f830a3926a4b5",
-      "modified": "2026-10-03T16:17:15.647184+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -231,7 +188,7 @@
       "bytes": 5962,
       "lines": 51,
       "sha256": "a3a213e8f50f18258b356e07e0969b17dede9704a34ffb1aaa81d11b73422271",
-      "modified": "2026-10-03T16:17:15.670429+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -241,7 +198,7 @@
       "bytes": 5906,
       "lines": 29,
       "sha256": "c81531869a36cea5a17003684a6a688abd8ac14b1e03a01c61121e8408e6560d",
-      "modified": "2026-10-03T16:17:15.684145+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -251,7 +208,7 @@
       "bytes": 5149,
       "lines": 105,
       "sha256": "a347b8489dcd42983ef3e38b1d350e22fe82312368f135f88f9699ff3d2a0d24",
-      "modified": "2026-10-03T16:21:47.626191+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -261,7 +218,7 @@
       "bytes": 3026,
       "lines": 24,
       "sha256": "9c72bbdd152b52ce6e23b65159b22018e73cccdf95d99f9e02a92da6531bf235",
-      "modified": "2026-10-03T16:18:13.333080+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -271,7 +228,7 @@
       "bytes": 2981,
       "lines": 25,
       "sha256": "b0f60e83b2886e85dd5d169c3e7fe8489856545e46e1eac38b56ee7b88b6f00d",
-      "modified": "2026-10-03T16:18:13.345462+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -281,7 +238,7 @@
       "bytes": 2991,
       "lines": 42,
       "sha256": "b71b4c3e8e68bcc95e6d15d08db0ccad7b65cfe95d7ba753d198f20dad47c5d8",
-      "modified": "2026-10-03T16:21:47.626490+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -291,7 +248,7 @@
       "bytes": 6011,
       "lines": 44,
       "sha256": "0d8081d49b2118b492d36dc8af32eeeb7d97909ad495ed80605e22582003ad9f",
-      "modified": "2026-10-03T16:21:47.626628+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -301,7 +258,7 @@
       "bytes": 3631,
       "lines": 19,
       "sha256": "1039f769edabcb8f719599e282bedb5f306319f40a0cd663578557e7a3a0c6f9",
-      "modified": "2026-10-03T16:19:34.189342+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -311,7 +268,7 @@
       "bytes": 3243,
       "lines": 18,
       "sha256": "5c971644ab218c351ce36c73708c5e038fecfd2680def08ac2ee99c40d959361",
-      "modified": "2026-10-03T16:19:34.202449+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -321,7 +278,7 @@
       "bytes": 2882,
       "lines": 48,
       "sha256": "ce5583b033447461ce607935d97036ec1579ac6c8d3cdc645ecfbb77e4853f5b",
-      "modified": "2026-10-03T16:19:34.212526+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -331,7 +288,7 @@
       "bytes": 3533,
       "lines": 51,
       "sha256": "0ce92078cabfcd91d295ef4dbb3a69c33d113c0c58e1b231dc7b7b1c40ae6dbc",
-      "modified": "2026-10-03T16:19:34.223567+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -341,17 +298,17 @@
       "bytes": 3629,
       "lines": 51,
       "sha256": "e01f52cb7eee971c35c0bdb6ce7cd8f7177719911b0b7e6a217323f340c5478f",
-      "modified": "2026-10-03T16:21:47.626770+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": true,
       "issues": []
     },
     {
       "path": "alankrit-os/HANDOFF_TO_ALANKRIT_OS.md",
       "project": "alankrit-os",
-      "bytes": 6154,
+      "bytes": 6062,
       "lines": 47,
-      "sha256": "400e5b7bf326f02be7710e6e5916ad9ac26374dfa5eb6fd82129de62e7d4ff25",
-      "modified": "2026-10-03T16:20:11.278831+00:00",
+      "sha256": "a4be664395986ff009c3d74f44cc1095d52dcfe4a4e16b2b3442e80255d0eec3",
+      "modified": "2026-10-03T20:44:40.550669+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -361,7 +318,7 @@
       "bytes": 3085,
       "lines": 46,
       "sha256": "2ab07458fd01c6629e3ecaa7121dea0d276322df0d1fd6086d9871b67f38d556",
-      "modified": "2026-10-03T16:22:08.093927+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -371,7 +328,7 @@
       "bytes": 18522,
       "lines": 25,
       "sha256": "f1593598bc09c7bd962430346d4de1ce15a264c469e6b7cd37940a4acc8d1e1e",
-      "modified": "2026-10-03T16:21:47.664187+00:00",
+      "modified": "2026-10-03T20:12:36.039091+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -381,7 +338,7 @@
       "bytes": 7937,
       "lines": 12,
       "sha256": "820eb925762f470664508afa0b3eacc12f0d96d63e68999f9d1c6d5e10bebcb5",
-      "modified": "2026-10-03T16:21:47.664881+00:00",
+      "modified": "2026-10-03T20:12:36.040736+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -391,7 +348,7 @@
       "bytes": 10356,
       "lines": 15,
       "sha256": "65afd60306d550affbf7b0eb84a23465f1737692b62de84e485b838000b1e342",
-      "modified": "2026-10-03T16:21:47.663945+00:00",
+      "modified": "2026-10-03T20:12:36.040736+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -401,7 +358,7 @@
       "bytes": 7309,
       "lines": 14,
       "sha256": "c2c6045f390e627692dc12c6545a8c8441b7b97fe39204c5f8ca75af02d4b114",
-      "modified": "2026-10-03T16:21:47.664325+00:00",
+      "modified": "2026-10-03T20:12:36.040736+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -411,7 +368,7 @@
       "bytes": 9898,
       "lines": 22,
       "sha256": "1f196b2a568446da2c85a965e7c75da0bba407d270330df23d3656b4177a983b",
-      "modified": "2026-10-03T16:21:47.663675+00:00",
+      "modified": "2026-10-03T20:12:36.040736+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -421,7 +378,7 @@
       "bytes": 7403,
       "lines": 11,
       "sha256": "0d2063e4957df6901556a5b5424439445012190b33dc86f4b5c2dfbdaf99bb59",
-      "modified": "2026-10-03T16:21:47.664626+00:00",
+      "modified": "2026-10-03T20:12:36.040736+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -431,7 +388,7 @@
       "bytes": 3540,
       "lines": 10,
       "sha256": "575c327786318494912bb23c9d071c8999d83f7895675e11433642ccbe6b2b4e",
-      "modified": "2026-10-03T16:21:47.664422+00:00",
+      "modified": "2026-10-03T20:12:36.040860+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -441,7 +398,7 @@
       "bytes": 7675,
       "lines": 15,
       "sha256": "27921f40b52b18c0854c0c97166a8abd21127ddd6901ed6cabe2871d570bfdf5",
-      "modified": "2026-10-03T16:21:47.664755+00:00",
+      "modified": "2026-10-03T20:12:36.040860+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -451,7 +408,7 @@
       "bytes": 18370,
       "lines": 44,
       "sha256": "c85bdadbe90d9b56a11d4d647fb7122942a1400e96a9293461fd92fcb351ff48",
-      "modified": "2026-10-03T18:50:39.734683+00:00",
+      "modified": "2026-10-03T20:12:36.040860+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -461,7 +418,7 @@
       "bytes": 6069,
       "lines": 10,
       "sha256": "2e5588b16328ce28fd4664f8b54dc10af7a6b1e3f0af3c4a9e72ed99d5468ac5",
-      "modified": "2026-10-03T16:21:47.664987+00:00",
+      "modified": "2026-10-03T20:12:36.040860+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -471,7 +428,7 @@
       "bytes": 568,
       "lines": 15,
       "sha256": "2a1bfceaadd59fee306ad38ce9560b1d5d821c31a92ee8c6282f17acdd942bb2",
-      "modified": "2026-10-03T16:21:47.663319+00:00",
+      "modified": "2026-10-03T20:12:36.040860+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -481,7 +438,7 @@
       "bytes": 1035,
       "lines": 29,
       "sha256": "0ca2c07d3d66d2ce54cc9d09ac816db18763cf42469e809ec546e483f18bbcee",
-      "modified": "2026-10-03T16:21:47.662738+00:00",
+      "modified": "2026-10-03T20:12:36.042885+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -491,7 +448,7 @@
       "bytes": 618,
       "lines": 17,
       "sha256": "e0668429d023d083867efe2868f6814e32037a7581a9b707d66f90817b772f5a",
-      "modified": "2026-10-03T16:21:47.663257+00:00",
+      "modified": "2026-10-03T20:12:36.042885+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -501,7 +458,7 @@
       "bytes": 180,
       "lines": 6,
       "sha256": "34d95357b36be363d0728af9c7c7e951e760b079566f09889cbbadfdcf2e4916",
-      "modified": "2026-10-03T16:21:47.663019+00:00",
+      "modified": "2026-10-03T20:12:36.042885+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -511,7 +468,7 @@
       "bytes": 179,
       "lines": 6,
       "sha256": "7e7d85629f2fc894be51d06b03f9854741d3612058b1a377bf233a64a99b7dd7",
-      "modified": "2026-10-03T16:21:47.662820+00:00",
+      "modified": "2026-10-03T20:12:36.042885+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -521,7 +478,7 @@
       "bytes": 173,
       "lines": 6,
       "sha256": "7dee91dec5e610c32345d2a3d039436d9445fe3fef3af04376be163ff4a760be",
-      "modified": "2026-10-03T16:21:47.663196+00:00",
+      "modified": "2026-10-03T20:12:36.042885+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -531,7 +488,7 @@
       "bytes": 177,
       "lines": 6,
       "sha256": "4987a0250977c71f31ee2932b259e2a6a192636f6f960959d673d863dce6bf57",
-      "modified": "2026-10-03T16:21:47.663141+00:00",
+      "modified": "2026-10-03T20:12:36.042885+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -541,7 +498,7 @@
       "bytes": 966,
       "lines": 29,
       "sha256": "d1fd759ddb4ace385bbf0789f6415e34c03225e8314661993f642c2698bd7b11",
-      "modified": "2026-10-03T16:21:47.662961+00:00",
+      "modified": "2026-10-03T20:12:36.042885+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -551,7 +508,7 @@
       "bytes": 1079,
       "lines": 29,
       "sha256": "6c1f04857a5031c254977a7549c756d0af85df3309e246870634c9b022266163",
-      "modified": "2026-10-03T16:21:47.663083+00:00",
+      "modified": "2026-10-03T20:12:36.042885+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -561,197 +518,7 @@
       "bytes": 1085,
       "lines": 29,
       "sha256": "c7340259fc604766b4c3d75fc8a7dbbaf49279a19159dcaa56fa08acdf5d2539",
-      "modified": "2026-10-03T16:21:47.662897+00:00",
-      "expected_artifact": false,
-      "issues": []
-    },
-    {
-      "path": "campus-fund/00_PROJECT_CONTEXT.md",
-      "project": "campus-fund",
-      "bytes": 1357,
-      "lines": 17,
-      "sha256": "69bbc039fa4aab1db42b1078a5f35c203052d0d2e9ce04961b8ba14ba55c3c16",
-      "modified": "2026-10-03T19:03:39.343297+00:00",
-      "expected_artifact": true,
-      "issues": []
-    },
-    {
-      "path": "campus-fund/04_BELIEF_EVOLUTION.md",
-      "project": "campus-fund",
-      "bytes": 113,
-      "lines": 4,
-      "sha256": "3002db8591b23f3454d0381128dc84eb0af65c6e52a2fcf38a76ce87fe71f75a",
-      "modified": "2026-10-03T19:03:39.344308+00:00",
-      "expected_artifact": true,
-      "issues": []
-    },
-    {
-      "path": "campus-fund/09_OPEN_LOOPS.md",
-      "project": "campus-fund",
-      "bytes": 912,
-      "lines": 9,
-      "sha256": "5217d9ad24fcdeedc8bcd386a76d1ea63aa54bef53243a0926fce2dd3b3a424b",
-      "modified": "2026-10-03T19:03:39.343387+00:00",
-      "expected_artifact": true,
-      "issues": []
-    },
-    {
-      "path": "campus-fund/10_CONTRADICTIONS.md",
-      "project": "campus-fund",
-      "bytes": 478,
-      "lines": 6,
-      "sha256": "5864fee0caa8e0c8ecbdb0591b2a6acb088177029a566b887562dc82ef4c7aa5",
-      "modified": "2026-10-03T19:03:39.343462+00:00",
-      "expected_artifact": true,
-      "issues": []
-    },
-    {
-      "path": "campus-fund/12_ALANKRIT_CONTEXT.md",
-      "project": "campus-fund",
-      "bytes": 701,
-      "lines": 7,
-      "sha256": "9ae0eae35ac56f25845aa5221999e5936bf6d9f525f4e66b0692f507e7e64658",
-      "modified": "2026-10-03T19:03:39.343530+00:00",
-      "expected_artifact": true,
-      "issues": []
-    },
-    {
-      "path": "campus-fund/HANDOFF_TO_ALANKRIT_OS.md",
-      "project": "campus-fund",
-      "bytes": 764,
-      "lines": 10,
-      "sha256": "b27f7b6a61922bdfac85ed3f77da5d91d058923f02f27262054a0cca0b422a9c",
-      "modified": "2026-10-03T19:03:39.343600+00:00",
-      "expected_artifact": true,
-      "issues": []
-    },
-    {
-      "path": "campus-fund/extraction_manifest.json",
-      "project": "campus-fund",
-      "bytes": 1249,
-      "lines": 34,
-      "sha256": "27c43468ecd7420d082a4936194ce0295b20f755cd2daca10ab815e1ca83e483",
-      "modified": "2026-10-03T20:10:24.316597+00:00",
-      "expected_artifact": true,
-      "issues": []
-    },
-    {
-      "path": "campus-fund/memory/beliefs.jsonl",
-      "project": "campus-fund",
-      "bytes": 0,
-      "lines": 1,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "modified": "2026-10-03T19:03:39.344029+00:00",
-      "expected_artifact": false,
-      "issues": [
-        "empty"
-      ]
-    },
-    {
-      "path": "campus-fund/memory/contradictions.jsonl",
-      "project": "campus-fund",
-      "bytes": 847,
-      "lines": 2,
-      "sha256": "4a070b37ac3f944a66cc62799c605807878b90c421f1c67a8b40d6dfc288cc0a",
-      "modified": "2026-10-03T19:03:39.343949+00:00",
-      "expected_artifact": false,
-      "issues": []
-    },
-    {
-      "path": "campus-fund/memory/decisions.jsonl",
-      "project": "campus-fund",
-      "bytes": 0,
-      "lines": 1,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "modified": "2026-10-03T19:03:39.343987+00:00",
-      "expected_artifact": false,
-      "issues": [
-        "empty"
-      ]
-    },
-    {
-      "path": "campus-fund/memory/episodes.jsonl",
-      "project": "campus-fund",
-      "bytes": 695,
-      "lines": 3,
-      "sha256": "d089a93df398aa5b09187818fd100ff886d3d8e4b68c70a69a279f933fb81172",
-      "modified": "2026-10-03T19:03:39.343785+00:00",
-      "expected_artifact": false,
-      "issues": []
-    },
-    {
-      "path": "campus-fund/memory/facts.jsonl",
-      "project": "campus-fund",
-      "bytes": 2383,
-      "lines": 6,
-      "sha256": "c303dca5ff748be50aab663d1af0946a27d136df4a04ad79696b37ef99b3a053",
-      "modified": "2026-10-03T19:03:39.343709+00:00",
-      "expected_artifact": false,
-      "issues": []
-    },
-    {
-      "path": "campus-fund/memory/failures.jsonl",
-      "project": "campus-fund",
-      "bytes": 0,
-      "lines": 1,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "modified": "2026-10-03T19:03:39.344069+00:00",
-      "expected_artifact": false,
-      "issues": [
-        "empty"
-      ]
-    },
-    {
-      "path": "campus-fund/memory/lessons.jsonl",
-      "project": "campus-fund",
-      "bytes": 0,
-      "lines": 1,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "modified": "2026-10-03T19:03:39.344108+00:00",
-      "expected_artifact": false,
-      "issues": [
-        "empty"
-      ]
-    },
-    {
-      "path": "campus-fund/memory/open_loops.jsonl",
-      "project": "campus-fund",
-      "bytes": 1924,
-      "lines": 5,
-      "sha256": "b6750a67ee18c271d17bb3a55ee47f743bd7694738f99bdb0e920be0b497a525",
-      "modified": "2026-10-03T19:03:39.343872+00:00",
-      "expected_artifact": false,
-      "issues": []
-    },
-    {
-      "path": "campus-fund/memory/relationships.jsonl",
-      "project": "campus-fund",
-      "bytes": 792,
-      "lines": 3,
-      "sha256": "673ec44afa1f706ac83e458b5e97bb8e52bb85348e337e7a1a657e42dcad780a",
-      "modified": "2026-10-03T19:03:39.344234+00:00",
-      "expected_artifact": false,
-      "issues": []
-    },
-    {
-      "path": "campus-fund/memory/voice_examples.jsonl",
-      "project": "campus-fund",
-      "bytes": 0,
-      "lines": 1,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "modified": "2026-10-03T19:03:39.344147+00:00",
-      "expected_artifact": false,
-      "issues": [
-        "empty"
-      ]
-    },
-    {
-      "path": "campus-fund/voice_examples/README.md",
-      "project": "campus-fund",
-      "bytes": 91,
-      "lines": 4,
-      "sha256": "70ba665b8465a6bb802ff1be957ff1a509a8f4b6c93232d978cb551835a61327",
-      "modified": "2026-10-03T19:03:39.344385+00:00",
+      "modified": "2026-10-03T20:12:36.042885+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -761,7 +528,7 @@
       "bytes": 10451,
       "lines": 101,
       "sha256": "ad032f8f53d11cf653b286dba012057e4d15efd4f24f7c0c5d14b012f902c990",
-      "modified": "2026-10-03T16:44:23.216048+00:00",
+      "modified": "2026-10-03T20:12:36.042885+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -771,7 +538,7 @@
       "bytes": 12964,
       "lines": 62,
       "sha256": "ef0fefedebec6b503a9c5ad930c1de1fedc56dcf32c8fdfb183cff4197fb42b8",
-      "modified": "2026-10-03T16:44:23.216527+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -781,7 +548,7 @@
       "bytes": 19739,
       "lines": 155,
       "sha256": "376c670d6fb43fbc95782def87765522889533be7b5ef9d2587df6cf7ada1eac",
-      "modified": "2026-10-03T16:34:32.959232+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -791,7 +558,7 @@
       "bytes": 13923,
       "lines": 63,
       "sha256": "398fd6eba452fdc25a306437565d9d40383febe95d4673bb64f5dbc6831004b2",
-      "modified": "2026-10-03T16:35:39.574318+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -801,7 +568,7 @@
       "bytes": 13047,
       "lines": 269,
       "sha256": "f92deee8126b0409cd282fba34d430d19c32e6f8f4f5c7e53add13c6e953f114",
-      "modified": "2026-10-03T16:36:31.180805+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -811,7 +578,7 @@
       "bytes": 7652,
       "lines": 52,
       "sha256": "7c2364b2d5338c6992631054792c9dc1b316f63881b907e91bc22c8be3563cc9",
-      "modified": "2026-10-03T16:44:23.216997+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -821,7 +588,7 @@
       "bytes": 5605,
       "lines": 27,
       "sha256": "9c363a13ff7d8b03444c217d944c0c151bc400e116283c24d2d47fa2cfa6ccb2",
-      "modified": "2026-10-03T16:44:23.217308+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -831,7 +598,7 @@
       "bytes": 8151,
       "lines": 67,
       "sha256": "0b7ae78fd098f3e376087653caa423dbc16a37a1e8fc361251e5f8d844192b41",
-      "modified": "2026-10-03T16:44:23.218359+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -841,7 +608,7 @@
       "bytes": 13587,
       "lines": 96,
       "sha256": "c33b27625134e108ad7221a60028541daabde7b6e6241eba960ae5ade78d963e",
-      "modified": "2026-10-03T16:44:23.217857+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -851,7 +618,7 @@
       "bytes": 7101,
       "lines": 47,
       "sha256": "0cea57473207224d68c603c3938f72343a0a9ba65f7386602ce19a529166375a",
-      "modified": "2026-10-03T16:40:48.779883+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -861,7 +628,7 @@
       "bytes": 7649,
       "lines": 40,
       "sha256": "4ba0d3aa17e4ecde168b50dbef84f5ff8d5907d90631c8c9bc687f527dfddf67",
-      "modified": "2026-10-03T16:40:48.801028+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -871,7 +638,7 @@
       "bytes": 4610,
       "lines": 57,
       "sha256": "eeaca6afbd987d1abf612aa777f09ce324458293ee9a0d5715d233d101437bc2",
-      "modified": "2026-10-03T16:44:23.218766+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -881,7 +648,7 @@
       "bytes": 6032,
       "lines": 55,
       "sha256": "303aece1492857ef7c55493a07f749dc0864872268cb13a648df5c0c43626ce5",
-      "modified": "2026-10-03T16:41:32.627019+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -891,7 +658,7 @@
       "bytes": 4194,
       "lines": 53,
       "sha256": "3976d5dad8c9f258876bcf3c07026efece2530f82d97b15d1fe9352af0587cd0",
-      "modified": "2026-10-03T16:44:23.219578+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -901,7 +668,7 @@
       "bytes": 4234,
       "lines": 43,
       "sha256": "8bc3a59016ff0a3bba3c5a89997030c2a765a1b01104a98181fbf8ff0bc61ec1",
-      "modified": "2026-10-03T13:25:01.943778+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -911,7 +678,7 @@
       "bytes": 7332,
       "lines": 57,
       "sha256": "752fd02d984b696b631d4a1def2b511172061fb0faff8e712eeb7701cbc7f307",
-      "modified": "2026-10-03T16:44:23.219364+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -921,7 +688,7 @@
       "bytes": 4717,
       "lines": 61,
       "sha256": "94174f9bc4e828aab1fdb358ff6e329522469194cc1cbca0bcee197900ae29cb",
-      "modified": "2026-10-03T16:44:49.433306+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -931,7 +698,7 @@
       "bytes": 46182,
       "lines": 71,
       "sha256": "198b9266d6d911bf947fa6aefb59565cd27d02d7e7b2f0194c3ab78af4fd1d66",
-      "modified": "2026-10-03T16:44:23.670152+00:00",
+      "modified": "2026-10-03T20:12:36.043242+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -941,7 +708,7 @@
       "bytes": 20043,
       "lines": 33,
       "sha256": "456dd7b80924d2f9123ddfa35908b4dd1350d6f0734a4f62bc6a20ab836dc1ee",
-      "modified": "2026-10-03T16:44:23.671375+00:00",
+      "modified": "2026-10-03T20:12:36.044931+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -951,7 +718,7 @@
       "bytes": 34006,
       "lines": 51,
       "sha256": "c495484da13ef5f5430c8019665d22959daa7ecc7a111fbfbecd823ceec05e73",
-      "modified": "2026-10-03T16:44:23.669708+00:00",
+      "modified": "2026-10-03T20:12:36.044931+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -961,7 +728,7 @@
       "bytes": 26302,
       "lines": 54,
       "sha256": "5f93c68269e34b19521772b200ef708532c198a9aa4c496e03c9114efbd618b3",
-      "modified": "2026-10-03T16:44:23.670480+00:00",
+      "modified": "2026-10-03T20:12:36.044931+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -971,7 +738,7 @@
       "bytes": 19072,
       "lines": 43,
       "sha256": "248b2af0829ef6daa47bd1fd79fbe679a4c60ef57cfd4bfced7ad4fbbbf67e36",
-      "modified": "2026-10-03T16:44:23.669346+00:00",
+      "modified": "2026-10-03T20:12:36.044931+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -981,7 +748,7 @@
       "bytes": 26281,
       "lines": 51,
       "sha256": "9f4d57afa88799bcc7fc65ae083b26a07a576c276bec1f9e3d9c0a90069ff586",
-      "modified": "2026-10-03T16:44:23.670920+00:00",
+      "modified": "2026-10-03T20:12:36.044931+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -991,7 +758,7 @@
       "bytes": 7150,
       "lines": 21,
       "sha256": "ce33729684b366b01f2e210ea18079084d5a3807241becd816ba5ba6dd65f3f9",
-      "modified": "2026-10-03T16:44:23.670623+00:00",
+      "modified": "2026-10-03T20:12:36.044931+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1001,7 +768,7 @@
       "bytes": 17224,
       "lines": 41,
       "sha256": "07d29eec9f716bbf98854beb749e3e4bcc75b138c351f626c57934be199c51a8",
-      "modified": "2026-10-03T16:44:23.671146+00:00",
+      "modified": "2026-10-03T20:12:36.044931+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1011,7 +778,7 @@
       "bytes": 20246,
       "lines": 55,
       "sha256": "3d6a6f427bf2caf7e93454535b47ba441a12cb19a539b0d7525e41887e10bfed",
-      "modified": "2026-10-03T16:44:23.672198+00:00",
+      "modified": "2026-10-03T20:12:36.044931+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1021,7 +788,7 @@
       "bytes": 18538,
       "lines": 28,
       "sha256": "7e41ee1e3aa505e003419bc6ddd8a9f8677232f0cea1ab0ae32d17a78fc6d3ff",
-      "modified": "2026-10-03T16:44:23.671955+00:00",
+      "modified": "2026-10-03T20:12:36.044931+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1031,7 +798,7 @@
       "bytes": 722,
       "lines": 16,
       "sha256": "06809c52b5be806b027b2750623ca8242ca28c12d305700f00b1c02aa690441c",
-      "modified": "2026-10-03T16:44:23.668935+00:00",
+      "modified": "2026-10-03T20:12:36.044931+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1041,7 +808,7 @@
       "bytes": 1545,
       "lines": 38,
       "sha256": "b079adb520f98435eddfbd7d162e32697fbba6ac63ed4219a08c547b4447a93f",
-      "modified": "2026-10-03T16:44:23.668211+00:00",
+      "modified": "2026-10-03T20:12:36.046227+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1051,7 +818,7 @@
       "bytes": 1633,
       "lines": 38,
       "sha256": "9b06878d8c060de0ca4b3e64f0d499986776815b7f1e79168dc4cb3ac8fdc616",
-      "modified": "2026-10-03T16:44:23.668850+00:00",
+      "modified": "2026-10-03T20:12:36.046227+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1061,7 +828,7 @@
       "bytes": 1535,
       "lines": 38,
       "sha256": "385e73fe9d344cc056c2a8588c87f98375015193c5f9c874c9a3a07709501345",
-      "modified": "2026-10-03T16:44:23.668579+00:00",
+      "modified": "2026-10-03T20:12:36.046227+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1071,7 +838,7 @@
       "bytes": 1478,
       "lines": 38,
       "sha256": "20998958fbaf10a166a184d84f1fc9eb07d9b005f2bfefda8cff93f1ae273deb",
-      "modified": "2026-10-03T16:44:23.668355+00:00",
+      "modified": "2026-10-03T20:12:36.046227+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1081,7 +848,7 @@
       "bytes": 969,
       "lines": 27,
       "sha256": "81d0aa4a2ef65ab54d19ae0bb1e73527e320c7b229e4e304d9abc1b780105594",
-      "modified": "2026-10-03T16:44:23.668779+00:00",
+      "modified": "2026-10-03T20:12:36.046227+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1091,7 +858,7 @@
       "bytes": 672,
       "lines": 16,
       "sha256": "af1bf9a2897ba2b40b9bc27ef6f14951924a321d861b1551bc108f8b439bf223",
-      "modified": "2026-10-03T16:44:23.668713+00:00",
+      "modified": "2026-10-03T20:12:36.046227+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1101,7 +868,7 @@
       "bytes": 2454,
       "lines": 60,
       "sha256": "83b917b2f90427af1d5e7d30ea1e0a4e8456f440ae8825de9a4a857a799a0b0f",
-      "modified": "2026-10-03T16:44:23.668500+00:00",
+      "modified": "2026-10-03T20:12:36.046227+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1111,7 +878,7 @@
       "bytes": 2323,
       "lines": 60,
       "sha256": "95c471c8f05a1cd8f741f6fd3e8ee47bbfe5c6dad3dd7f75eee7a5595e6746a1",
-      "modified": "2026-10-03T16:44:23.668646+00:00",
+      "modified": "2026-10-03T20:12:36.046227+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1121,7 +888,7 @@
       "bytes": 1068,
       "lines": 27,
       "sha256": "3e580123579a974d2771d6226eda9fde9601a79e5189db3a90e3e6663fa5af4c",
-      "modified": "2026-10-03T16:44:23.668423+00:00",
+      "modified": "2026-10-03T20:12:36.046227+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1131,7 +898,7 @@
       "bytes": 2295,
       "lines": 23,
       "sha256": "372b271057e9e1f3bb945ea96fb31635d79f3b5a161f8015e7791ee367b0c5ba",
-      "modified": "2026-10-03T19:03:39.340052+00:00",
+      "modified": "2026-10-03T20:12:36.046227+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -1141,7 +908,7 @@
       "bytes": 5811,
       "lines": 24,
       "sha256": "3e1e3d64d660cd2f74b21fcafeeaa2103389865eefb1ad317d17fdb93dfbbe7e",
-      "modified": "2026-10-03T19:03:39.340227+00:00",
+      "modified": "2026-10-03T20:12:36.047588+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -1151,7 +918,7 @@
       "bytes": 2976,
       "lines": 18,
       "sha256": "4f67154d0b8f84f838f4398e90a9c344f8a6069685b33f141dcfbccf8c93d7bf",
-      "modified": "2026-10-03T19:03:39.340338+00:00",
+      "modified": "2026-10-03T20:12:36.047588+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -1161,7 +928,7 @@
       "bytes": 1437,
       "lines": 62,
       "sha256": "66d5226ca15f7e4fe0a0a8e268579d2b06d1ac19ba03d45c67cfa3863450f231",
-      "modified": "2026-10-03T19:03:39.340425+00:00",
+      "modified": "2026-10-03T20:12:36.047588+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -1171,7 +938,7 @@
       "bytes": 2650,
       "lines": 23,
       "sha256": "ca921c4ca8be19b969623ae1509c02c39cc326610650f1cc781cc242a36556a1",
-      "modified": "2026-10-03T19:03:39.340522+00:00",
+      "modified": "2026-10-03T20:12:36.047588+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -1181,7 +948,7 @@
       "bytes": 1876,
       "lines": 13,
       "sha256": "aa2151f50b2b6648c5e4fb857e91e627a29156d8526de06f18d9d63491a9088e",
-      "modified": "2026-10-03T19:03:39.340607+00:00",
+      "modified": "2026-10-03T20:12:36.047588+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -1191,7 +958,7 @@
       "bytes": 1837,
       "lines": 13,
       "sha256": "6dc33e6bb2e02c6be79100bb2702dfeae8bce04d97e228c8f3b5a68cb36e928f",
-      "modified": "2026-10-03T19:03:39.340691+00:00",
+      "modified": "2026-10-03T20:12:36.047588+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -1201,7 +968,7 @@
       "bytes": 1568,
       "lines": 11,
       "sha256": "014c493761063d71a8305b771dbb0d7349c63aa4e7274db2191c9e118e897f51",
-      "modified": "2026-10-03T19:03:39.340763+00:00",
+      "modified": "2026-10-03T20:12:36.047588+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -1211,7 +978,7 @@
       "bytes": 1712,
       "lines": 25,
       "sha256": "8d0d3b8c73c4b5c5f9006a0ffb645c7ac8ac3547c810ccecdf4498cfefdcb9b8",
-      "modified": "2026-10-03T19:03:39.340838+00:00",
+      "modified": "2026-10-03T20:12:36.047588+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -1221,7 +988,7 @@
       "bytes": 1498,
       "lines": 36,
       "sha256": "03b2cc0898f868c54b4edb3e7a99b9b50e8566d00cbe1cab04f88de2ba5b7709",
-      "modified": "2026-10-03T19:03:39.343206+00:00",
+      "modified": "2026-10-03T20:12:36.047588+00:00",
       "expected_artifact": true,
       "issues": []
     },
@@ -1231,7 +998,7 @@
       "bytes": 8518,
       "lines": 17,
       "sha256": "226e0246c9bfa71891b891bc5105c3788621df9702d1a33e690213b1cac3f691",
-      "modified": "2026-10-03T19:03:39.341584+00:00",
+      "modified": "2026-10-03T20:12:36.047588+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1241,7 +1008,7 @@
       "bytes": 4979,
       "lines": 9,
       "sha256": "7d995871e9d38a2c58e5d80b867fe65081e905220674d5cc778f71a098dbb646",
-      "modified": "2026-10-03T19:03:39.342204+00:00",
+      "modified": "2026-10-03T20:12:36.048009+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1251,7 +1018,7 @@
       "bytes": 10778,
       "lines": 20,
       "sha256": "4c49858f5c07679dbf88c7b044393df5aa1f1afc65c026c9a85eabc230ddddfa",
-      "modified": "2026-10-03T19:03:39.341403+00:00",
+      "modified": "2026-10-03T20:12:36.048009+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1261,7 +1028,7 @@
       "bytes": 2834,
       "lines": 9,
       "sha256": "7c2b844bddd43a3b1b92bb73adee9972f6085535d955f7b45750bd87eac8e0f4",
-      "modified": "2026-10-03T19:03:39.341686+00:00",
+      "modified": "2026-10-03T20:12:36.048009+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1271,7 +1038,7 @@
       "bytes": 3494,
       "lines": 10,
       "sha256": "cd0a721968fe8ba670bb11bd963954d2dba82e8de7db1c5cde945d12f081da70",
-      "modified": "2026-10-03T19:03:39.341174+00:00",
+      "modified": "2026-10-03T20:12:36.048009+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1281,7 +1048,7 @@
       "bytes": 5423,
       "lines": 9,
       "sha256": "153ec53bc765b5dc69038ad2d041ce18a133ad3f9698693522caf04b4eb57714",
-      "modified": "2026-10-03T19:03:39.341846+00:00",
+      "modified": "2026-10-03T20:12:36.048009+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1291,7 +1058,7 @@
       "bytes": 1766,
       "lines": 6,
       "sha256": "d4db49cb08d27cb8bfc6c21279d8d18ba71bec2db01d5bc5bafbe168f2b2050a",
-      "modified": "2026-10-03T19:03:39.341933+00:00",
+      "modified": "2026-10-03T20:12:36.048009+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1301,7 +1068,7 @@
       "bytes": 4195,
       "lines": 9,
       "sha256": "163ebc79f1d5a423480868fdb5986d1b2cf198cb67589febcc2fa5be1f6aa206",
-      "modified": "2026-10-03T19:03:39.342065+00:00",
+      "modified": "2026-10-03T20:12:36.048009+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1311,7 +1078,7 @@
       "bytes": 3865,
       "lines": 11,
       "sha256": "c678f688f23dba7f85ab44eb1eb499efd5d7b757cabe4e4a1101290555100316",
-      "modified": "2026-10-03T19:03:39.342461+00:00",
+      "modified": "2026-10-03T20:12:36.048009+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1321,7 +1088,7 @@
       "bytes": 6517,
       "lines": 12,
       "sha256": "2615a7c093a95a6cb942dbee9a0adf971429dff1f3c0dea72a82e74e11f2e4ab",
-      "modified": "2026-10-03T19:03:39.342353+00:00",
+      "modified": "2026-10-03T20:12:36.048009+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1331,7 +1098,7 @@
       "bytes": 403,
       "lines": 13,
       "sha256": "8d4ecd18a1508756df5d3b2be83676ab21deb3950fda2dfd4ad8042a93db47e8",
-      "modified": "2026-10-03T19:03:39.343087+00:00",
+      "modified": "2026-10-03T20:12:36.048009+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1341,7 +1108,7 @@
       "bytes": 297,
       "lines": 10,
       "sha256": "ebbabace3ed7f01fcc3c4c7571e519284a2774416173eb348be3c2aee4fa4f78",
-      "modified": "2026-10-03T19:03:39.342739+00:00",
+      "modified": "2026-10-03T20:12:36.048373+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1351,7 +1118,7 @@
       "bytes": 257,
       "lines": 10,
       "sha256": "004adea72889605cd8576c21c82e91825637d42c02002ba79c191523eeada8b6",
-      "modified": "2026-10-03T19:03:39.342877+00:00",
+      "modified": "2026-10-03T20:12:36.048373+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1361,7 +1128,7 @@
       "bytes": 420,
       "lines": 10,
       "sha256": "d21c979b2572b10803228525ab61ae7d5b71f20ff54cbc93da8f5693c06e0df8",
-      "modified": "2026-10-03T19:03:39.342944+00:00",
+      "modified": "2026-10-03T20:12:36.048373+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1371,7 +1138,7 @@
       "bytes": 415,
       "lines": 10,
       "sha256": "3800815f6dad4fa5bdd5277e4d602135fde96632ec61da7f3581ac1511c685be",
-      "modified": "2026-10-03T19:03:39.342536+00:00",
+      "modified": "2026-10-03T20:12:36.048373+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1381,7 +1148,7 @@
       "bytes": 495,
       "lines": 10,
       "sha256": "0a04a1d16ff067f4d3bdd883c581962e69278937cdc97173d15df77a31782463",
-      "modified": "2026-10-03T19:03:39.343016+00:00",
+      "modified": "2026-10-03T20:12:36.048373+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1391,7 +1158,7 @@
       "bytes": 866,
       "lines": 18,
       "sha256": "0c3fef77bd384984cdedf180454016b438cdc325dfdcdfc18db612b38b802067",
-      "modified": "2026-10-03T19:03:39.342605+00:00",
+      "modified": "2026-10-03T20:12:36.048373+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1401,7 +1168,7 @@
       "bytes": 619,
       "lines": 26,
       "sha256": "5a759242bbc4a626fe7b854f6f544379fd7a1e26a4f20700f44a9a490a6167f2",
-      "modified": "2026-10-03T19:03:39.342672+00:00",
+      "modified": "2026-10-03T20:12:36.048373+00:00",
       "expected_artifact": false,
       "issues": []
     },
@@ -1411,38 +1178,8 @@
       "bytes": 379,
       "lines": 10,
       "sha256": "913bbf227f35d5d73545c1aacb1e5bde6dc55261ebb4540a4aade5c47431d9c4",
-      "modified": "2026-10-03T19:03:39.342808+00:00",
+      "modified": "2026-10-03T20:12:36.048373+00:00",
       "expected_artifact": false,
-      "issues": []
-    },
-    {
-      "path": "thought-engine/00_PROJECT_CONTEXT.md",
-      "project": null,
-      "bytes": 10877,
-      "lines": 84,
-      "sha256": "b2ca6ea1852912546cdff4e5c92d5204c5653e29d7bca2487061362ebba19226",
-      "modified": "2026-10-03T18:15:30.434842+00:00",
-      "expected_artifact": true,
-      "issues": []
-    },
-    {
-      "path": "thought-engine/01_PROJECT_TIMELINE.md",
-      "project": null,
-      "bytes": 7138,
-      "lines": 35,
-      "sha256": "9900403a662418ae6c48fc1b2498d221c56ce7f2aa44e64e990be329720c9b43",
-      "modified": "2026-10-03T18:15:57.977154+00:00",
-      "expected_artifact": true,
-      "issues": []
-    },
-    {
-      "path": "thought-engine/02_DECISION_REGISTER.md",
-      "project": null,
-      "bytes": 12325,
-      "lines": 76,
-      "sha256": "4a7efa136992f3079dc0c640836fccec13a5e4abcc869420919d9ec1d4062cce",
-      "modified": "2026-10-03T18:16:42.409629+00:00",
-      "expected_artifact": true,
       "issues": []
     }
   ]

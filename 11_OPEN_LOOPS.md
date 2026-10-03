@@ -18,10 +18,6 @@
 | alankrit-os:O12 | Why the name "Alankrit OS"? What else is an "OS" meant to do beyond context? | Scope of the system | UNKNOWN | Ask him |
 | alankrit-os:O13 | Glossary dropped in v2: deliberate? | Renames ("old → new") were a v1 requirement | UNKNOWN | — |
 | alankrit-os:O14 | Is the curated overlay sustainable at ~10+ projects? | Hand-written judgments don't scale | OPEN | Overlay per project, or extractor-provided statuses (v2 already supplies statuses) |
-| campus-fund:O01 | When did the Campus Fund role start, on what terms, and what is the scope? | Context for his time, income and public statements | UNKNOWN | Ask him |
-| campus-fund:O02 | What may be said publicly about Campus Fund work? | Brand agents may post; the notes are internal and include sensitive details | UNRESOLVED | Ask him before any agent uses it |
-| campus-fund:O03 | Does the Campus Fund work connect to the revised Icarus thesis? | He is 'working different possibilities that can become Icarus' while at the VC | UNKNOWN | Ask him |
-| campus-fund:O04 | Is the tagline/branding brief his assignment, and was it delivered? | Shows his actual job content | UNKNOWN | Ask him |
 | icarus:O01 | Who is the ICP? | gates pricing, outreach, investors | OPEN since 07-16 | write a defended position |
 | icarus:O02 | Pricing | no business without it | OPEN | provisional price |
 | icarus:O03 | Trust/legal for a design partner's private repo | first enterprise question | OPEN | write it |

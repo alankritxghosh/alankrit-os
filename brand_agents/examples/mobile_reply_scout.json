@@ -1,0 +1,15 @@
+{
+  "command": "reply_scout",
+  "targets": [
+    {
+      "url": "https://x.com/example/status/123",
+      "opened": true,
+      "checked_at": "2026-10-04",
+      "author": "example",
+      "post_text": "Most people using AI agents still do not know what result they want before they start.",
+      "why": "Builder lane, agent workflow topic.",
+      "angle": "This is the part people skip. The prompt matters less than knowing what result would make you stop."
+    }
+  ]
+}
+

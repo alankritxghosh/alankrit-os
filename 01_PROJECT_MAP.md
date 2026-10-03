@@ -6,28 +6,21 @@
 
 - Evidence through: 2026-10-03 · extracted 2026-10-03 · protocol: UNIVERSAL ALANKRIT CONTEXT EXTRACTION PROTOCOL (v2), submitted 2026-10-03T16:11:23Z
 - Records: facts 21, decisions 14, beliefs 24, episodes 13, lessons 9, failures 10, open_loops 14, contradictions 11, voice_examples 9, relationships 43
-- Read first: `/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/alankrit-os/HANDOFF_TO_ALANKRIT_OS.md`
+- Read first: `/workspace/alankrit-os/context-extraction/alankrit-os/HANDOFF_TO_ALANKRIT_OS.md`
 - Coverage gaps: Project is one day old (2026-10-03, 18:48-22:30 IST); no git history.; No text in the project is established as written by Alankrit; voice evidence is nil.; Most workspace artifacts are assistant-generated and derive from the Icarus extraction (circular); tagged DERIVED_FROM_ICARUS.; The personal-brand consumer system was not located; folders Personal Brand, composio-linkedin-agent, thought-engine, alankrit.dev not opene…; No feedback from Alankrit on the compiled global layer exists in the record.; 19:37-21:41 IST: no recorded activity.
-
-## Campus Fund (`campus-fund`)
-
-- Evidence through: 2026-10-04 · extracted 2026-10-04 · protocol: UNIVERSAL ALANKRIT CONTEXT EXTRACTION PROTOCOL (v2), lean scope
-- Records: facts 5, episodes 2, open_loops 4, contradictions 1, relationships 2
-- Read first: `/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/campus-fund/HANDOFF_TO_ALANKRIT_OS.md`
-- Coverage gaps: No session transcripts.; One 683-byte note; Welcome note is Obsidian default.; Nothing about the role beyond his one-line statement.
 
 ## Icarus (formerly JARVIS Engineering Intelligence) (`icarus`)
 
 - Evidence through: 2026-09-13 · extracted 2026-10-03 · protocol: UNIVERSAL ALANKRIT CONTEXT EXTRACTION PROTOCOL (v2); supersedes v1 extraction archived at ../archive/2026-10-03T2230_ic…
 - Records: facts 42, decisions 50, beliefs 70, episodes 53, lessons 20, failures 50, open_loops 40, contradictions 32, voice_examples 27, relationships 54
-- Read first: `/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/icarus/HANDOFF_TO_ALANKRIT_OS.md`
+- Read first: `/workspace/alankrit-os/context-extraction/icarus/HANDOFF_TO_ALANKRIT_OS.md`
 - Coverage gaps: No session transcripts before 2026-07-13: June 27 to July 12 rests on git, vault and the v1 extraction.; Assistant turns were read for only a handful of sessions; most agent-side reasoning comes from vault and repo docs.; docs/experiments/*.md (35) not read individually; vault summaries used.; Learning.md and Work Queue.md read via headings and targeted sections, not in full.; Source code not read.; Vault notes X Content, X Replies, Reddit, Outreach, Product Hunt, Distribution Teardown, audit files read only via v1 or not at all.
 
 ## Personal Brand (`personal-brand`)
 
 - Evidence through: 2026-09-22 · extracted 2026-10-04 · protocol: UNIVERSAL ALANKRIT CONTEXT EXTRACTION PROTOCOL (v2), lean scope: only what Icarus does not already capture
 - Records: facts 9, decisions 19, beliefs 16, episodes 8, lessons 5, failures 8, open_loops 8, contradictions 8, voice_examples 11, relationships 10
-- Read first: `/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/personal-brand/HANDOFF_TO_ALANKRIT_OS.md`
+- Read first: `/workspace/alankrit-os/context-extraction/personal-brand/HANDOFF_TO_ALANKRIT_OS.md`
 - Coverage gaps: Playbook (11.7 KB), Workflows, Templates, Pillars and Proof Bank read in part; Playbook not read in full.; Transcripts for 2026-09-18 to 09-22 not found.; Nothing known about 09-23 to 10-03 beyond his 10-04 statement.; No X or LinkedIn data read directly.
 
 ## Not yet extracted

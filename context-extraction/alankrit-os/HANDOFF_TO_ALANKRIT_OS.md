@@ -36,11 +36,11 @@ F01: the "global" layer could not be cross-project (one flat extraction) → v2 
 He is building infrastructure so that agents can represent him. EXPLICIT goal; HIGH. He cares most that agents do not misrepresent him: inference as fact, AI text as his words, latest statement as truth, project choices as personality. These prohibitions repeat across all three versions; HIGH. He works by spec and delegation at high autonomy; MEDIUM-HIGH, two-project.
 
 ## Unresolved
-Which projects next (O01). Does the brand system exist (O02). Compiler must read v2 files and two projects (O03, O06). Who drafted the protocols (O04). Re-extract Icarus under v2 (O05). Memory contract for the consumer (O07). Freshness cadence (O08). **Disclosure policy: the pipeline keeps full failure registers, but his public rule forbids showcasing his own failures (C07, O09).** No git (O10). No human review of compiled judgments (O11).
+Which projects next (O01). Does the brand system exist (O02). Who drafted the protocols (O04). Memory contract for the consumer (O07). Freshness cadence (O08). **Disclosure policy: the pipeline keeps full failure registers, but his public rule only allows occasional funny own-failure stories (C07, O09).** No human review of compiled judgments (O11).
 
 ## What future agents should remember
 1. Treat this extraction as metadata about the pipeline, not as new evidence about his personality.
 2. Before publishing anything for him, respect the public no-own-failures rule even though memory contains failures (C07).
 3. Keep authorship labels on everything you store about him; never promote assistant text to his voice.
 4. Tag derived claims; never count the same evidence twice across extractions.
-5. Every "current" fact has an as-of date; Icarus evidence stops at 2026-09-10.
+5. Every "current" fact has an as-of date; Icarus evidence stops at 2026-09-13.

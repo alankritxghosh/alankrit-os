@@ -1,0 +1,60 @@
+name: Brand command
+description: Run a draft-only brand agent from your phone
+title: "Brand command: "
+labels: ["brand-command"]
+body:
+  - type: dropdown
+    id: command
+    attributes:
+      label: Command
+      options:
+        - Draft from raw idea
+        - Reply target scout
+        - Weekly follower report
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - x
+        - linkedin
+        - substack
+    validations:
+      required: false
+  - type: textarea
+    id: raw_idea
+    attributes:
+      label: Raw idea
+      description: For draft commands. Use your own words.
+    validations:
+      required: false
+  - type: textarea
+    id: facts_json
+    attributes:
+      label: Facts JSON
+      description: For draft commands. JSON array of {"claim":"...","source":"..."}.
+      render: json
+      value: "[]"
+    validations:
+      required: false
+  - type: textarea
+    id: targets_json
+    attributes:
+      label: Targets JSON
+      description: For reply scout. Every target must be opened in the logged-in browser and marked opened true.
+      render: json
+      value: "[]"
+    validations:
+      required: false
+  - type: textarea
+    id: counts_json
+    attributes:
+      label: Counts JSON
+      description: For weekly report. JSON object with checked_at, x, linkedin, substack.
+      render: json
+      value: "{}"
+    validations:
+      required: false
+

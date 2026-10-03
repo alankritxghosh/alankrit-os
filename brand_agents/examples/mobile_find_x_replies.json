@@ -1,0 +1,10 @@
+{
+  "command": "find_x_replies",
+  "limit": 10,
+  "queries": [
+    "\"AI agents\" builders -filter:replies",
+    "\"Claude Code\" -filter:replies",
+    "\"building in public\" agents -filter:replies"
+  ]
+}
+

@@ -1,0 +1,56 @@
+name: Brand Agents Mobile
+
+on:
+  workflow_dispatch:
+    inputs:
+      command_json:
+        description: "Draft-only command JSON. See brand_agents/examples/mobile_*.json"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Write command
+        run: |
+          cat > /tmp/brand-command.json <<'JSON'
+          ${{ inputs.command_json }}
+          JSON
+          python -m json.tool /tmp/brand-command.json > /tmp/brand-command.pretty.json
+          mv /tmp/brand-command.pretty.json /tmp/brand-command.json
+
+      - name: Test suite
+        run: python3 -m unittest brand_agents.tests.test_agents
+
+      - name: Note X Playwright requirement
+        run: |
+          if grep -q '"find_x_replies"' /tmp/brand-command.json; then
+            echo "find_x_replies requires a persistent runtime with Playwright and a saved X login state." >> "$GITHUB_STEP_SUMMARY"
+            echo "This generic GitHub runner does not keep browser sessions between runs." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Run draft-only command
+        run: |
+          mkdir -p brand/agent_outputs/mobile
+          python3 -m brand_agents.mobile_runner \
+            --command-file /tmp/brand-command.json \
+            --out brand/agent_outputs/mobile/output.md
+
+      - name: Add summary
+        run: |
+          cat brand/agent_outputs/mobile/output.md >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: brand-agent-output
+          path: brand/agent_outputs/mobile/output.md

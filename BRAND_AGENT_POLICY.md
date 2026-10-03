@@ -12,8 +12,8 @@ Replies and comments are drafted with the direct clickable URL of the post (his 
 
 ## 2. How drafting works (changed 2026-10-04)
 
-- **Claude writes the first draft.** Alankrit edits it, and further revisions happen **on his command**: an agent does not keep iterating, posting or "improving" a draft on its own after delivering it.
-- This **supersedes** the 2026-09-16 rule in the Personal Brand vault (`CLAUDE.md`, Decisions) that "Alankrit writes first drafts; Claude never generates the first draft". That vault still contains the old rule; it needs updating by him or on his instruction.
+- **Claude writes the first draft.** Alankrit edits it, and further revisions happen **on his command**: an agent does not keep iterating, posting or "improving" a draft on its own after delivering it. On 2026-10-04, he clarified that the command is either saying "revise" or giving a direct revision instruction.
+- This **supersedes** the 2026-09-16 rule in the Personal Brand vault (`CLAUDE.md`, Decisions) that "Alankrit writes first drafts; Claude never generates the first draft". That vault still contains the old rule; on 2026-10-04 Alankrit said to leave it as-is.
 - Why this needs care: agent first drafts were rejected many times for sounding like AI ("screams fucking AI", 2026-09-09) and his own raw posts did better. So every first draft must:
   1. be built from examples he typed himself (the ALANKRIT voice examples, not agent text he approved);
   2. pass the voice checks in section 4 and show the result, naming any violation;
@@ -76,7 +76,7 @@ Every factual claim and number in a draft is traced to a source and read back be
 
 **Honest read:** the early targets are small on purpose, so the first test is not growth but output. From 2026-09-16 to 2026-10-04 X grew by about 3 and no post is recorded. The back half is steep: sustaining ~45 new X followers a day late in the year assumes the account has compounding reach by then. A shortfall in the first quarter makes the later months unrealistic rather than merely late.
 
-**Input gates (my proposal; he confirmed the milestones but has not yet commented on these gates):** these are what agents actually control. Outputs (followers) are not.
+**Input gates (approved by Alankrit on 2026-10-04):** these are what agents actually control. Outputs (followers) are not.
 
 | Input | Gate |
 |---|---|
@@ -98,13 +98,13 @@ Every factual claim and number in a draft is traced to a source and read back be
 
 ## 9. Open items for Alankrit
 
-1. Milestones are confirmed. Review the input gates in section 7 and edit any you disagree with.
-2. Update the Personal Brand vault's old first-draft rule (section 2).
-3. Name any role-model accounts you already want on the list (5 per platform; the agents propose the rest, you approve).
-4. Name what "on my command" means in practice (a word, a button, a reply) so agents know when they may revise.
+1. Name any role-model accounts you already want on the list (5 per platform; the agents propose the rest, you approve).
+2. State the revised Icarus thesis, if there is one.
 
 ## History
 
 - v1, 2026-10-04: created from his answers in chat.
 - v2, 2026-10-04: milestones fixed to his choices (12 months, back-loaded); checkpoint figures computed; input gates added as a proposal.
 - v3, 2026-10-04: milestones confirmed by him; role-model scouting set to 5 accounts per platform (X and LinkedIn).
+- v4, 2026-10-04: input gates approved; Personal Brand vault's old first-draft rule left unchanged by request.
+- v5, 2026-10-04: "on my command" clarified as "revise" or a direct revision instruction.
