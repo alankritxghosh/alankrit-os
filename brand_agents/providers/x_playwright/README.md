@@ -36,11 +36,18 @@ The session is saved to:
 
 Do not commit that file.
 
+On macOS, if Google/X rejects Chrome for Testing during login, use your installed Chrome:
+
+```bash
+python3 -m brand_agents.providers.x_playwright.login --channel chrome
+```
+
 ## Find X targets
 
 ```bash
 python3 -m brand_agents.providers.x_playwright.find_posts \
   --limit 10 \
+  --channel chrome \
   --out /tmp/x-targets.json
 ```
 

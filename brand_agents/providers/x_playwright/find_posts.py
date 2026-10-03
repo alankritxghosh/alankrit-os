@@ -134,7 +134,7 @@ def search_url(query: str) -> str:
     return f"https://x.com/search?q={quote(query)}&src=typed_query&f=live"
 
 
-def find_posts(state: Path, queries: list[str], limit: int, headless: bool, scrolls: int) -> list[dict]:
+def find_posts(state: Path, queries: list[str], limit: int, headless: bool, scrolls: int, channel: str | None = None) -> list[dict]:
     seen: set[str] = set()
     results: list[Candidate] = []
     checked_at = date.today().isoformat()
@@ -142,7 +142,7 @@ def find_posts(state: Path, queries: list[str], limit: int, headless: bool, scro
     from playwright.sync_api import sync_playwright
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=headless)
+        browser = p.chromium.launch(headless=headless, channel=channel)
         context = browser.new_context(storage_state=str(state))
         page = context.new_page()
         for query in queries:
@@ -169,13 +169,14 @@ def main() -> int:
     parser.add_argument("--limit", type=int, default=10)
     parser.add_argument("--scrolls", type=int, default=4)
     parser.add_argument("--headed", action="store_true", help="show browser window")
+    parser.add_argument("--channel", default=None, help="browser channel, for example chrome")
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
 
     if not args.state.exists():
         raise SystemExit(f"missing storage state. Run login first: {args.state}")
     queries = args.query or DEFAULT_QUERIES
-    targets = find_posts(args.state, queries, args.limit, headless=not args.headed, scrolls=args.scrolls)
+    targets = find_posts(args.state, queries, args.limit, headless=not args.headed, scrolls=args.scrolls, channel=args.channel)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(targets, indent=2) + "\n", encoding="utf-8")
     print(args.out)

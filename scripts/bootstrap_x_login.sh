@@ -46,6 +46,12 @@ python -m pip install --upgrade pip
 python -m pip install playwright
 python -m playwright install chromium
 
+BROWSER_CHANNEL=()
+if [[ "$(uname -s)" == "Darwin" ]] && [[ -d "/Applications/Google Chrome.app" ]]; then
+  BROWSER_CHANNEL=(--channel chrome)
+  echo "Using installed Google Chrome for login instead of Chrome for Testing."
+fi
+
 cat <<'MSG'
 
 Opening X login now.
@@ -54,7 +60,7 @@ When your X home feed is visible, return to this terminal and press Enter.
 
 MSG
 
-python -m brand_agents.providers.x_playwright.login
+python -m brand_agents.providers.x_playwright.login "${BROWSER_CHANNEL[@]}"
 
 cat <<'MSG'
 
@@ -63,7 +69,7 @@ Testing X target discovery with 3 targets...
 
 MSG
 
-python -m brand_agents.providers.x_playwright.find_posts --limit 3 --headed --out /tmp/x-targets.json || {
+python -m brand_agents.providers.x_playwright.find_posts --limit 3 --headed "${BROWSER_CHANNEL[@]}" --out /tmp/x-targets.json || {
   echo "Login saved, but discovery test failed. You can retry later with:" >&2
   echo "python -m brand_agents.providers.x_playwright.find_posts --limit 10 --out /tmp/x-targets.json" >&2
   exit 0

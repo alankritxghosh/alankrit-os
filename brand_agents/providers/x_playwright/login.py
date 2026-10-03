@@ -15,13 +15,14 @@ DEFAULT_STATE = Path.home() / ".alankrit-os" / "x-storage-state.json"
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state", type=Path, default=DEFAULT_STATE)
+    parser.add_argument("--channel", default=None, help="browser channel, for example chrome")
     args = parser.parse_args()
 
     args.state.parent.mkdir(parents=True, exist_ok=True)
     from playwright.sync_api import sync_playwright
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=False, channel=args.channel)
         context = browser.new_context()
         page = context.new_page()
         page.goto("https://x.com/login", wait_until="domcontentloaded")
