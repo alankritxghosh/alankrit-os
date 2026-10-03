@@ -76,6 +76,11 @@ I build because it is fun.
         self.assertGreaterEqual(score, 8)
         self.assertIn("agent", reasons)
 
+    def test_x_scoring_rejects_employment_announcement(self):
+        score, reasons = score_text("A bike mechanic now works at Anthropic after building AI agents")
+        self.assertLess(score, 0)
+        self.assertIn("employment announcement", reasons)
+
     def test_x_scoring_blocks_geopolitics(self):
         score, _ = score_text("AI agents and geopolitics in the election")
         self.assertLess(score, 0)

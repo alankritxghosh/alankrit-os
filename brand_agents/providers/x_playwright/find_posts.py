@@ -79,6 +79,7 @@ class Candidate:
     post_text: str
     why: str
     checked_at: str
+    score: int
 
     def to_target(self) -> dict:
         return {
@@ -88,10 +89,13 @@ class Candidate:
             "author": self.author,
             "post_text": self.post_text,
             "why": self.why,
+            "score": self.score,
         }
 
 
 def normalize_text(text: str) -> str:
+    text = re.sub(r"\b(Show more|Translate post|Image|GIF|ALT)\b", " ", text)
+    text = re.sub(r"\b\d+[KkMm]?\b", " ", text)
     return " ".join(text.split())
 
 
@@ -121,6 +125,15 @@ def score_text(text: str) -> tuple[int, list[str]]:
     score = 0
     if any(term in lowered for term in BLOCKED_TERMS):
         return -100, ["blocked topic"]
+    if any(term in lowered for term in ["works at", "joined ", "joining ", "hired", "we're hiring", "we are hiring"]):
+        return -80, ["employment announcement"]
+    if any(term in lowered for term in ["breaking:", "today's news", "live on x", "subscribe to premium"]):
+        return -80, ["news/ui noise"]
+    has_agent_signal = any(term in lowered for term in ["agent", "agents", "claude code", "cursor", "codex", "vibe coding"])
+    has_builder_signal = any(term in lowered for term in ["build", "building", "built", "workflow", "workflows", "product", "gtm", "ship", "shipping"])
+    if not (has_agent_signal and has_builder_signal):
+        score -= 6
+        reasons.append("missing agent+builder pair")
     for term in HIGH_SIGNAL_TERMS:
         if term in lowered:
             score += 2
@@ -135,6 +148,12 @@ def score_text(text: str) -> tuple[int, list[str]]:
     if word_count > 220:
         score -= 4
         reasons.append("too long")
+    if any(term in lowered for term in ["i built", "i'm building", "i am building", "we built", "we are building"]):
+        score += 3
+        reasons.append("builder first-person")
+    if any(term in lowered for term in ["learned", "mistake", "problem", "workflow", "how i"]):
+        score += 2
+        reasons.append("has comment hook")
     return score, reasons
 
 
@@ -158,6 +177,7 @@ def extract_candidates(page: Any, checked_at: str) -> list[Candidate]:
             post_text=text[:1200],
             why=f"X search candidate; score {score}; signals: {', '.join(reasons[:6])}",
             checked_at=checked_at,
+            score=score,
         ))
     return candidates
 
@@ -185,13 +205,11 @@ def find_posts(state: Path, queries: list[str], limit: int, headless: bool, scro
                     if candidate.url not in seen:
                         seen.add(candidate.url)
                         results.append(candidate)
-                        if len(results) >= limit:
-                            browser.close()
-                            return [item.to_target() for item in results]
                 page.mouse.wheel(0, 900)
                 page.wait_for_timeout(1200)
         browser.close()
-    return [item.to_target() for item in results]
+    results.sort(key=lambda item: item.score, reverse=True)
+    return [item.to_target() for item in results[:limit]]
 
 
 def main() -> int:

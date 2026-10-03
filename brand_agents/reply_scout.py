@@ -68,12 +68,14 @@ def render_report(targets: list[dict]) -> str:
         platform = "linkedin" if "linkedin.com" in target["url"] else "x"
         reply = draft_reply(target)
         checks = check_voice(reply, platform)
+        score = target.get("score", "UNKNOWN")
         blocks.extend([
             f"## Target {idx}",
             "",
             f"- URL: {target['url']}",
             f"- Author: {target.get('author', 'UNKNOWN')}",
             f"- Checked: {target.get('checked_at', 'UNKNOWN')}",
+            f"- Score: {score}",
             f"- Why this target: {target.get('why', 'UNKNOWN')}",
             "",
             "Post excerpt:",
