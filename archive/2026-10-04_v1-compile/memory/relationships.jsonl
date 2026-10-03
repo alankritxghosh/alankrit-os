@@ -1,0 +1,560 @@
+{"id": "E0001", "from": "alankrit-os:D02", "rel": "related_to", "to": "icarus:D10", "basis": "EXPLICIT", "note": "ACTIVE (protocol revised to v2, D10)."}
+{"id": "E0002", "from": "alankrit-os:D04", "rel": "related_to", "to": "icarus:D10", "basis": "EXPLICIT", "note": "ACTIVE, with the role refined by D10 (C01)."}
+{"id": "E0003", "from": "alankrit-os:D12", "rel": "related_to", "to": "icarus:D13", "basis": "EXPLICIT", "note": "done (D13)."}
+{"id": "E0004", "from": "icarus:D04", "rel": "superseded_by", "to": "icarus:D07", "basis": "EXPLICIT", "note": "**reversed** (D07, D09)."}
+{"id": "E0005", "from": "icarus:D04", "rel": "superseded_by", "to": "icarus:D09", "basis": "EXPLICIT", "note": "**reversed** (D07, D09)."}
+{"id": "E0006", "from": "icarus:D10", "rel": "superseded_by", "to": "icarus:D32", "basis": "EXPLICIT", "note": "**being reversed** (D32)."}
+{"id": "E0007", "from": "icarus:D25", "rel": "superseded_by", "to": "icarus:D31", "basis": "EXPLICIT", "note": "superseded in practice by D31 (PH, LinkedIn added; HN/PH declared dead)."}
+{"id": "E0008", "from": "icarus:C10", "rel": "related_to", "to": "icarus:D29", "basis": "EXPLICIT", "note": ""}
+{"id": "E0009", "from": "icarus:B01", "rel": "supported", "to": "icarus:D02", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0010", "from": "icarus:B01", "rel": "supported", "to": "icarus:D07", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0011", "from": "icarus:B01", "rel": "supported", "to": "icarus:D13", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0012", "from": "icarus:B01", "rel": "supported", "to": "icarus:D27", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0013", "from": "icarus:B02", "rel": "supported", "to": "icarus:D13", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0014", "from": "icarus:B03", "rel": "supported", "to": "icarus:D21", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0015", "from": "icarus:B04", "rel": "supported", "to": "icarus:D02", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0016", "from": "icarus:B04", "rel": "supported", "to": "icarus:D07", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0017", "from": "icarus:B04", "rel": "supported", "to": "icarus:D13", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0018", "from": "icarus:B04", "rel": "supported", "to": "icarus:D14", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0019", "from": "icarus:B04", "rel": "supported", "to": "icarus:D27", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0020", "from": "icarus:B06", "rel": "supported", "to": "icarus:D26", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0021", "from": "icarus:B07", "rel": "supported", "to": "icarus:D26", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0022", "from": "icarus:B09", "rel": "supported", "to": "icarus:D06", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0023", "from": "icarus:B09", "rel": "supported", "to": "icarus:D30", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0024", "from": "icarus:B10", "rel": "supported", "to": "icarus:D06", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0025", "from": "icarus:B11", "rel": "supported", "to": "icarus:D30", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0026", "from": "icarus:B11", "rel": "supported", "to": "icarus:D32", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0027", "from": "icarus:B12", "rel": "supported", "to": "icarus:D17", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0028", "from": "icarus:B12", "rel": "supported", "to": "icarus:D30", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0029", "from": "icarus:B12", "rel": "supported", "to": "icarus:D32", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0030", "from": "icarus:B13", "rel": "supported", "to": "icarus:D30", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0031", "from": "icarus:B15", "rel": "supported", "to": "icarus:D02", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0032", "from": "icarus:B15", "rel": "supported", "to": "icarus:D08", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0033", "from": "icarus:B15", "rel": "supported", "to": "icarus:D09", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0034", "from": "icarus:B16", "rel": "supported", "to": "icarus:D08", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0035", "from": "icarus:B16", "rel": "supported", "to": "icarus:D12", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0036", "from": "icarus:B16", "rel": "supported", "to": "icarus:D29", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0037", "from": "icarus:B19", "rel": "supported", "to": "icarus:D12", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0038", "from": "icarus:B19", "rel": "supported", "to": "icarus:D14", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0039", "from": "icarus:B21", "rel": "supported", "to": "icarus:D31", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0040", "from": "icarus:B22", "rel": "supported", "to": "icarus:D23", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0041", "from": "icarus:B23", "rel": "supported", "to": "icarus:D19", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0042", "from": "icarus:B23", "rel": "supported", "to": "icarus:D23", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0043", "from": "icarus:B24", "rel": "supported", "to": "icarus:D22", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0044", "from": "icarus:B24", "rel": "supported", "to": "icarus:D35", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0045", "from": "icarus:B26", "rel": "supported", "to": "icarus:D22", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0046", "from": "icarus:B28", "rel": "supported", "to": "icarus:D31", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0047", "from": "icarus:B29", "rel": "supported", "to": "icarus:D23", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0048", "from": "icarus:B29", "rel": "supported", "to": "icarus:D28", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0049", "from": "icarus:B30", "rel": "supported", "to": "icarus:D31", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0050", "from": "icarus:B31", "rel": "supported", "to": "icarus:D33", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0051", "from": "icarus:B34", "rel": "supported", "to": "icarus:D19", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0052", "from": "icarus:B34", "rel": "supported", "to": "icarus:D26", "basis": "COMPUTED", "note": "belief associated with decision"}
+{"id": "E0053", "from": "icarus:F01", "rel": "led_to", "to": "icarus:D13", "basis": "OVERLAY", "note": ""}
+{"id": "E0054", "from": "icarus:F04", "rel": "led_to", "to": "global:BT10", "basis": "OVERLAY", "note": ""}
+{"id": "E0055", "from": "icarus:F24", "rel": "led_to", "to": "icarus:D32", "basis": "OVERLAY", "note": ""}
+{"id": "E0056", "from": "icarus:F23", "rel": "led_to", "to": "icarus:D33", "basis": "OVERLAY", "note": ""}
+{"id": "E0057", "from": "icarus:F25", "rel": "led_to", "to": "icarus:D26", "basis": "OVERLAY", "note": ""}
+{"id": "E0058", "from": "icarus:F31", "rel": "led_to", "to": "icarus:D23", "basis": "OVERLAY", "note": ""}
+{"id": "E0059", "from": "icarus:F38", "rel": "led_to", "to": "icarus:D23", "basis": "OVERLAY", "note": ""}
+{"id": "E0060", "from": "icarus:F33", "rel": "led_to", "to": "icarus:D31", "basis": "OVERLAY", "note": ""}
+{"id": "E0061", "from": "icarus:F34", "rel": "led_to", "to": "icarus:D31", "basis": "OVERLAY", "note": ""}
+{"id": "E0062", "from": "icarus:F06", "rel": "led_to", "to": "icarus:D12", "basis": "OVERLAY", "note": ""}
+{"id": "E0063", "from": "icarus:D04", "rel": "superseded_by", "to": "icarus:D09", "basis": "OVERLAY", "note": ""}
+{"id": "E0064", "from": "icarus:D04", "rel": "reversed", "to": "icarus:D11", "basis": "OVERLAY", "note": ""}
+{"id": "E0065", "from": "icarus:D10", "rel": "superseded_by", "to": "icarus:D33", "basis": "OVERLAY", "note": ""}
+{"id": "E0066", "from": "icarus:D25", "rel": "superseded_by", "to": "icarus:D31", "basis": "OVERLAY", "note": ""}
+{"id": "E0067", "from": "icarus:D19", "rel": "superseded_by", "to": "icarus:D26", "basis": "OVERLAY", "note": ""}
+{"id": "E0068", "from": "icarus:D30", "rel": "led_to", "to": "icarus:D32", "basis": "OVERLAY", "note": ""}
+{"id": "E0069", "from": "icarus:D06", "rel": "led_to", "to": "icarus:D30", "basis": "OVERLAY", "note": ""}
+{"id": "E0070", "from": "icarus:B01", "rel": "supported", "to": "icarus:D07", "basis": "OVERLAY", "note": ""}
+{"id": "E0071", "from": "icarus:B02", "rel": "derived_from", "to": "icarus:F01", "basis": "OVERLAY", "note": ""}
+{"id": "E0072", "from": "icarus:B26", "rel": "contradicted", "to": "icarus:B25", "basis": "OVERLAY", "note": ""}
+{"id": "E0073", "from": "icarus:B28", "rel": "contradicted", "to": "icarus:D31", "basis": "OVERLAY", "note": ""}
+{"id": "E0074", "from": "icarus:B21", "rel": "contradicted", "to": "icarus:C16", "basis": "OVERLAY", "note": ""}
+{"id": "E0075", "from": "icarus:B27", "rel": "contradicted", "to": "icarus:C9", "basis": "OVERLAY", "note": ""}
+{"id": "E0076", "from": "icarus:B03", "rel": "contradicted", "to": "global:GC01", "basis": "OVERLAY", "note": ""}
+{"id": "E0077", "from": "icarus:D24", "rel": "caused", "to": "icarus:O9", "basis": "OVERLAY", "note": ""}
+{"id": "E0078", "from": "icarus:D21", "rel": "caused", "to": "icarus:O10", "basis": "OVERLAY", "note": ""}
+{"id": "E0079", "from": "icarus:D07", "rel": "related_to", "to": "icarus:O5", "basis": "OVERLAY", "note": ""}
+{"id": "E0080", "from": "global:BT01", "rel": "derived_from", "to": "icarus:D04", "basis": "OVERLAY", "note": ""}
+{"id": "E0081", "from": "global:BT01", "rel": "derived_from", "to": "icarus:D07", "basis": "OVERLAY", "note": ""}
+{"id": "E0082", "from": "global:BT01", "rel": "derived_from", "to": "icarus:D09", "basis": "OVERLAY", "note": ""}
+{"id": "E0083", "from": "global:BT01", "rel": "derived_from", "to": "icarus:O5", "basis": "OVERLAY", "note": ""}
+{"id": "E0084", "from": "global:BT02", "rel": "derived_from", "to": "icarus:D11", "basis": "OVERLAY", "note": ""}
+{"id": "E0085", "from": "global:BT02", "rel": "derived_from", "to": "icarus:C12", "basis": "OVERLAY", "note": ""}
+{"id": "E0086", "from": "global:BT02", "rel": "derived_from", "to": "icarus:C2", "basis": "OVERLAY", "note": ""}
+{"id": "E0087", "from": "global:BT03", "rel": "derived_from", "to": "icarus:C15", "basis": "OVERLAY", "note": ""}
+{"id": "E0088", "from": "global:BT03", "rel": "derived_from", "to": "icarus:O1", "basis": "OVERLAY", "note": ""}
+{"id": "E0089", "from": "global:BT03", "rel": "derived_from", "to": "icarus:B13", "basis": "OVERLAY", "note": ""}
+{"id": "E0090", "from": "global:BT04", "rel": "derived_from", "to": "icarus:D30", "basis": "OVERLAY", "note": ""}
+{"id": "E0091", "from": "global:BT04", "rel": "derived_from", "to": "icarus:D32", "basis": "OVERLAY", "note": ""}
+{"id": "E0092", "from": "global:BT04", "rel": "derived_from", "to": "icarus:O4", "basis": "OVERLAY", "note": ""}
+{"id": "E0093", "from": "global:BT04", "rel": "derived_from", "to": "icarus:F24", "basis": "OVERLAY", "note": ""}
+{"id": "E0094", "from": "global:BT05", "rel": "derived_from", "to": "icarus:D02", "basis": "OVERLAY", "note": ""}
+{"id": "E0095", "from": "global:BT05", "rel": "derived_from", "to": "icarus:B21", "basis": "OVERLAY", "note": ""}
+{"id": "E0096", "from": "global:BT05", "rel": "derived_from", "to": "icarus:C16", "basis": "OVERLAY", "note": ""}
+{"id": "E0097", "from": "global:BT05", "rel": "derived_from", "to": "icarus:R8", "basis": "OVERLAY", "note": ""}
+{"id": "E0098", "from": "global:BT06", "rel": "derived_from", "to": "icarus:F31", "basis": "OVERLAY", "note": ""}
+{"id": "E0099", "from": "global:BT06", "rel": "derived_from", "to": "icarus:D25", "basis": "OVERLAY", "note": ""}
+{"id": "E0100", "from": "global:BT06", "rel": "derived_from", "to": "icarus:D31", "basis": "OVERLAY", "note": ""}
+{"id": "E0101", "from": "global:BT06", "rel": "derived_from", "to": "icarus:O8", "basis": "OVERLAY", "note": ""}
+{"id": "E0102", "from": "global:BT06", "rel": "derived_from", "to": "icarus:R12", "basis": "OVERLAY", "note": ""}
+{"id": "E0103", "from": "global:BT07", "rel": "derived_from", "to": "icarus:D22", "basis": "OVERLAY", "note": ""}
+{"id": "E0104", "from": "global:BT07", "rel": "derived_from", "to": "icarus:B26", "basis": "OVERLAY", "note": ""}
+{"id": "E0105", "from": "global:BT07", "rel": "derived_from", "to": "icarus:B27", "basis": "OVERLAY", "note": ""}
+{"id": "E0106", "from": "global:BT07", "rel": "derived_from", "to": "icarus:C7", "basis": "OVERLAY", "note": ""}
+{"id": "E0107", "from": "global:BT07", "rel": "derived_from", "to": "icarus:R11", "basis": "OVERLAY", "note": ""}
+{"id": "E0108", "from": "global:BT08", "rel": "derived_from", "to": "icarus:D19", "basis": "OVERLAY", "note": ""}
+{"id": "E0109", "from": "global:BT08", "rel": "derived_from", "to": "icarus:D26", "basis": "OVERLAY", "note": ""}
+{"id": "E0110", "from": "global:BT08", "rel": "derived_from", "to": "icarus:B34", "basis": "OVERLAY", "note": ""}
+{"id": "E0111", "from": "global:BT08", "rel": "derived_from", "to": "icarus:C8", "basis": "OVERLAY", "note": ""}
+{"id": "E0112", "from": "global:BT08", "rel": "derived_from", "to": "icarus:F25", "basis": "OVERLAY", "note": ""}
+{"id": "E0113", "from": "global:BT09", "rel": "derived_from", "to": "icarus:F27", "basis": "OVERLAY", "note": ""}
+{"id": "E0114", "from": "global:BT09", "rel": "derived_from", "to": "icarus:B07", "basis": "OVERLAY", "note": ""}
+{"id": "E0115", "from": "global:BT10", "rel": "derived_from", "to": "icarus:F04", "basis": "OVERLAY", "note": ""}
+{"id": "E0116", "from": "global:BT10", "rel": "derived_from", "to": "icarus:B04", "basis": "OVERLAY", "note": ""}
+{"id": "E0117", "from": "global:BT10", "rel": "derived_from", "to": "icarus:F03", "basis": "OVERLAY", "note": ""}
+{"id": "E0118", "from": "global:BT11", "rel": "derived_from", "to": "icarus:D12", "basis": "OVERLAY", "note": ""}
+{"id": "E0119", "from": "global:BT11", "rel": "derived_from", "to": "icarus:D29", "basis": "OVERLAY", "note": ""}
+{"id": "E0120", "from": "global:BT11", "rel": "derived_from", "to": "icarus:B16", "basis": "OVERLAY", "note": ""}
+{"id": "E0121", "from": "global:BT11", "rel": "derived_from", "to": "icarus:C10", "basis": "OVERLAY", "note": ""}
+{"id": "E0122", "from": "global:BT12", "rel": "derived_from", "to": "icarus:D10", "basis": "OVERLAY", "note": ""}
+{"id": "E0123", "from": "global:BT12", "rel": "derived_from", "to": "icarus:D33", "basis": "OVERLAY", "note": ""}
+{"id": "E0124", "from": "global:BT12", "rel": "derived_from", "to": "icarus:B31", "basis": "OVERLAY", "note": ""}
+{"id": "E0125", "from": "global:BT12", "rel": "derived_from", "to": "icarus:F23", "basis": "OVERLAY", "note": ""}
+{"id": "E0126", "from": "global:BT13", "rel": "derived_from", "to": "icarus:D21", "basis": "OVERLAY", "note": ""}
+{"id": "E0127", "from": "global:BT13", "rel": "derived_from", "to": "icarus:D24", "basis": "OVERLAY", "note": ""}
+{"id": "E0128", "from": "global:BT13", "rel": "derived_from", "to": "icarus:O9", "basis": "OVERLAY", "note": ""}
+{"id": "E0129", "from": "global:BT13", "rel": "derived_from", "to": "icarus:O10", "basis": "OVERLAY", "note": ""}
+{"id": "E0130", "from": "global:BT14", "rel": "derived_from", "to": "icarus:C1", "basis": "OVERLAY", "note": ""}
+{"id": "E0131", "from": "global:BT14", "rel": "derived_from", "to": "icarus:O20", "basis": "OVERLAY", "note": ""}
+{"id": "E0132", "from": "global:BT15", "rel": "derived_from", "to": "icarus:FACT01L32", "basis": "OVERLAY", "note": ""}
+{"id": "E0133", "from": "global:BT15", "rel": "derived_from", "to": "icarus:O27", "basis": "OVERLAY", "note": ""}
+{"id": "E0134", "from": "global:BT15", "rel": "derived_from", "to": "icarus:C9", "basis": "OVERLAY", "note": ""}
+{"id": "E0135", "from": "global:BT16", "rel": "derived_from", "to": "icarus:D23", "basis": "OVERLAY", "note": ""}
+{"id": "E0136", "from": "global:BT16", "rel": "derived_from", "to": "icarus:F32", "basis": "OVERLAY", "note": ""}
+{"id": "E0137", "from": "global:BT16", "rel": "derived_from", "to": "icarus:C6", "basis": "OVERLAY", "note": ""}
+{"id": "E0138", "from": "global:BT17", "rel": "derived_from", "to": "icarus:C20", "basis": "OVERLAY", "note": ""}
+{"id": "E0139", "from": "global:BT17", "rel": "derived_from", "to": "icarus:F33", "basis": "OVERLAY", "note": ""}
+{"id": "E0140", "from": "global:BT17", "rel": "derived_from", "to": "icarus:O29", "basis": "OVERLAY", "note": ""}
+{"id": "E0141", "from": "global:GB01", "rel": "derived_from", "to": "icarus:D04", "basis": "OVERLAY", "note": ""}
+{"id": "E0142", "from": "global:GB01", "rel": "derived_from", "to": "icarus:D09", "basis": "OVERLAY", "note": ""}
+{"id": "E0143", "from": "global:GB01", "rel": "derived_from", "to": "icarus:D11", "basis": "OVERLAY", "note": ""}
+{"id": "E0144", "from": "global:GB02", "rel": "derived_from", "to": "icarus:D11", "basis": "OVERLAY", "note": ""}
+{"id": "E0145", "from": "global:GB02", "rel": "derived_from", "to": "icarus:C12", "basis": "OVERLAY", "note": ""}
+{"id": "E0146", "from": "global:GB03", "rel": "derived_from", "to": "icarus:F31", "basis": "OVERLAY", "note": ""}
+{"id": "E0147", "from": "global:GB03", "rel": "derived_from", "to": "icarus:D31", "basis": "OVERLAY", "note": ""}
+{"id": "E0148", "from": "global:GB03", "rel": "derived_from", "to": "icarus:O23", "basis": "OVERLAY", "note": ""}
+{"id": "E0149", "from": "global:GB04", "rel": "derived_from", "to": "icarus:F33", "basis": "OVERLAY", "note": ""}
+{"id": "E0150", "from": "global:GB04", "rel": "derived_from", "to": "icarus:F34", "basis": "OVERLAY", "note": ""}
+{"id": "E0151", "from": "global:GB04", "rel": "derived_from", "to": "icarus:D31", "basis": "OVERLAY", "note": ""}
+{"id": "E0152", "from": "global:GB05", "rel": "derived_from", "to": "icarus:D19", "basis": "OVERLAY", "note": ""}
+{"id": "E0153", "from": "global:GB05", "rel": "derived_from", "to": "icarus:D26", "basis": "OVERLAY", "note": ""}
+{"id": "E0154", "from": "global:GB05", "rel": "derived_from", "to": "icarus:F25", "basis": "OVERLAY", "note": ""}
+{"id": "E0155", "from": "global:GB06", "rel": "derived_from", "to": "icarus:F04", "basis": "OVERLAY", "note": ""}
+{"id": "E0156", "from": "global:GB07", "rel": "derived_from", "to": "icarus:F38", "basis": "OVERLAY", "note": ""}
+{"id": "E0157", "from": "global:GB07", "rel": "derived_from", "to": "icarus:D23", "basis": "OVERLAY", "note": ""}
+{"id": "E0158", "from": "global:GB08", "rel": "derived_from", "to": "icarus:C1", "basis": "OVERLAY", "note": ""}
+{"id": "E0159", "from": "global:GB09", "rel": "derived_from", "to": "icarus:D18", "basis": "OVERLAY", "note": ""}
+{"id": "E0160", "from": "global:GB09", "rel": "derived_from", "to": "icarus:C13", "basis": "OVERLAY", "note": ""}
+{"id": "E0161", "from": "global:GB10", "rel": "derived_from", "to": "icarus:D21", "basis": "OVERLAY", "note": ""}
+{"id": "E0162", "from": "global:GB10", "rel": "derived_from", "to": "icarus:C14", "basis": "OVERLAY", "note": ""}
+{"id": "E0163", "from": "global:GB11", "rel": "derived_from", "to": "icarus:D29", "basis": "OVERLAY", "note": ""}
+{"id": "E0164", "from": "global:GB11", "rel": "derived_from", "to": "icarus:C10", "basis": "OVERLAY", "note": ""}
+{"id": "E0165", "from": "global:GB11", "rel": "derived_from", "to": "icarus:C11", "basis": "OVERLAY", "note": ""}
+{"id": "E0166", "from": "global:GB12", "rel": "derived_from", "to": "icarus:D25", "basis": "OVERLAY", "note": ""}
+{"id": "E0167", "from": "global:GB12", "rel": "derived_from", "to": "icarus:D31", "basis": "OVERLAY", "note": ""}
+{"id": "E0168", "from": "global:GB12", "rel": "derived_from", "to": "icarus:C5", "basis": "OVERLAY", "note": ""}
+{"id": "E0169", "from": "global:GB13", "rel": "derived_from", "to": "icarus:D11", "basis": "OVERLAY", "note": ""}
+{"id": "E0170", "from": "global:GB13", "rel": "derived_from", "to": "icarus:C2", "basis": "OVERLAY", "note": ""}
+{"id": "E0171", "from": "global:GB14", "rel": "derived_from", "to": "icarus:F09", "basis": "OVERLAY", "note": ""}
+{"id": "E0172", "from": "global:GB15", "rel": "derived_from", "to": "icarus:D30", "basis": "OVERLAY", "note": ""}
+{"id": "E0173", "from": "global:GB15", "rel": "derived_from", "to": "icarus:B13", "basis": "OVERLAY", "note": ""}
+{"id": "E0174", "from": "icarus:D04", "rel": "supported", "to": "global:DP01", "basis": "OVERLAY", "note": ""}
+{"id": "E0175", "from": "icarus:D11", "rel": "supported", "to": "global:DP01", "basis": "OVERLAY", "note": ""}
+{"id": "E0176", "from": "icarus:D25", "rel": "supported", "to": "global:DP01", "basis": "OVERLAY", "note": ""}
+{"id": "E0177", "from": "icarus:D29", "rel": "supported", "to": "global:DP01", "basis": "OVERLAY", "note": ""}
+{"id": "E0178", "from": "icarus:C11", "rel": "supported", "to": "global:DP01", "basis": "OVERLAY", "note": ""}
+{"id": "E0179", "from": "icarus:C14", "rel": "supported", "to": "global:DP01", "basis": "OVERLAY", "note": ""}
+{"id": "E0180", "from": "icarus:R5", "rel": "supported", "to": "global:DP01", "basis": "OVERLAY", "note": ""}
+{"id": "E0181", "from": "icarus:D07", "rel": "supported", "to": "global:DP02", "basis": "OVERLAY", "note": ""}
+{"id": "E0182", "from": "icarus:D13", "rel": "supported", "to": "global:DP02", "basis": "OVERLAY", "note": ""}
+{"id": "E0183", "from": "icarus:D15", "rel": "supported", "to": "global:DP02", "basis": "OVERLAY", "note": ""}
+{"id": "E0184", "from": "icarus:D16", "rel": "supported", "to": "global:DP02", "basis": "OVERLAY", "note": ""}
+{"id": "E0185", "from": "icarus:D17", "rel": "supported", "to": "global:DP02", "basis": "OVERLAY", "note": ""}
+{"id": "E0186", "from": "icarus:D21", "rel": "supported", "to": "global:DP02", "basis": "OVERLAY", "note": ""}
+{"id": "E0187", "from": "icarus:D27", "rel": "supported", "to": "global:DP02", "basis": "OVERLAY", "note": ""}
+{"id": "E0188", "from": "icarus:R9", "rel": "supported", "to": "global:DP02", "basis": "OVERLAY", "note": ""}
+{"id": "E0189", "from": "icarus:D08", "rel": "supported", "to": "global:DP03", "basis": "OVERLAY", "note": ""}
+{"id": "E0190", "from": "icarus:D12", "rel": "supported", "to": "global:DP03", "basis": "OVERLAY", "note": ""}
+{"id": "E0191", "from": "icarus:D14", "rel": "supported", "to": "global:DP03", "basis": "OVERLAY", "note": ""}
+{"id": "E0192", "from": "icarus:D26", "rel": "supported", "to": "global:DP03", "basis": "OVERLAY", "note": ""}
+{"id": "E0193", "from": "icarus:R15", "rel": "supported", "to": "global:DP03", "basis": "OVERLAY", "note": ""}
+{"id": "E0194", "from": "icarus:D02", "rel": "supported", "to": "global:DP04", "basis": "OVERLAY", "note": ""}
+{"id": "E0195", "from": "icarus:D03", "rel": "supported", "to": "global:DP04", "basis": "OVERLAY", "note": ""}
+{"id": "E0196", "from": "icarus:D09", "rel": "supported", "to": "global:DP04", "basis": "OVERLAY", "note": ""}
+{"id": "E0197", "from": "icarus:D20", "rel": "supported", "to": "global:DP04", "basis": "OVERLAY", "note": ""}
+{"id": "E0198", "from": "icarus:R1", "rel": "supported", "to": "global:DP04", "basis": "OVERLAY", "note": ""}
+{"id": "E0199", "from": "icarus:D23", "rel": "supported", "to": "global:DP05", "basis": "OVERLAY", "note": ""}
+{"id": "E0200", "from": "icarus:D25", "rel": "supported", "to": "global:DP05", "basis": "OVERLAY", "note": ""}
+{"id": "E0201", "from": "icarus:D31", "rel": "supported", "to": "global:DP05", "basis": "OVERLAY", "note": ""}
+{"id": "E0202", "from": "icarus:R12", "rel": "supported", "to": "global:DP05", "basis": "OVERLAY", "note": ""}
+{"id": "E0203", "from": "icarus:D22", "rel": "supported", "to": "global:DP06", "basis": "OVERLAY", "note": ""}
+{"id": "E0204", "from": "icarus:D18", "rel": "supported", "to": "global:DP06", "basis": "OVERLAY", "note": ""}
+{"id": "E0205", "from": "icarus:R11", "rel": "supported", "to": "global:DP06", "basis": "OVERLAY", "note": ""}
+{"id": "E0206", "from": "icarus:D28", "rel": "supported", "to": "global:DP07", "basis": "OVERLAY", "note": ""}
+{"id": "E0207", "from": "icarus:D33", "rel": "supported", "to": "global:DP07", "basis": "OVERLAY", "note": ""}
+{"id": "E0208", "from": "icarus:R14", "rel": "supported", "to": "global:DP07", "basis": "OVERLAY", "note": ""}
+{"id": "E0209", "from": "icarus:D04", "rel": "supported", "to": "global:DP08", "basis": "OVERLAY", "note": ""}
+{"id": "E0210", "from": "icarus:D08", "rel": "supported", "to": "global:DP08", "basis": "OVERLAY", "note": ""}
+{"id": "E0211", "from": "icarus:D10", "rel": "supported", "to": "global:DP08", "basis": "OVERLAY", "note": ""}
+{"id": "E0212", "from": "icarus:D33", "rel": "supported", "to": "global:DP08", "basis": "OVERLAY", "note": ""}
+{"id": "E0213", "from": "icarus:D17", "rel": "supported", "to": "global:DP09", "basis": "OVERLAY", "note": ""}
+{"id": "E0214", "from": "icarus:D30", "rel": "supported", "to": "global:DP09", "basis": "OVERLAY", "note": ""}
+{"id": "E0215", "from": "icarus:D32", "rel": "supported", "to": "global:DP09", "basis": "OVERLAY", "note": ""}
+{"id": "E0216", "from": "icarus:D34", "rel": "supported", "to": "global:DP09", "basis": "OVERLAY", "note": ""}
+{"id": "E0217", "from": "icarus:F01", "rel": "led_to", "to": "global:RL01", "basis": "OVERLAY", "note": ""}
+{"id": "E0218", "from": "icarus:F02", "rel": "led_to", "to": "global:RL01", "basis": "OVERLAY", "note": ""}
+{"id": "E0219", "from": "icarus:F03", "rel": "led_to", "to": "global:RL01", "basis": "OVERLAY", "note": ""}
+{"id": "E0220", "from": "icarus:F13", "rel": "led_to", "to": "global:RL01", "basis": "OVERLAY", "note": ""}
+{"id": "E0221", "from": "icarus:F05", "rel": "led_to", "to": "global:RL02", "basis": "OVERLAY", "note": ""}
+{"id": "E0222", "from": "icarus:F14", "rel": "led_to", "to": "global:RL02", "basis": "OVERLAY", "note": ""}
+{"id": "E0223", "from": "icarus:F15", "rel": "led_to", "to": "global:RL02", "basis": "OVERLAY", "note": ""}
+{"id": "E0224", "from": "icarus:F18", "rel": "led_to", "to": "global:RL02", "basis": "OVERLAY", "note": ""}
+{"id": "E0225", "from": "icarus:F19", "rel": "led_to", "to": "global:RL02", "basis": "OVERLAY", "note": ""}
+{"id": "E0226", "from": "icarus:F20", "rel": "led_to", "to": "global:RL02", "basis": "OVERLAY", "note": ""}
+{"id": "E0227", "from": "icarus:F21", "rel": "led_to", "to": "global:RL02", "basis": "OVERLAY", "note": ""}
+{"id": "E0228", "from": "icarus:F22", "rel": "led_to", "to": "global:RL02", "basis": "OVERLAY", "note": ""}
+{"id": "E0229", "from": "icarus:F06", "rel": "led_to", "to": "global:RL02", "basis": "OVERLAY", "note": ""}
+{"id": "E0230", "from": "icarus:F10", "rel": "led_to", "to": "global:RL02", "basis": "OVERLAY", "note": ""}
+{"id": "E0231", "from": "icarus:F04", "rel": "led_to", "to": "global:RL03", "basis": "OVERLAY", "note": ""}
+{"id": "E0232", "from": "icarus:F07", "rel": "led_to", "to": "global:RL03", "basis": "OVERLAY", "note": ""}
+{"id": "E0233", "from": "icarus:F25", "rel": "led_to", "to": "global:RL03", "basis": "OVERLAY", "note": ""}
+{"id": "E0234", "from": "icarus:F26", "rel": "led_to", "to": "global:RL03", "basis": "OVERLAY", "note": ""}
+{"id": "E0235", "from": "icarus:F27", "rel": "led_to", "to": "global:RL03", "basis": "OVERLAY", "note": ""}
+{"id": "E0236", "from": "icarus:F28", "rel": "led_to", "to": "global:RL03", "basis": "OVERLAY", "note": ""}
+{"id": "E0237", "from": "icarus:F29", "rel": "led_to", "to": "global:RL03", "basis": "OVERLAY", "note": ""}
+{"id": "E0238", "from": "icarus:F16", "rel": "led_to", "to": "global:RL03", "basis": "OVERLAY", "note": ""}
+{"id": "E0239", "from": "icarus:F31", "rel": "led_to", "to": "global:RL04", "basis": "OVERLAY", "note": ""}
+{"id": "E0240", "from": "icarus:F36", "rel": "led_to", "to": "global:RL04", "basis": "OVERLAY", "note": ""}
+{"id": "E0241", "from": "icarus:F11", "rel": "led_to", "to": "global:RL04", "basis": "OVERLAY", "note": ""}
+{"id": "E0242", "from": "icarus:F31", "rel": "led_to", "to": "global:RL05", "basis": "OVERLAY", "note": ""}
+{"id": "E0243", "from": "icarus:F38", "rel": "led_to", "to": "global:RL05", "basis": "OVERLAY", "note": ""}
+{"id": "E0244", "from": "icarus:F35", "rel": "led_to", "to": "global:RL05", "basis": "OVERLAY", "note": ""}
+{"id": "E0245", "from": "icarus:F33", "rel": "led_to", "to": "global:RL06", "basis": "OVERLAY", "note": ""}
+{"id": "E0246", "from": "icarus:F34", "rel": "led_to", "to": "global:RL06", "basis": "OVERLAY", "note": ""}
+{"id": "E0247", "from": "icarus:F35", "rel": "led_to", "to": "global:RL06", "basis": "OVERLAY", "note": ""}
+{"id": "E0248", "from": "icarus:F24", "rel": "led_to", "to": "global:RL07", "basis": "OVERLAY", "note": ""}
+{"id": "E0249", "from": "icarus:F23", "rel": "led_to", "to": "global:RL08", "basis": "OVERLAY", "note": ""}
+{"id": "E0250", "from": "icarus:F29", "rel": "led_to", "to": "global:RL09", "basis": "OVERLAY", "note": ""}
+{"id": "E0251", "from": "global:GC01", "rel": "contradicted", "to": "icarus:B03", "basis": "OVERLAY", "note": ""}
+{"id": "E0252", "from": "global:GC01", "rel": "contradicted", "to": "icarus:L7", "basis": "OVERLAY", "note": ""}
+{"id": "E0253", "from": "global:GC02", "rel": "contradicted", "to": "icarus:B27", "basis": "OVERLAY", "note": ""}
+{"id": "E0254", "from": "global:GC02", "rel": "contradicted", "to": "icarus:B07", "basis": "OVERLAY", "note": ""}
+{"id": "E0255", "from": "global:GC02", "rel": "contradicted", "to": "icarus:C9", "basis": "OVERLAY", "note": ""}
+{"id": "E0256", "from": "global:GC03", "rel": "contradicted", "to": "icarus:C16", "basis": "OVERLAY", "note": ""}
+{"id": "E0257", "from": "global:GC03", "rel": "contradicted", "to": "icarus:O1", "basis": "OVERLAY", "note": ""}
+{"id": "E0258", "from": "global:GC03", "rel": "contradicted", "to": "icarus:O2", "basis": "OVERLAY", "note": ""}
+{"id": "E0259", "from": "global:GC03", "rel": "contradicted", "to": "icarus:B21", "basis": "OVERLAY", "note": ""}
+{"id": "E0260", "from": "global:GC04", "rel": "contradicted", "to": "icarus:R12", "basis": "OVERLAY", "note": ""}
+{"id": "E0261", "from": "global:GC04", "rel": "contradicted", "to": "icarus:R18", "basis": "OVERLAY", "note": ""}
+{"id": "E0262", "from": "global:GC04", "rel": "contradicted", "to": "icarus:D25", "basis": "OVERLAY", "note": ""}
+{"id": "E0263", "from": "global:GC04", "rel": "contradicted", "to": "icarus:D24", "basis": "OVERLAY", "note": ""}
+{"id": "E0264", "from": "global:GC05", "rel": "contradicted", "to": "icarus:B28", "basis": "OVERLAY", "note": ""}
+{"id": "E0265", "from": "global:GC05", "rel": "contradicted", "to": "icarus:B30", "basis": "OVERLAY", "note": ""}
+{"id": "E0266", "from": "global:GC05", "rel": "contradicted", "to": "icarus:D31", "basis": "OVERLAY", "note": ""}
+{"id": "E0267", "from": "global:GC06", "rel": "contradicted", "to": "icarus:O27", "basis": "OVERLAY", "note": ""}
+{"id": "E0268", "from": "global:GC06", "rel": "contradicted", "to": "icarus:FACT01L32", "basis": "OVERLAY", "note": ""}
+{"id": "E0269", "from": "global:GC07", "rel": "contradicted", "to": "icarus:B20", "basis": "OVERLAY", "note": ""}
+{"id": "E0270", "from": "global:GC07", "rel": "contradicted", "to": "icarus:C1", "basis": "OVERLAY", "note": ""}
+{"id": "E0271", "from": "global:GC07", "rel": "contradicted", "to": "icarus:C3", "basis": "OVERLAY", "note": ""}
+{"id": "E0272", "from": "global:GC07", "rel": "contradicted", "to": "icarus:C4", "basis": "OVERLAY", "note": ""}
+{"id": "E0273", "from": "global:GC07", "rel": "contradicted", "to": "icarus:C8", "basis": "OVERLAY", "note": ""}
+{"id": "E0274", "from": "global:GC08", "rel": "contradicted", "to": "icarus:F30", "basis": "OVERLAY", "note": ""}
+{"id": "E0275", "from": "global:GC08", "rel": "contradicted", "to": "icarus:B01", "basis": "OVERLAY", "note": ""}
+{"id": "E0276", "from": "global:GC09", "rel": "contradicted", "to": "icarus:MANIFEST", "basis": "OVERLAY", "note": ""}
+{"id": "E0277", "from": "global:GO01", "rel": "related_to", "to": "icarus:O27", "basis": "OVERLAY", "note": ""}
+{"id": "E0278", "from": "global:GO01", "rel": "related_to", "to": "global:GC06", "basis": "OVERLAY", "note": ""}
+{"id": "E0279", "from": "global:GO02", "rel": "related_to", "to": "icarus:O8", "basis": "OVERLAY", "note": ""}
+{"id": "E0280", "from": "global:GO02", "rel": "related_to", "to": "icarus:B21", "basis": "OVERLAY", "note": ""}
+{"id": "E0281", "from": "global:GO02", "rel": "related_to", "to": "global:BT06", "basis": "OVERLAY", "note": ""}
+{"id": "E0282", "from": "global:GO03", "rel": "related_to", "to": "icarus:T46", "basis": "OVERLAY", "note": ""}
+{"id": "E0283", "from": "global:GO04", "rel": "related_to", "to": "icarus:D01", "basis": "OVERLAY", "note": ""}
+{"id": "E0284", "from": "global:GO05", "rel": "related_to", "to": "icarus:T02", "basis": "OVERLAY", "note": ""}
+{"id": "E0285", "from": "global:GO05", "rel": "related_to", "to": "icarus:C9", "basis": "OVERLAY", "note": ""}
+{"id": "E0286", "from": "global:GO06", "rel": "related_to", "to": "icarus:MANIFEST", "basis": "OVERLAY", "note": ""}
+{"id": "E0287", "from": "global:GO07", "rel": "related_to", "to": "icarus:T19", "basis": "OVERLAY", "note": ""}
+{"id": "E0288", "from": "global:GO08", "rel": "related_to", "to": "icarus:O1", "basis": "OVERLAY", "note": ""}
+{"id": "E0289", "from": "global:GO08", "rel": "related_to", "to": "icarus:O2", "basis": "OVERLAY", "note": ""}
+{"id": "E0290", "from": "global:GO08", "rel": "related_to", "to": "icarus:O24", "basis": "OVERLAY", "note": ""}
+{"id": "E0291", "from": "global:GO08", "rel": "related_to", "to": "global:GC03", "basis": "OVERLAY", "note": ""}
+{"id": "E0292", "from": "project:jarvis-v0", "rel": "influenced", "to": "project:icarus", "basis": "EXPLICIT", "note": "Icarus was reset from v0 and kept its 'cannot bluff' thesis and JARVIS scene."}
+{"id": "E0293", "from": "project:icarus", "rel": "derived_from", "to": "project:jarvis-v0", "basis": "EXPLICIT", "note": "Archive tag jarvis-v0; 'evolved from his earlier local CLI'."}
+{"id": "E0294", "from": "project:icarus", "rel": "related_to", "to": "project:job-search-2026-09", "basis": "INFERRED", "note": "Concurrent from 2026-09-07; no causal statement in the record. Cash pressure (Azure unaffordable) is co-located in time."}
+{"id": "E0295", "from": "project:icarus", "rel": "related_to", "to": "project:harshitha-barter", "basis": "EXPLICIT", "note": "Barter: build her product in exchange for Icarus marketing."}
+{"id": "E0296", "from": "global:IN01", "rel": "related_to", "to": "global:IN04", "basis": "OVERLAY", "note": "co-occurring interest"}
+{"id": "E0297", "from": "global:IN01", "rel": "related_to", "to": "global:IN05", "basis": "OVERLAY", "note": "co-occurring interest"}
+{"id": "E0298", "from": "global:IN01", "rel": "related_to", "to": "global:IN06", "basis": "OVERLAY", "note": "co-occurring interest"}
+{"id": "E0299", "from": "global:IN02", "rel": "related_to", "to": "global:IN01", "basis": "OVERLAY", "note": "co-occurring interest"}
+{"id": "E0300", "from": "global:IN03", "rel": "related_to", "to": "global:IN04", "basis": "OVERLAY", "note": "co-occurring interest"}
+{"id": "E0301", "from": "global:IN03", "rel": "related_to", "to": "global:IN01", "basis": "OVERLAY", "note": "co-occurring interest"}
+{"id": "E0302", "from": "global:IN07", "rel": "related_to", "to": "global:IN08", "basis": "OVERLAY", "note": "co-occurring interest"}
+{"id": "E0303", "from": "global:IN07", "rel": "related_to", "to": "global:IN11", "basis": "OVERLAY", "note": "co-occurring interest"}
+{"id": "E0304", "from": "global:IN12", "rel": "related_to", "to": "global:IN13", "basis": "OVERLAY", "note": "co-occurring interest"}
+{"id": "E0305", "from": "global:IN14", "rel": "related_to", "to": "global:IN10", "basis": "OVERLAY", "note": "co-occurring interest"}
+{"id": "E0306", "from": "global:IN09", "rel": "related_to", "to": "global:IN10", "basis": "OVERLAY", "note": "co-occurring interest"}
+{"id": "E0307", "from": "global:IN05", "rel": "related_to", "to": "global:IN07", "basis": "OVERLAY", "note": "co-occurring interest"}
+{"id": "E0308", "from": "global:IN11", "rel": "related_to", "to": "global:IN07", "basis": "OVERLAY", "note": "co-occurring interest"}
+{"id": "E0309", "from": "global:IN15", "rel": "related_to", "to": "global:IN03", "basis": "OVERLAY", "note": "co-occurring interest"}
+{"id": "E0310", "from": "person:Alankrit Ghosh", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": "solo founder; subject of this context"}
+{"id": "E0311", "from": "person:Alankrit Ghosh", "rel": "related_to", "to": "project:jarvis-v0", "basis": "EXPLICIT", "note": "solo founder; subject of this context"}
+{"id": "E0312", "from": "person:Claude Code (AI agent)", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": "primary builder and auditor"}
+{"id": "E0313", "from": "person:Codex (AI agent)", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": "independent reviewer and parallel builder"}
+{"id": "E0314", "from": "person:Harshitha", "rel": "related_to", "to": "project:harshitha-barter", "basis": "EXPLICIT", "note": "barter marketer (D28)"}
+{"id": "E0315", "from": "person:Artem (@sl1ma4)", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": "uptimepage run, results page 2026-09-10"}
+{"id": "E0316", "from": "tech:Python stdlib", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0317", "from": "tech:fastembed", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0318", "from": "tech:BM25", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0319", "from": "tech:tree-sitter", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0320", "from": "tech:Gemini", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0321", "from": "tech:Groq", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0322", "from": "tech:SwiftUI/AppKit", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0323", "from": "tech:Sparkle", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0324", "from": "tech:Chrome MV3", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0325", "from": "tech:Next.js", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0326", "from": "tech:three.js", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0327", "from": "tech:MCP", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0328", "from": "tech:Azure Container Apps", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0329", "from": "tech:Render", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0330", "from": "tech:Oracle Cloud", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0331", "from": "tech:GitLab CI", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0332", "from": "tech:Vercel", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0333", "from": "tech:PostHog", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0334", "from": "tech:GitHub OAuth", "rel": "related_to", "to": "project:icarus", "basis": "EXPLICIT", "note": ""}
+{"id": "E0335", "from": "icarus:D01", "rel": "related_to", "to": "period:phase0", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0336", "from": "icarus:D02", "rel": "related_to", "to": "period:phase1", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0337", "from": "icarus:D03", "rel": "related_to", "to": "period:phase1", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0338", "from": "icarus:D04", "rel": "related_to", "to": "period:phase1", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0339", "from": "icarus:D05", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0340", "from": "icarus:D06", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0341", "from": "icarus:D07", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0342", "from": "icarus:D08", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0343", "from": "icarus:D09", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0344", "from": "icarus:D10", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0345", "from": "icarus:D11", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0346", "from": "icarus:D12", "rel": "related_to", "to": "period:phase3", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0347", "from": "icarus:D13", "rel": "related_to", "to": "period:phase3", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0348", "from": "icarus:D14", "rel": "related_to", "to": "period:phase3", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0349", "from": "icarus:D15", "rel": "related_to", "to": "period:phase3", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0350", "from": "icarus:D16", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0351", "from": "icarus:D17", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0352", "from": "icarus:D18", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0353", "from": "icarus:D19", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0354", "from": "icarus:D20", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0355", "from": "icarus:D21", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0356", "from": "icarus:D22", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0357", "from": "icarus:D23", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0358", "from": "icarus:D24", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0359", "from": "icarus:D25", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0360", "from": "icarus:D26", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0361", "from": "icarus:D27", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0362", "from": "icarus:D28", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0363", "from": "icarus:D29", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0364", "from": "icarus:D30", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0365", "from": "icarus:D31", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0366", "from": "icarus:D32", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0367", "from": "icarus:D33", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0368", "from": "icarus:D34", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0369", "from": "icarus:D35", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0370", "from": "icarus:T01", "rel": "related_to", "to": "period:phase0", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0371", "from": "icarus:T03", "rel": "related_to", "to": "period:phase0", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0372", "from": "icarus:T04", "rel": "related_to", "to": "period:phase1", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0373", "from": "icarus:T05", "rel": "related_to", "to": "period:phase1", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0374", "from": "icarus:T06", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0375", "from": "icarus:T07", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0376", "from": "icarus:T08", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0377", "from": "icarus:T09", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0378", "from": "icarus:T10", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0379", "from": "icarus:T11", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0380", "from": "icarus:T12", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0381", "from": "icarus:T13", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0382", "from": "icarus:T14", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0383", "from": "icarus:T15", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0384", "from": "icarus:T16", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0385", "from": "icarus:T17", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0386", "from": "icarus:T18", "rel": "related_to", "to": "period:phase3", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0387", "from": "icarus:T19", "rel": "related_to", "to": "period:phase3", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0388", "from": "icarus:T20", "rel": "related_to", "to": "period:phase3", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0389", "from": "icarus:T21", "rel": "related_to", "to": "period:phase3", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0390", "from": "icarus:T22", "rel": "related_to", "to": "period:phase3", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0391", "from": "icarus:T23", "rel": "related_to", "to": "period:phase3", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0392", "from": "icarus:T24", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0393", "from": "icarus:T25", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0394", "from": "icarus:T26", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0395", "from": "icarus:T27", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0396", "from": "icarus:T28", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0397", "from": "icarus:T29", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0398", "from": "icarus:T30", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0399", "from": "icarus:T31", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0400", "from": "icarus:T32", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0401", "from": "icarus:T33", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0402", "from": "icarus:T34", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0403", "from": "icarus:T35", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0404", "from": "icarus:T36", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0405", "from": "icarus:T37", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0406", "from": "icarus:T38", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0407", "from": "icarus:T39", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0408", "from": "icarus:T40", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0409", "from": "icarus:T41", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0410", "from": "icarus:T42", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0411", "from": "icarus:T43", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0412", "from": "icarus:T44", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0413", "from": "icarus:T45", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0414", "from": "icarus:T46", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0415", "from": "icarus:F01", "rel": "related_to", "to": "period:phase3", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0416", "from": "icarus:F02", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0417", "from": "icarus:F03", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0418", "from": "icarus:F05", "rel": "related_to", "to": "period:phase2", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0419", "from": "icarus:F15", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0420", "from": "icarus:F29", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0421", "from": "icarus:F33", "rel": "related_to", "to": "period:phase4", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0422", "from": "icarus:F34", "rel": "related_to", "to": "period:current", "basis": "COMPUTED", "note": "dated within period"}
+{"id": "E0423", "from": "icarus:D01", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0424", "from": "icarus:D02", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0425", "from": "icarus:D03", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0426", "from": "icarus:D04", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0427", "from": "icarus:D05", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0428", "from": "icarus:D06", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0429", "from": "icarus:D07", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0430", "from": "icarus:D08", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0431", "from": "icarus:D09", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0432", "from": "icarus:D10", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0433", "from": "icarus:D11", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0434", "from": "icarus:D12", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0435", "from": "icarus:D13", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0436", "from": "icarus:D14", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0437", "from": "icarus:D15", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0438", "from": "icarus:D16", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0439", "from": "icarus:D17", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0440", "from": "icarus:D18", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0441", "from": "icarus:D19", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0442", "from": "icarus:D20", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0443", "from": "icarus:D21", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0444", "from": "icarus:D22", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0445", "from": "icarus:D23", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0446", "from": "icarus:D24", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0447", "from": "icarus:D25", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0448", "from": "icarus:D26", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0449", "from": "icarus:D27", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0450", "from": "icarus:D28", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0451", "from": "icarus:D29", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0452", "from": "icarus:D30", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0453", "from": "icarus:D31", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0454", "from": "icarus:D32", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0455", "from": "icarus:D33", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0456", "from": "icarus:D34", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0457", "from": "icarus:D35", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0458", "from": "icarus:B01", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0459", "from": "icarus:B02", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0460", "from": "icarus:B03", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0461", "from": "icarus:B04", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0462", "from": "icarus:B05", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0463", "from": "icarus:B06", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0464", "from": "icarus:B07", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0465", "from": "icarus:B08", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0466", "from": "icarus:B09", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0467", "from": "icarus:B10", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0468", "from": "icarus:B11", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0469", "from": "icarus:B12", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0470", "from": "icarus:B13", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0471", "from": "icarus:B14", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0472", "from": "icarus:B15", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0473", "from": "icarus:B16", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0474", "from": "icarus:B17", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0475", "from": "icarus:B18", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0476", "from": "icarus:B19", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0477", "from": "icarus:B20", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0478", "from": "icarus:B21", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0479", "from": "icarus:B22", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0480", "from": "icarus:B23", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0481", "from": "icarus:B24", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0482", "from": "icarus:B25", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0483", "from": "icarus:B26", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0484", "from": "icarus:B27", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0485", "from": "icarus:B28", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0486", "from": "icarus:B29", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0487", "from": "icarus:B30", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0488", "from": "icarus:B31", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0489", "from": "icarus:B32", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0490", "from": "icarus:B33", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0491", "from": "icarus:B34", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0492", "from": "icarus:B35", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0493", "from": "icarus:O1", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0494", "from": "icarus:O2", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0495", "from": "icarus:O3", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0496", "from": "icarus:O4", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0497", "from": "icarus:O5", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0498", "from": "icarus:O6", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0499", "from": "icarus:O7", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0500", "from": "icarus:O8", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0501", "from": "icarus:O9", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0502", "from": "icarus:O10", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0503", "from": "icarus:O11", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0504", "from": "icarus:O12", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0505", "from": "icarus:O13", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0506", "from": "icarus:O14", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0507", "from": "icarus:O15", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0508", "from": "icarus:O16", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0509", "from": "icarus:O17", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0510", "from": "icarus:O18", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0511", "from": "icarus:O19", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0512", "from": "icarus:O20", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0513", "from": "icarus:O21", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0514", "from": "icarus:O22", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0515", "from": "icarus:O23", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0516", "from": "icarus:O24", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0517", "from": "icarus:O25", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0518", "from": "icarus:O26", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0519", "from": "icarus:O27", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0520", "from": "icarus:O28", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0521", "from": "icarus:O29", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0522", "from": "icarus:O30", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0523", "from": "icarus:F01", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0524", "from": "icarus:F02", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0525", "from": "icarus:F03", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0526", "from": "icarus:F04", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0527", "from": "icarus:F05", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0528", "from": "icarus:F06", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0529", "from": "icarus:F07", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0530", "from": "icarus:F08", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0531", "from": "icarus:F09", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0532", "from": "icarus:F10", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0533", "from": "icarus:F11", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0534", "from": "icarus:F12", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0535", "from": "icarus:F13", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0536", "from": "icarus:F14", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0537", "from": "icarus:F15", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0538", "from": "icarus:F16", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0539", "from": "icarus:F17", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0540", "from": "icarus:F18", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0541", "from": "icarus:F19", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0542", "from": "icarus:F20", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0543", "from": "icarus:F21", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0544", "from": "icarus:F22", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0545", "from": "icarus:F23", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0546", "from": "icarus:F24", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0547", "from": "icarus:F25", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0548", "from": "icarus:F26", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0549", "from": "icarus:F27", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0550", "from": "icarus:F28", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0551", "from": "icarus:F29", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0552", "from": "icarus:F30", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0553", "from": "icarus:F31", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0554", "from": "icarus:F32", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0555", "from": "icarus:F33", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0556", "from": "icarus:F34", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0557", "from": "icarus:F35", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0558", "from": "icarus:F36", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0559", "from": "icarus:F37", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
+{"id": "E0560", "from": "icarus:F38", "rel": "related_to", "to": "project:icarus", "basis": "COMPUTED", "note": "extracted from project"}
