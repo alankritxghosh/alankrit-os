@@ -10,8 +10,9 @@ OUT_KINDS = ["facts", "decisions", "beliefs", "episodes", "lessons", "failures",
 def build(model: dict) -> dict:
     counts = {}
     for k in OUT_KINDS:
+        # rows an extraction marks `confidential` stay in that extraction and never reach global memory
         rows = [{kk: v for kk, v in r.items() if not kk.startswith("_")} | {"extraction": r["_extraction"]}
-                for r in model["merged"].get(k, [])]
+                for r in model["merged"].get(k, []) if not r.get("confidential")]
         write_jsonl(f"memory/{k}.jsonl", rows)
         counts[k] = len(rows)
     projects = []

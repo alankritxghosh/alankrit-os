@@ -46,8 +46,7 @@ Which projects next (O01). Does the brand system exist (O02). Compiler must read
 
 ## Campus Fund: what to remember
 
-Full handoff: `/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction/campus-fund/HANDOFF_TO_ALANKRIT_OS.md`
-
+Confidential. Nothing about it in public drafts without Alankrit's say-so. Details stay local.
 
 ---
 

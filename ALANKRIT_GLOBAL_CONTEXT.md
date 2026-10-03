@@ -76,16 +76,9 @@ Which projects next (O01). Does the brand system exist (O02). Compiler must read
 
 # Project: Campus Fund (`campus-fund`)
 
-## HANDOFF TO ALANKRIT OS — Campus Fund (lean)
+_Confidential extraction: its contents are internal to the organisation and are not reproduced here._
 
-> Very thin evidence: one internal meeting note (2026-09-25) and his 2026-10-04 statement.
-
-- He works in the Founders Office at Campus Fund, a VC focused on student and young founders.
-- The only recorded task: a brief to craft a one-line tagline for the organisation, with Apple and Figma as branding references.
-- The meeting note is internal. Do not quote it, post about it or reuse its details publicly without asking him.
-- Unknown: start date, terms, scope, whether any public statement about the job is allowed, and whether the role connects to the revised Icarus thesis.
-- Context: it follows his September job search and sits beside his personal-brand push; his brand rules say no job framing in content.
-
+Known from Alankrit's own statement (`compiler/current_state.md`): he works in the Founders Office at this VC. Rule: nothing about its work, notes, people or investors goes into any public draft without his say-so for that item. Details are kept only in the local extraction.
 ---
 
 # Project: Icarus (formerly JARVIS Engineering Intelligence) (`icarus`)

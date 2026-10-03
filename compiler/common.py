@@ -44,8 +44,16 @@ EXPECTED_ARTIFACTS_V2 = [
 ]
 
 
+BUNDLED_SOURCE = WORKSPACE / "context-extraction"
+
+
 def source_dir() -> Path:
-    return Path(os.environ.get("ALANKRIT_SOURCE_DIR", DEFAULT_SOURCE)).resolve()
+    """env var > the original corpus if it exists on this machine > the extractions bundled in this repo."""
+    env = os.environ.get("ALANKRIT_SOURCE_DIR")
+    if env:
+        return Path(env).resolve()
+    default = Path(DEFAULT_SOURCE)
+    return default.resolve() if default.is_dir() else BUNDLED_SOURCE.resolve()
 
 
 def out_path(rel: str) -> Path:

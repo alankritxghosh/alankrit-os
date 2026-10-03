@@ -1,0 +1,61 @@
+{
+  "project_name": "Icarus (formerly JARVIS Engineering Intelligence)",
+  "project_slug": "icarus",
+  "project_path": "/Users/alankritghosh/JARVIS /jarvis_engineering",
+  "extraction_date": "2026-10-03",
+  "extraction_protocol": "UNIVERSAL ALANKRIT CONTEXT EXTRACTION PROTOCOL (v2); supersedes v1 extraction archived at ../archive/2026-10-03T2230_icarus-v1-schema/",
+  "latest_evidence_date": "2026-09-13",
+  "latest_automated_evidence_date": "2026-10-03",
+  "source_files_examined": 174,
+  "source_files_examined_note": "106 session transcripts (human turns parsed in full; assistant turns read for 4 sessions: 468c2054, 57c4e98f, c3848080, and all 27 post-09-10 scheduled runs); 36 Claude auto-memory files (descriptions); vault: Decision History (sections 274-453, 693-835), Unknowns (110-226, 400-440), Learning (all headings), vault git log, vault file listing (95 files); repo: git log (all 585 main commits by month, non-main branches), git status, docs/decisions and docs/experiments listings, outputs/resume (11 files grepped, 3 read); v1 extraction (16 files) as prior.",
+  "git_commits_examined": 618,
+  "git_commits_examined_note": "585 on main (dated, counted by month; subject lines read by v1, not re-read in full), plus 33 on non-main branches listed (incl. 7 icarus/decision-* branches).",
+  "session_records_examined": 106,
+  "session_records_note": "1,588 user turns: 1,552 human-typed (1,317 unique after de-duplicating identical parallel-session prompts and removing pasted agent text), 35 scheduled-task prompts, 1 pasted protocol. Sessions span 2026-07-13 to 2026-10-03; none exist for 2026-06-27 to 07-12.",
+  "facts": 14,
+  "decisions": 50,
+  "beliefs": 50,
+  "belief_transitions": 20,
+  "reasoning_patterns": 28,
+  "failures": 50,
+  "lessons": 20,
+  "open_loops": 40,
+  "contradictions": 32,
+  "voice_examples": 27,
+  "relationships": 54,
+  "memory_note": "memory/facts.jsonl holds 14 facts + 28 reasoning-pattern records; memory/beliefs.jsonl holds 50 beliefs + 20 transitions.",
+  "coverage_gaps": [
+    "No session transcripts before 2026-07-13: June 27 to July 12 rests on git, vault and the v1 extraction.",
+    "Assistant turns were read for only a handful of sessions; most agent-side reasoning comes from vault and repo docs.",
+    "docs/experiments/*.md (35) not read individually; vault summaries used.",
+    "Learning.md and Work Queue.md read via headings and targeted sections, not in full.",
+    "Source code not read.",
+    "Vault notes X Content, X Replies, Reddit, Outreach, Product Hunt, Distribution Teardown, audit files read only via v1 or not at all.",
+    "No evidence of what Alankrit did between 2026-09-13 and 2026-10-03 outside this repo (he may have worked in other folders).",
+    "Why the name 'Icarus' and the full reason for the v0 reset remain unrecorded.",
+    "The revised product thesis of 2026-09-13 is not written anywhere found.",
+    "Personal contact data in outputs/resume and PostHog project tokens in transcripts were seen and deliberately excluded."
+  ],
+  "uncertainties": [
+    "Whether short terse commands are his wording or accepted prompt suggestions (some contain em-dashes he never writes).",
+    "Who drafted his message to Manroze and the pasted long specs (e.g., 07-29 master handoff, 08-08 investigation engine spec).",
+    "Outcomes of YC (submitted ~07-25), Antler, Manroze, Harshitha (co-founder and barter), and job applications.",
+    "Channel of the Richie McIlroy reply (he reported it 08-07; no X DM thread found 08-25).",
+    "Why identical prompts were sent to 2-3 parallel sessions on 07-29 and 08-08.",
+    "Whether Alankrit knows the scheduled jobs have failed since 2026-09-11.",
+    "Whether Icarus continues, pivots, or becomes a portfolio piece after the 09-13 thesis revision and the 09-10 job search."
+  ],
+  "corrections_to_v1": [
+    "Resume overclaim was assistant-drafted; he ordered its removal; a residual tagline survived (C09).",
+    "Analytics on-by-default was his demand on 08-13, reversed 08-14 after a Codex P1 (D21).",
+    "The private-repo reversal was triggered by his own message on 07-15 (D11).",
+    "Harshitha was a co-founder candidate before the barter (D40); there was an earlier GTM co-founder search (D39).",
+    "The job-search rationale is explicit: cloud cost and learning sales (D45).",
+    "The Richie reply was reported by him on 08-07 (O11 partly resolved).",
+    "Several posts v1 treated as his voice were agent drafts he selected (07_VOICE_PROFILE.md)."
+  ],
+  "related_extractions": [
+    "../alankrit-os/"
+  ],
+  "scope_statement": "This is project-level context. It must not be treated as a complete global model of Alankrit until reconciled with other project extractions."
+}

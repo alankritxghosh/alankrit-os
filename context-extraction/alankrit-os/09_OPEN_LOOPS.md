@@ -1,0 +1,18 @@
+# 09 — Open Loops: Alankrit OS
+
+| ID | question | why it matters | current understanding | evidence | status | next known step |
+|---|---|---|---|---|---|---|
+| O01 | Which projects get extracted next? | The global layer stays single-project until they do | Candidates named in the corpus: Signal, Tempo, Pantheon.ai, Marketing Intelligence, Solar Forecasting, Job Application Context. Home folders also include e.g. `Pantheon.ai`, `Solar Forecasting`, `Marketing Intelligence Version 1`, `Job Application Context`, `LeadFlow Lab`, `Personal Brand`, `alankrit.dev`, `thought-engine`, `OpenClaw`, `Campus Fund` (names only; not opened) | Icarus manifest; H | OPEN | Run v2 in each chosen folder |
+| O02 | Where is the multi-agent personal-brand system, and does it exist? | It is the stated consumer (D05) | Not evidenced; folders `Personal Brand`, `composio-linkedin-agent`, `thought-engine` exist but were not opened | S-comp; H | OPEN | Ask Alankrit, or extract those folders |
+| O03 | Does the compiler read v2 extractions? | v2 renamed files (e.g. 05_REASONING_PATTERNS was 04; 07_VOICE_PROFILE was 06) and added memory/ | Compiler parsers target v1 names | W `compiler/parse_sources.py` | OPEN (being addressed this session) | Add v2 filename mapping; rerun |
+| O04 | Did Alankrit write the protocols, or draft them with an AI? | Decides whether they count as voice evidence; tests his em-dash rule | v1: first person, 0 em-dashes; S-comp/S-v2: third person, 21–23 em-dashes | C02, C03 | UNKNOWN | Ask him |
+| O05 | Re-extract Icarus under v2? | Icarus lacks author labels, 04_BELIEF_EVOLUTION, 12_ALANKRIT_CONTEXT, memory/; its evidence ends 2026-09-10 | Moved, not re-extracted (D12) | `icarus/` contents | OPEN | Run v2 inside `/Users/alankritghosh/JARVIS /jarvis_engineering` |
+| O06 | Recompile the global layer with two projects, and honor `DERIVED_FROM_ICARUS` | Narrative says "ONE project" (F08); risk of double-counting (F09) | Compiler overlay is Icarus-only | W | OPEN | Per-project overlays; exclude derived records from frequency |
+| O07 | What contract does the brand system need from memory/? | Schema decided bottom-up; consumer unknown | Envelope: id, type, content, status, confidence, date, project, source_ref | W `memory/` | OPEN | Define consumer queries |
+| O08 | How does context stay fresh? | Icarus evidence is 23+ days old; extractions are snapshots | No cadence; scheduled agents exist for other jobs | F10; E02 | OPEN | Scheduled re-extraction (HYPOTHESIS) |
+| O09 | What may the brand system disclose publicly? | It receives full failure registers, while his public rule is no showcasing of his own failures | Unresolved | C07 | OPEN, HIGH importance | Write a disclosure policy |
+| O10 | Should Alankrit OS be a git repo? | No history or diff of compiler/curated judgments | Not a repo | `git status` | OPEN | `git init` (needs his decision) |
+| O11 | Will compiled outputs get human review or confirmation? | Overlay judgments (statuses, transitions) are the assistant's | No review recorded | C10 | OPEN | Review queue; mirrors Icarus "human confirms" (B12) |
+| O12 | Why the name "Alankrit OS"? What else is an "OS" meant to do beyond context? | Scope of the system | Only the context role is evidenced | E01 | UNKNOWN | Ask him |
+| O13 | Glossary dropped in v2: deliberate? | Renames ("old → new") were a v1 requirement | — | BT08 | UNKNOWN | — |
+| O14 | Is the curated overlay sustainable at ~10+ projects? | Hand-written judgments don't scale | One overlay file for one project | D08 | OPEN | Overlay per project, or extractor-provided statuses (v2 already supplies statuses) |

@@ -1,6 +1,6 @@
 {
   "source_path": "/Users/alankritghosh/JARVIS /jarvis_engineering/context-extraction",
-  "scanned_at": "2026-10-03T19:19:33.571993+00:00",
+  "scanned_at": "2026-10-03T20:10:24.436787+00:00",
   "directories": [
     ".",
     "alankrit-os",
@@ -18,7 +18,7 @@
     "thought-engine"
   ],
   "file_count": 123,
-  "total_bytes": 695850,
+  "total_bytes": 696037,
   "projects": [
     {
       "slug": "alankrit-os",
@@ -628,10 +628,10 @@
     {
       "path": "campus-fund/extraction_manifest.json",
       "project": "campus-fund",
-      "bytes": 1062,
-      "lines": 32,
-      "sha256": "6ed3c8bd4511eac0feb7e0c94fd67949b9968d1a42ba28d2381ad1794020d4a6",
-      "modified": "2026-10-03T19:03:39.344493+00:00",
+      "bytes": 1249,
+      "lines": 34,
+      "sha256": "27c43468ecd7420d082a4936194ce0295b20f755cd2daca10ab815e1ca83e483",
+      "modified": "2026-10-03T20:10:24.316597+00:00",
       "expected_artifact": true,
       "issues": []
     },

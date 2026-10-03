@@ -1,0 +1,36 @@
+{
+  "project_name": "Personal Brand",
+  "project_slug": "personal-brand",
+  "project_path": "/Users/alankritghosh/Personal Brand ",
+  "extraction_date": "2026-10-04",
+  "protocol_variant": "v2-lean",
+  "extraction_protocol": "UNIVERSAL ALANKRIT CONTEXT EXTRACTION PROTOCOL (v2), lean scope: only what Icarus does not already capture",
+  "latest_evidence_date": "2026-09-22",
+  "source_files_examined": 20,
+  "git_commits_examined": 0,
+  "session_records_examined": 2,
+  "session_records_note": "2 sessions on 2026-09-16 with identical typed text (7 distinct messages); no transcripts found for the 09-18/20/21/22 conversations the vault records.",
+  "facts": 9,
+  "decisions": 19,
+  "beliefs": 11,
+  "belief_transitions": 5,
+  "reasoning_patterns": 0,
+  "failures": 8,
+  "lessons": 5,
+  "open_loops": 8,
+  "contradictions": 8,
+  "voice_examples": 11,
+  "coverage_gaps": [
+    "Playbook (11.7 KB), Workflows, Templates, Pillars and Proof Bank read in part; Playbook not read in full.",
+    "Transcripts for 2026-09-18 to 09-22 not found.",
+    "Nothing known about 09-23 to 10-03 beyond his 10-04 statement.",
+    "No X or LinkedIn data read directly."
+  ],
+  "uncertainties": [
+    "Who wrote the playbook.",
+    "Whether any post was ever published.",
+    "Why the vault went quiet after 09-22.",
+    "Current goal and date."
+  ],
+  "scope_statement": "This is project-level context. It must not be treated as a complete global model of Alankrit until reconciled with other project extractions."
+}

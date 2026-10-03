@@ -200,8 +200,16 @@ def entry_docs(model):
         inc=", ".join(model["stats"]["projects_incomplete"]) or "none", stale=stale)
     cur = "## Current state (Alankrit's own latest statement)\n\n" + model["current_state"].split("\n", 3)[-1].strip() + "\n"
     full = [f"# ALANKRIT GLOBAL CONTEXT\n\n{head}\n{cur}"]
+    def body(p):
+        if p["manifest"].get("confidential"):
+            return ("_Confidential extraction: its contents are internal to the organisation and are not reproduced here._\n\n"
+                    "Known from Alankrit's own statement (`compiler/current_state.md`): he works in the Founders Office at this VC. "
+                    "Rule: nothing about its work, notes, people or investors goes into any public draft without his say-so for that item. "
+                    "Details are kept only in the local extraction.")
+        return _demote(p["handoff"])
+
     for p in comp:
-        full.append(f"\n---\n\n# Project: {p['name']} (`{p['slug']}`)\n\n{_demote(p['handoff'])}")
+        full.append(f"\n---\n\n# Project: {p['name']} (`{p['slug']}`)\n\n{body(p)}")
     pol = (WORKSPACE_POLICY.read_text(encoding="utf-8") if WORKSPACE_POLICY.exists() else "")
     if pol:
         full.append("\n---\n\n" + _demote(pol))
@@ -211,6 +219,9 @@ def entry_docs(model):
     write_text("ALANKRIT_GLOBAL_CONTEXT.md", "".join(full))
     short = [f"# HANDOFF TO ALANKRIT OS (global)\n\n{head}\n{cur}"]
     for p in comp:
+        if p["manifest"].get("confidential"):
+            short.append(f"\n---\n\n## {p['name']}: what to remember\n\nConfidential. Nothing about it in public drafts without Alankrit's say-so. Details stay local.\n")
+            continue
         s = _sections(p["handoff"], ["unresolved", "what future agents", "never assume", "what should future", "what should they never"])
         short.append(f"\n---\n\n## {p['name']}: what to remember\n\nFull handoff: `{p['root']}/HANDOFF_TO_ALANKRIT_OS.md`\n\n{_demote(s)}")
     if WORKSPACE_POLICY.exists():

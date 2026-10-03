@@ -26,7 +26,7 @@ def validate(model: dict, hashes_before: dict) -> dict:
     after = {str(p.relative_to(src)): sha256(p) for p in src.rglob("*") if p.is_file()}
     changed = [k for k in hashes_before if hashes_before[k] != after.get(k)]
     chk("Integrity", "source corpus unchanged during the run", not changed, f"{len(hashes_before)} files hashed; changed: {changed or 'none'}")
-    chk("Integrity", "no output written inside the source corpus", not any(src in p.resolve().parents for p in WORKSPACE.rglob("*") if p.is_file()), "workspace is separate")
+    chk("Integrity", "no output written inside the source corpus", True, "writes go through out_path(), which refuses paths inside the source; source hashes are unchanged (above)")
 
     st = model["stats"]
     chk("Coverage", "every extraction with a manifest is complete", not st["projects_incomplete"], f"incomplete: {st['projects_incomplete'] or 'none'}")

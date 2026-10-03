@@ -1,0 +1,46 @@
+{
+  "project_name": "Alankrit OS",
+  "project_slug": "alankrit-os",
+  "project_path": "/Users/alankritghosh/Alankrit OS ",
+  "extraction_date": "2026-10-03",
+  "extraction_protocol": "UNIVERSAL ALANKRIT CONTEXT EXTRACTION PROTOCOL (v2), submitted 2026-10-03T16:11:23Z",
+  "latest_evidence_date": "2026-10-03",
+  "source_files_examined": 78,
+  "source_files_examined_note": "60 workspace files (all authored by the assistant in session 9d6810ae; examined as project artifacts, not as evidence of Alankrit's traits); 16 Icarus extraction files (upstream input); 2 Claude auto-memory files for this folder. Home directory: top-level folder names only.",
+  "git_commits_examined": 0,
+  "git_commits_examined_note": "Project is not a git repository.",
+  "session_records_examined": 4,
+  "session_records_note": "ee20c209 (JARVIS folder; v1 protocol, 1 user message), 9d6810ae (Alankrit OS folder; compiler prompt, v2 protocol, 1 multiple-choice answer), a1a7ec67 and c608e01f (JARVIS folder; scheduled Icarus jobs; read and excluded from scope except as working-style evidence). Only human-typed turns were read in full; assistant turns of 9d6810ae are known first-hand.",
+  "facts": 13,
+  "decisions": 14,
+  "beliefs": 15,
+  "belief_transitions": 9,
+  "reasoning_patterns": 8,
+  "failures": 10,
+  "lessons": 9,
+  "open_loops": 14,
+  "contradictions": 11,
+  "voice_examples": 9,
+  "relationships": 43,
+  "memory_note": "memory/facts.jsonl holds 13 facts + 8 reasoning-pattern records; memory/beliefs.jsonl holds 15 beliefs + 9 belief transitions.",
+  "coverage_gaps": [
+    "Project is one day old (2026-10-03, 18:48-22:30 IST); no git history.",
+    "No text in the project is established as written by Alankrit; voice evidence is nil.",
+    "Most workspace artifacts are assistant-generated and derive from the Icarus extraction (circular); tagged DERIVED_FROM_ICARUS.",
+    "The personal-brand consumer system was not located; folders Personal Brand, composio-linkedin-agent, thought-engine, alankrit.dev not opened.",
+    "No feedback from Alankrit on the compiled global layer exists in the record.",
+    "19:37-21:41 IST: no recorded activity.",
+    "Other sessions in ~/.claude/projects not searched beyond the JARVIS and Alankrit OS folders."
+  ],
+  "uncertainties": [
+    "Authorship of the three protocols (first person and 0 em-dashes in v1; third person and 21-23 em-dashes in later versions).",
+    "Whether v2's changes were caused by the compiler's report (INFERRED MEDIUM-HIGH from timing and wording).",
+    "Why the name 'Alankrit OS' and what scope beyond context it is meant to have.",
+    "Why Alankrit chose to extract this project despite the circularity warning.",
+    "Whether the glossary was dropped from v2 deliberately."
+  ],
+  "related_extractions": [
+    "../icarus/ (v1 schema; moved from the corpus root 2026-10-03, original in ../archive/2026-10-03T2145_flat-root-icarus-extraction/)"
+  ],
+  "scope_statement": "This is project-level context. It must not be treated as a complete global model of Alankrit until reconciled with other project extractions."
+}
