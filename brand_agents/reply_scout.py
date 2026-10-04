@@ -52,23 +52,13 @@ def apply_angles(targets: list[dict], angles: dict[str, str]) -> tuple[list[dict
 
 
 def draft_reply(target: dict) -> str | None:
-    """Return a draft reply, or None when the post needs a human angle."""
+    """Return the reply Alankrit supplied as an angle, or None.
+
+    There are no built-in templates. Keyword-matched replies cannot tell what a
+    post means and misfired on real targets, so every reply is written by hand.
+    """
     angle = (target.get("angle") or "").strip()
-    if angle:
-        return angle
-    post = " ".join(str(target["post_text"]).split())
-    lowered = post.lower()
-    if all(term in lowered for term in ["claude code", "codex"]) and any(term in lowered for term in ["switching", "terminal", "parallel", "sessions"]):
-        return "The real pain is managing the handoff between agents without losing context. Picking one is the easy part."
-    if "parallel agent sessions" in lowered or "pr management" in lowered:
-        return "This feels useful because keeping parallel agent work comparable in one place is the messy part."
-    if "claude code" in lowered and "codex" in lowered and "?" in post:
-        return "Switching for a month tells you more than any comparison thread. Pick the one whose failures you can read fastest."
-    if "agent" in lowered and any(term in lowered for term in ["grades", "benchmark", "eval"]) and any(term in lowered for term in ["database", "records", "backend"]):
-        return "Grading on the state an agent leaves behind is the right test. A clean transcript can hide a lot of broken writes."
-    if "vibe coding" in lowered and any(term in lowered for term in ["i built", "i've built", "i shipped"]) and any(term in lowered for term in ["startup", "shipped", "in production", "launched"]):
-        return "Vibe coding still needs taste. Otherwise you just ship confusion faster."
-    return None
+    return angle or None
 
 
 def render_report(targets: list[dict]) -> str:
@@ -97,7 +87,7 @@ def render_report(targets: list[dict]) -> str:
                 "",
                 "Draft reply:",
                 "",
-                "NEEDS HUMAN ANGLE. No template fits this post and a generic reply would be noise. Add an `angle` to this target and rerun, or skip it.",
+                "NEEDS HUMAN ANGLE. The scout writes no replies of its own. Add your reply for this URL to the angles file and rerun, or skip it.",
                 "",
             ])
             continue

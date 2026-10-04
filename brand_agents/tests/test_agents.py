@@ -104,15 +104,29 @@ I build because it is fun.
     def test_generic_claude_code_post_needs_human_angle(self):
         self.assertIsNone(draft_reply({"post_text": "Claude Code changed how I build products"}))
 
+    def test_scout_has_no_built_in_replies(self):
+        posts = [
+            "Switching between Claude Code, Codex, and Grok means juggling terminal windows. Parallel agent sessions and PR management in one Mac app.",
+            "After a month with Codex I will try Claude Code. What is your experience, which is better to use?",
+            "Microsoft put ThinkingBox on Hugging Face. It grades AI agents on the database records they leave behind.",
+            "Back before vibe coding got big, I built startups in weekends.",
+            "Everyone's debating whether AI can build a production app. I built a system that compiles one. No vibe coding, no patching. How I shipped a real client app this way",
+            "any chance we could get an official /deep-research workflow in codex just like Claude code? I know there is DR on the ChatGPT web app",
+        ]
+        for post in posts:
+            self.assertIsNone(draft_reply({"post_text": post}), post)
+
+    def test_unanswered_target_is_marked_needs_human_angle(self):
+        report = render_report([{"url": "https://x.com/a/status/1", "post_text": "Claude Code changed how I build products", "opened": True}])
+        self.assertIn("NEEDS HUMAN ANGLE", report)
+        self.assertNotIn("Voice check", report)
+
+    def test_blank_angle_is_ignored(self):
+        self.assertIsNone(draft_reply({"post_text": "post", "angle": "   "}))
+
     def test_supplied_angle_is_used(self):
         reply = draft_reply({"post_text": "anything", "angle": "My own take."})
         self.assertEqual(reply, "My own take.")
-
-    def test_reply_handles_multi_agent_tooling(self):
-        reply = draft_reply({
-            "post_text": "Switching between Claude Code, Codex, and Grok means juggling terminal windows. Parallel agent sessions and PR management in one Mac app."
-        })
-        self.assertIn("handoff", reply)
 
     def test_x_scoring_rejects_promo_posts(self):
         promos = [
@@ -158,34 +172,6 @@ I build because it is fun.
     def test_voice_allows_plain_statements(self):
         self.assertTrue(require_all_pass(check_voice("Picking one agent is the easy part. The handoff is the work.", "x")))
 
-    def test_reply_templates_pass_voice_check(self):
-        posts = [
-            "Switching between Claude Code, Codex, and Grok means juggling terminal windows. Parallel agent sessions and PR management in one Mac app.",
-            "Parallel agent sessions and PR management in one place",
-            "After a month with Codex I will try Claude Code. Which is better to use?",
-            "Microsoft put ThinkingBox on Hugging Face. It grades AI agents on the database records they leave behind.",
-            "Back before vibe coding got big, I built startups in weekends.",
-        ]
-        for post in posts:
-            reply = draft_reply({"post_text": post})
-            self.assertIsNotNone(reply, post)
-            self.assertTrue(require_all_pass(check_voice(reply, "x")), reply)
-
-    def test_reply_engages_with_tool_comparison_question(self):
-        reply = draft_reply({"post_text": "After a month with Codex I will try Claude Code. What is your experience, which is better to use?"})
-        self.assertIn("Switching", reply)
-
-    def test_reply_engages_with_agent_grading_post(self):
-        reply = draft_reply({"post_text": "ThinkingBox grades AI agents on the database records they leave behind, not the chat transcript."})
-        self.assertIn("state an agent leaves behind", reply)
-
-    def test_off_topic_and_promo_style_posts_get_no_template(self):
-        for post in [
-            "GTM with AI agents is the future of sales",
-            "Building AI agents and workflows. Kiro deserves a seat at the table.",
-        ]:
-            self.assertIsNone(draft_reply({"post_text": post}), post)
-
     def test_x_scoring_rejects_milestone_and_engagement_bait(self):
         posts = [
             "Founder Arc @FounderArcx \u00b7 Oct Just hit followers on LinkedIn. Started FounderArc to document building AI agents. Keep building.",
@@ -222,10 +208,6 @@ I build because it is fun.
             self.assertEqual(load_seen(path), set())
             path.write_text('{"a": 1}', encoding="utf-8")
             self.assertEqual(load_seen(path), set())
-
-    def test_vibe_coding_reply_needs_shipping_context(self):
-        self.assertIsNone(draft_reply({"post_text": "i built this tool by vibe coding and i'm learning what features to add by using it"}))
-        self.assertIsNotNone(draft_reply({"post_text": "Back before vibe coding got big, I built startups in weekends."}))
 
     def test_x_scoring_blocks_agentic_finance_cluster(self):
         posts = [

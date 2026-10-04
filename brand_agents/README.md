@@ -31,7 +31,7 @@ python3 -m brand_agents.reply_scout \
 
 Output: local draft replies with clickable URLs and checks. The scout does not browse by itself in this environment.
 
-Most posts get `NEEDS HUMAN ANGLE`: the built-in replies only cover a few specific post types, and a generic reply is worse than none. Write your own reply for the targets worth answering in an angles file, a JSON object mapping the post URL to your text, then rerun:
+Every post gets `NEEDS HUMAN ANGLE`. The scout writes no replies of its own: keyword-matched templates cannot tell what a post means, and they produced replies that contradicted the author. It finds and scores targets, then formats and voice-checks the replies you write. Put your reply for each target worth answering in an angles file, a JSON object mapping the post URL to your text, then rerun:
 
 ```bash
 python3 -m brand_agents.reply_scout \
