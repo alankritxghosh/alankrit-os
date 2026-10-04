@@ -84,6 +84,21 @@ See `MOBILE_OPERATIONS.md` for the GitHub Mobile workflow. The same local runner
 python3 -m brand_agents.mobile_runner --command-file brand_agents/examples/mobile_draft.json
 ```
 
+## Daily routine
+
+One command per step. Files live in `~/.alankrit-os/daily/<date>/`, outside the repo, because they hold your own reply text.
+
+```bash
+python3 -m brand_agents.daily scout                  # about 3 minutes: finds 25 candidates, writes review.md + angles.json
+python3 -m brand_agents.daily triage --keep 1,4,7    # keep only the numbers you want from review.md
+# write your reply for each kept URL in angles.json
+python3 -m brand_agents.daily replies                # voice-checks angles.json, writes replies.md
+```
+
+- `replies.md` has a **Ready** section with copy-ready text and a **Fix before posting** section listing each failed check. `replies` exits 1 when anything needs fixing.
+- `scout` refuses to overwrite an existing day. `--force` refreshes the candidates and keeps every reply you already wrote. `--date` uses another folder.
+- Nothing is posted, liked, followed or sent. You copy the text and post it by hand.
+
 ## X discovery provider
 
 For the one-day automation path, use X only:

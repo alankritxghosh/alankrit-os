@@ -33,7 +33,7 @@ jobs:
           python3 -m json.tool /tmp/brand-command.json
 
       - name: Test suite
-        run: python3 -m unittest brand_agents.tests.test_agents
+        run: python3 -m unittest brand_agents.tests.test_agents brand_agents.tests.test_daily
 
       - name: Run draft-only command
         run: |
