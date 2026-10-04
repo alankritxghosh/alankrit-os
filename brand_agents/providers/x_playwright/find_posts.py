@@ -72,6 +72,25 @@ HIGH_SIGNAL_TERMS = [
 ]
 
 
+PROMO_PATTERNS = [
+    r"\bcomment\s*['\u2018\u2019\"\u201c\u201d]",
+    r"\bt\.me\b",
+    r"\btelegram\b",
+    r"\bwaitlist\b",
+    r"\bgiveaway\b",
+    r"\bfree guide\b",
+    r"\bfollow for\b",
+    r"\bbookmark this\b",
+    r"\bcheat code\b",
+    r"\blink in (?:bio|comments)\b",
+    r"\bjoin (?:our|the) (?:community|discord|channel|group)\b",
+]
+
+FIRST_PERSON_RE = re.compile(r"\b(?:i|i'm|i\u2019m|i've|i\u2019ve|my|me)\b")
+
+HEADER_RE = re.compile(r"^.*?@\w+\s*\u00b7\s*(?:\d+[smhd]\b|[A-Z][a-z]{2}\b)?\s*")
+
+
 @dataclass
 class Candidate:
     url: str
@@ -119,10 +138,28 @@ def author_from_url(url: str) -> str:
     return match.group(1) if match else "UNKNOWN"
 
 
+def strip_header(text: str) -> str:
+    """Drop the 'Display Name @handle \u00b7 time' prefix so bios do not score as post content."""
+    match = HEADER_RE.match(text)
+    return text[match.end():] if match else text
+
+
+def promo_reasons(text: str) -> list[str]:
+    lowered = text.lower()
+    hits = [pattern for pattern in PROMO_PATTERNS if re.search(pattern, lowered)]
+    shouting = [word for word in re.findall(r"[A-Za-z]{4,}", text) if word.isupper()]
+    if len(shouting) >= 3:
+        hits.append("all-caps hype")
+    return hits
+
+
 def score_text(text: str) -> tuple[int, list[str]]:
+    text = strip_header(text)
     lowered = text.lower()
     reasons: list[str] = []
     score = 0
+    if promo_reasons(text):
+        return -90, ["promo or hype post"]
     if any(term in lowered for term in BLOCKED_TERMS):
         return -100, ["blocked topic"]
     if any(term in lowered for term in ["works at", "joined ", "joining ", "hired", "we're hiring", "we are hiring"]):
@@ -154,6 +191,13 @@ def score_text(text: str) -> tuple[int, list[str]]:
     if any(term in lowered for term in ["learned", "mistake", "problem", "workflow", "how i"]):
         score += 2
         reasons.append("has comment hook")
+    personal = "?" in text or bool(FIRST_PERSON_RE.search(lowered))
+    if not personal:
+        score -= 4
+        reasons.append("no question or first-person angle")
+    if re.search(r"@\w+", text) and not personal:
+        score -= 4
+        reasons.append("brand mention without personal angle")
     return score, reasons
 
 

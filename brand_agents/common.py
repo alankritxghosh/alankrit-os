@@ -94,9 +94,17 @@ def one_thought_per_line(text: str) -> bool:
     return bool(lines) and all(len(words(line)) <= 32 for line in lines)
 
 
+REFRAME_PATTERNS = [
+    r"\b(?:it|this|that)(?:'s|\u2019s| is) not\b.+\b(?:it|this|that)(?:'s|\u2019s| is)\b",
+    r"\b(?:it|this|that) isn(?:'|\u2019)t\b.+\b(?:it|this|that)(?:'s|\u2019s| is)\b",
+    r"\bnot\b[^.!?]{1,80},\s*(?:it|this|that)(?:'s|\u2019s| is)\b",
+    r"\b(?:isn(?:'|\u2019)t|is not|are not|aren(?:'|\u2019)t)\b[^.!?]{1,80},\s*(?:it|this|that|they)(?:'s|\u2019s| is| are)\b",
+]
+
+
 def has_it_is_x_not_y(text: str) -> bool:
     normalized = " ".join(text.lower().split())
-    return bool(re.search(r"\bit(?:'s| is) not\b.+\bit(?:'s| is)\b", normalized))
+    return any(re.search(pattern, normalized) for pattern in REFRAME_PATTERNS)
 
 
 def check_voice(text: str, platform: str = "x") -> list[Check]:

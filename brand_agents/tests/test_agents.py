@@ -100,15 +100,90 @@ I build because it is fun.
         self.assertIn("auth_token", names)
         self.assertIn("ct0", names)
 
-    def test_reply_mentions_claude_code(self):
-        reply = draft_reply({"post_text": "Claude Code changed how I build products"})
-        self.assertIn("Claude Code", reply)
+    def test_generic_claude_code_post_needs_human_angle(self):
+        self.assertIsNone(draft_reply({"post_text": "Claude Code changed how I build products"}))
+
+    def test_supplied_angle_is_used(self):
+        reply = draft_reply({"post_text": "anything", "angle": "My own take."})
+        self.assertEqual(reply, "My own take.")
 
     def test_reply_handles_multi_agent_tooling(self):
         reply = draft_reply({
             "post_text": "Switching between Claude Code, Codex, and Grok means juggling terminal windows. Parallel agent sessions and PR management in one Mac app."
         })
         self.assertIn("handoff", reply)
+
+    def test_x_scoring_rejects_promo_posts(self):
+        promos = [
+            "Aryaman @AryamanJazzy \u00b7 Oct Who is building AI agents in GTM? Comment \u2018Usage\u2019 and I\u2019ll share how it happened.",
+            "Abdulsalam @turnless_HQ \u00b7 SOMEONE JUST BUILT A CHEAT CODE FOR CLAUDE CODE with ready-made agents and skills",
+            "1Claw AI @1clawAI \u00b7 Oct Building with agents or wallets? Our Telegram is where builders swap notes.",
+        ]
+        for text in promos:
+            score, reasons = score_text(text)
+            self.assertLess(score, 0, text)
+            self.assertIn("promo or hype post", reasons)
+
+    def test_x_scoring_ignores_author_bio(self):
+        score, _ = score_text("Sonwa | n8n | Build AI Agents & Workflows @Sonwa127 \u00b7 Nobody patriotic pass Nigerians in diaspora.")
+        self.assertLess(score, 6)
+
+    def test_x_scoring_drops_brand_mention_without_angle(self):
+        score, _ = score_text(
+            "my self only @mamagith \u00b7 We\u2019re entering a phase where AI agents can become specialized operators "
+            "with their own skills, workflows and execution logic. The infrastructure behind that shift matters. @ama_protocol"
+        )
+        self.assertLess(score, 6)
+
+    def test_x_scoring_keeps_real_builder_posts(self):
+        keep = [
+            "Pawel @agilelabspl \u00b7 After a month of building in public with Chat GPT Codex I will give a try to Claude Code for another month. What is your experience advice, which is better to use?",
+            "Kenny Hanson @kennyhanson \u00b7 8h Back before vibe coding got big, I built startups in weekends using Webflow, Airtable, and Zapier. TechLayoffs: aggregated excel layoff lists from twitter and built a search UX around it.",
+        ]
+        for text in keep:
+            score, _ = score_text(text)
+            self.assertGreaterEqual(score, 6, text)
+
+    def test_voice_rejects_not_x_it_is_y_reframes(self):
+        reframes = [
+            "The interesting bit with Claude Code is not speed, it is how quickly bad taste becomes visible.",
+            "The real pain is not picking one agent, it is managing the handoff.",
+            "This isn't about speed. It's about taste.",
+            "It's not the model, it's the context.",
+        ]
+        for text in reframes:
+            self.assertFalse(require_all_pass(check_voice(text, "x")), text)
+
+    def test_voice_allows_plain_statements(self):
+        self.assertTrue(require_all_pass(check_voice("Picking one agent is the easy part. The handoff is the work.", "x")))
+
+    def test_reply_templates_pass_voice_check(self):
+        posts = [
+            "Switching between Claude Code, Codex, and Grok means juggling terminal windows. Parallel agent sessions and PR management in one Mac app.",
+            "Parallel agent sessions and PR management in one place",
+            "After a month with Codex I will try Claude Code. Which is better to use?",
+            "Microsoft put ThinkingBox on Hugging Face. It grades AI agents on the database records they leave behind.",
+            "Back before vibe coding got big, I built startups in weekends.",
+        ]
+        for post in posts:
+            reply = draft_reply({"post_text": post})
+            self.assertIsNotNone(reply, post)
+            self.assertTrue(require_all_pass(check_voice(reply, "x")), reply)
+
+    def test_reply_engages_with_tool_comparison_question(self):
+        reply = draft_reply({"post_text": "After a month with Codex I will try Claude Code. What is your experience, which is better to use?"})
+        self.assertIn("Switching", reply)
+
+    def test_reply_engages_with_agent_grading_post(self):
+        reply = draft_reply({"post_text": "ThinkingBox grades AI agents on the database records they leave behind, not the chat transcript."})
+        self.assertIn("state an agent leaves behind", reply)
+
+    def test_off_topic_and_promo_style_posts_get_no_template(self):
+        for post in [
+            "GTM with AI agents is the future of sales",
+            "Building AI agents and workflows. Kiro deserves a seat at the table.",
+        ]:
+            self.assertIsNone(draft_reply({"post_text": post}), post)
 
 
 if __name__ == "__main__":
