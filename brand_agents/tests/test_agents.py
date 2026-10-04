@@ -446,6 +446,51 @@ I build because it is fun.
         ordered = order_reasons(reasons)
         self.assertEqual(set(ordered[:2]), {"link in post", "emoji-heavy without question"})
 
+    def test_x_scoring_rejects_testimonial_requests(self):
+        score, reasons = score_text(
+            "Synwave Academy @SynwaveAcademy \u00b7 16h Today, a room full of strangers became builders. If Vibe Coding Live changed something for you "
+            "we'd love to hear it. Reply, quote, or post about what you learned. Tell your story."
+        )
+        self.assertLess(score, 0)
+        self.assertEqual(reasons, ["testimonial or engagement request"])
+
+    def test_x_scoring_rejects_job_and_internship_content(self):
+        posts = [
+            "Leo @double_burger_2 \u00b7 Zero internship experience, one simple AI project, and finally landed a ByteDance AI product internship. Agent practice sessions, resume submission.",
+            "Dev @dev \u00b7 I landed a job offer building AI agents with Claude Code workflows",
+            "Dev @dev \u00b7 My top interview questions for AI agent builders and product workflows",
+            "Dev @dev \u00b7 How I tailored my resume for AI agent product roles and workflows",
+        ]
+        for text in posts:
+            score, reasons = score_text(text)
+            self.assertLess(score, 0, text)
+            self.assertEqual(reasons, ["job or career content"], text)
+
+    def test_job_rule_does_not_hit_ordinary_words(self):
+        for text in [
+            "Dev @dev \u00b7 I built an agent workflow with Claude Code and learned that interviews with users beat guessing. What do you do?",
+            "Dev @dev \u00b7 I built an agent that summarizes my notes and the workflow keeps improving. What would you change?",
+        ]:
+            score, _ = score_text(text)
+            self.assertGreaterEqual(score, 6, text)
+
+    def test_job_rule_keeps_claude_code_resume_feature(self):
+        for text in [
+            "Dev @dev \u00b7 I built an agent workflow and now use claude --resume to continue Claude Code sessions. What do you use?",
+            "Dev @dev \u00b7 I built my Claude Code workflow so I can resume the session after a crash. What would you change?",
+        ]:
+            score, reasons = score_text(text)
+            self.assertGreaterEqual(score, 6, text)
+            self.assertNotIn("job or career content", reasons)
+
+    def test_solicitation_rule_keeps_genuine_questions(self):
+        score, _ = score_text("Dev @dev \u00b7 I built an agent workflow with Claude Code and learned a lot. What did you learn building yours?")
+        self.assertGreaterEqual(score, 6)
+
+    def test_queries_require_english(self):
+        for query in DEFAULT_QUERIES:
+            self.assertIn("lang:en", query)
+
 
 if __name__ == "__main__":
     unittest.main()

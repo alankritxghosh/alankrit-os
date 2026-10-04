@@ -22,7 +22,7 @@ DEFAULT_STATE = Path.home() / ".alankrit-os" / "x-storage-state.json"
 DEFAULT_SCROLLS = 8
 DEFAULT_SEEN = Path.home() / ".alankrit-os" / "x-seen-urls.json"
 
-QUERY_EXCLUDES = '-crypto -web3 -solana -wallet -x402 -"agentic finance" -filter:replies'
+QUERY_EXCLUDES = '-crypto -web3 -solana -wallet -x402 -"agentic finance" lang:en -filter:replies'
 
 DEFAULT_QUERIES = [
     f'"Claude Code" ("built" OR "building") {QUERY_EXCLUDES}',
@@ -128,6 +128,24 @@ NEWS_PATTERNS = [
 ]
 
 KEYWORD_CAP = 8
+
+SOLICITATION_PATTERNS = [
+    r"\btell your story\b",
+    r"\bwe(?:'|\u2019)?d love to hear\b",
+    r"\bshare your (?:story|experience|feedback)\b",
+    r"\bwhat you learned\b[^.]{0,40}\b(?:reply|quote|post)\b",
+    r"\b(?:reply|quote),? or post\b",
+]
+
+JOB_PATTERNS = [
+    r"\binternship\b",
+    r"\blanded (?:a |an |my )?(?:\w+ ){0,3}(?:offer|job|role|internship)\b",
+    r"\binterview (?:questions|prep|tips)\b",
+    r"\b(?:my|your|a|his|her|their) resume\b",
+    r"\bresume (?:tips|submission|review|template|builder)\b",
+    r"\bjob offer\b",
+    r"\bhiring\b",
+]
 
 PROFANITY_RE = re.compile(r"\b(?:fuck\w*|shit\w*|bullshit|asshole|bitch\w*|wtf)\b")
 
@@ -235,6 +253,10 @@ def score_text(text: str) -> tuple[int, list[str]]:
         return -90, ["milestone or engagement bait"]
     if any(re.search(pattern, lowered) for pattern in POLL_PATTERNS):
         return -90, ["poll"]
+    if any(re.search(pattern, lowered) for pattern in JOB_PATTERNS):
+        return -90, ["job or career content"]
+    if any(re.search(pattern, lowered) for pattern in SOLICITATION_PATTERNS):
+        return -90, ["testimonial or engagement request"]
     if PROFANITY_RE.search(lowered):
         return -90, ["profanity or rant"]
     if len(HASHTAG_RE.findall(text)) >= 2:
