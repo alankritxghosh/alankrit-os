@@ -25,7 +25,9 @@ from collections import Counter
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-DEFAULT_LOG = Path.home() / ".alankrit-os" / "decisions.jsonl"
+from .paths import data_dir
+
+DEFAULT_LOG = data_dir() / "decisions.jsonl"
 SCHEMA = 1
 ACTIONS = ("shown", "use_draft", "skip", "edit_started", "edit_saved", "edit_rejected", "redraft")
 
@@ -119,13 +121,45 @@ def format_summary(summary: dict) -> str:
     return "\n".join(lines)
 
 
+def log_cli(args: argparse.Namespace) -> int:
+    event: dict = {"action": args.action, "url": args.url, "day": args.day or date.today().isoformat(), "source": "claude_code_session"}
+    for key in ("author", "draft", "final", "post_text"):
+        if getattr(args, key) is not None:
+            event[key] = getattr(args, key)
+    if args.action == "use_draft":
+        if not args.draft:
+            print("error: use_draft needs --draft", file=sys.stderr)
+            return 2
+        event.update(final=args.final or args.draft, final_source="draft_as_is")
+    elif args.action == "edit_saved":
+        if not args.final:
+            print("error: edit_saved needs --final (the reply Alankrit typed)", file=sys.stderr)
+            return 2
+        event.update(final_source="typed_by_alankrit", similarity=similarity(args.draft, args.final))
+    if not log_event(event, args.log):
+        print(f"error: could not write {args.log}", file=sys.stderr)
+        return 2
+    print(f"logged {args.action} for {args.url}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--log", type=Path, default=DEFAULT_LOG)
     sub = parser.add_subparsers(dest="step", required=True)
     p = sub.add_parser("summary")
     p.add_argument("--days", type=int, default=None, help="only the last N days")
+    q = sub.add_parser("log", help="record one decision made in a Claude Code session")
+    q.add_argument("--action", required=True, choices=ACTIONS)
+    q.add_argument("--url", required=True)
+    q.add_argument("--author", default=None)
+    q.add_argument("--draft", default=None, help="what Claude wrote")
+    q.add_argument("--final", default=None, help="the reply Alankrit approved or typed")
+    q.add_argument("--post-text", default=None)
+    q.add_argument("--day", default=None)
     args = parser.parse_args(argv)
+    if args.step == "log":
+        return log_cli(args)
     events = read_events(args.log)
     if not events:
         print(f"No decisions logged yet in {args.log}", file=sys.stderr)

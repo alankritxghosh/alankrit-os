@@ -13,19 +13,22 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from datetime import date
 from pathlib import Path
 from typing import Callable
 
 from .common import check_voice, require_all_pass, write_markdown
+from .paths import data_dir
 from .reply_scout import load_angles, normalize_url
 
-DEFAULT_ROOT = Path.home() / ".alankrit-os" / "daily"
+DEFAULT_ROOT = data_dir() / "daily"
 POOL_SIZE = 25
 EXCERPT_CHARS = 600
 
 Finder = Callable[[], list[dict]]
+STATUS_URL = re.compile(r"^https://(?:www\.)?x\.com/([^/?#]+)/status/(\d+)")
 
 
 def day_dir(root: Path, day: str | None = None) -> Path:
@@ -173,6 +176,55 @@ def build_replies(directory: Path) -> tuple[str, list[str], list[str]]:
     return "\n".join(parts), ready, failing
 
 
+def prepare_ingest(posts: list[dict], seen: set[str] | None = None) -> tuple[list[dict], list[dict]]:
+    """Turn posts read in a browser into candidates, applying the same scoring and filters as the scout.
+
+    Every post must carry `opened: true`, meaning it was actually read from its page. Returns
+    (candidates sorted by score, dropped items with the reason each was dropped).
+    """
+    from .providers.x_playwright.find_posts import MIN_SCORE, order_reasons, score_text
+
+    seen = seen or set()
+    kept: list[dict] = []
+    dropped: list[dict] = []
+    taken: set[str] = set()
+    for post in posts:
+        raw_url = str(post.get("url", ""))
+        match = STATUS_URL.match(raw_url)
+        if not match:
+            dropped.append({"url": raw_url, "why": "not an x.com status URL"})
+            continue
+        url = f"https://x.com/{match.group(1)}/status/{match.group(2)}"
+        text = " ".join(str(post.get("post_text", "")).split())
+        if post.get("opened") is not True:
+            dropped.append({"url": url, "why": "not marked opened: true (only posts actually read from the page may be ingested)"})
+        elif not text:
+            dropped.append({"url": url, "why": "no post_text"})
+        elif url in seen or url in taken:
+            dropped.append({"url": url, "why": "already surfaced"})
+        else:
+            score, reasons = score_text(text)
+            if score < MIN_SCORE:
+                dropped.append({"url": url, "why": f"filtered: {', '.join(reasons[:2]) or 'low score'} (score {score})"})
+            else:
+                taken.add(url)
+                kept.append({
+                    "url": url, "opened": True, "checked_at": date.today().isoformat(), "author": match.group(1),
+                    "post_text": text[:1200], "score": score,
+                    "why": f"ingested; score {score}; signals: {', '.join(order_reasons(reasons)[:6])}",
+                })
+    kept.sort(key=lambda item: item["score"], reverse=True)
+    return kept, dropped
+
+
+def load_ingest(source: str) -> list[dict]:
+    raw = sys.stdin.read() if source == "-" else Path(source).read_text(encoding="utf-8")
+    data = json.loads(raw)
+    if not isinstance(data, list) or not all(isinstance(item, dict) for item in data):
+        raise ValueError("ingest input must be a JSON array of objects with url, post_text and opened")
+    return data
+
+
 def default_finder(args: argparse.Namespace) -> Finder:
     def run() -> list[dict]:
         from .providers.x_playwright.find_posts import find_posts, load_seen, save_seen
@@ -210,6 +262,12 @@ def main(argv: list[str] | None = None) -> int:
     p_scout.add_argument("--scrolls", type=int, default=DEFAULT_SCROLLS)
     p_scout.add_argument("--force", action="store_true", help="refresh candidates; keeps replies already in angles.json")
 
+    p_ingest = sub.add_parser("ingest", help="build the day's candidates from posts read in a browser (no X login needed)")
+    p_ingest.add_argument("--file", default="-", help="JSON array of {url, post_text, opened: true}; - for stdin")
+    p_ingest.add_argument("--seen-file", type=Path, default=None)
+    p_ingest.add_argument("--no-dedupe", action="store_true")
+    p_ingest.add_argument("--force", action="store_true")
+
     p_triage = sub.add_parser("triage", help="keep only the candidates you or Claude picked")
     p_triage.add_argument("--keep", required=True, help="comma-separated candidate numbers from review.md, e.g. 1,4,7")
 
@@ -222,6 +280,20 @@ def main(argv: list[str] | None = None) -> int:
         if args.step == "scout":
             candidates = scout(directory, default_finder(args), force=args.force)
             print(f"{len(candidates)} candidates")
+            print(f"review:  {directory / 'review.md'}")
+            print(f"angles:  {directory / 'angles.json'}")
+        elif args.step == "ingest":
+            from .providers.x_playwright.find_posts import DEFAULT_SEEN, load_seen, save_seen
+
+            seen_path = args.seen_file or DEFAULT_SEEN
+            already = set() if args.no_dedupe else load_seen(seen_path)
+            kept, dropped = prepare_ingest(load_ingest(args.file), already)
+            scout(directory, lambda: kept, force=args.force)
+            if not args.no_dedupe:
+                save_seen(seen_path, already | {item["url"] for item in kept})
+            print(f"{len(kept)} candidates, {len(dropped)} dropped")
+            for item in dropped:
+                print(f"  dropped {item['url']}: {item['why']}")
             print(f"review:  {directory / 'review.md'}")
             print(f"angles:  {directory / 'angles.json'}")
         elif args.step == "triage":

@@ -2,3 +2,8 @@
 __pycache__/
 *.pyc
 brand/agent_outputs/
+
+# secrets: never commit logins or tokens
+*storage-state*.json
+telegram.json
+.env

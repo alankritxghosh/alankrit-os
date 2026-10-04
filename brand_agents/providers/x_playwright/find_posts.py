@@ -16,13 +16,16 @@ from datetime import date, timedelta
 from pathlib import Path
 from urllib.parse import quote
 
+from ...paths import SECRET_DIR, data_dir
+
 from typing import Any
 
-DEFAULT_STATE = Path.home() / ".alankrit-os" / "x-storage-state.json"
+DEFAULT_STATE = SECRET_DIR / "x-storage-state.json"
 DEFAULT_SCROLLS = 8
+MIN_SCORE = 6
 DEFAULT_TAB = "top"
 DEFAULT_DAYS = 7
-DEFAULT_SEEN = Path.home() / ".alankrit-os" / "x-seen-urls.json"
+DEFAULT_SEEN = data_dir() / "x-seen-urls.json"
 
 QUERY_EXCLUDES = '-crypto -web3 -solana -wallet -x402 -"agentic finance" lang:en -filter:replies'
 
@@ -382,7 +385,7 @@ def extract_candidates(page: Any, checked_at: str) -> list[Candidate]:
         if not text:
             continue
         score, reasons = score_text(text)
-        if score < 6:
+        if score < MIN_SCORE:
             continue
         candidates.append(Candidate(
             url=url,

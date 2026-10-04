@@ -30,7 +30,7 @@ jobs:
           mv /tmp/brand-command.pretty.json /tmp/brand-command.json
 
       - name: Test suite
-        run: python3 -m unittest brand_agents.tests.test_agents brand_agents.tests.test_daily brand_agents.tests.test_telegram_bot brand_agents.tests.test_drafter brand_agents.tests.test_decisions
+        run: python3 -m unittest brand_agents.tests.test_agents brand_agents.tests.test_daily brand_agents.tests.test_telegram_bot brand_agents.tests.test_drafter brand_agents.tests.test_decisions brand_agents.tests.test_session_tools
 
       - name: Note X Playwright requirement
         run: |
