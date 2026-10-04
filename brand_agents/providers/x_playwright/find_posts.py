@@ -12,7 +12,7 @@ import argparse
 import json
 import re
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from urllib.parse import quote
 
@@ -20,6 +20,8 @@ from typing import Any
 
 DEFAULT_STATE = Path.home() / ".alankrit-os" / "x-storage-state.json"
 DEFAULT_SCROLLS = 8
+DEFAULT_TAB = "top"
+DEFAULT_DAYS = 7
 DEFAULT_SEEN = Path.home() / ".alankrit-os" / "x-seen-urls.json"
 
 QUERY_EXCLUDES = '-crypto -web3 -solana -wallet -x402 -"agentic finance" lang:en -filter:replies'
@@ -34,6 +36,12 @@ DEFAULT_QUERIES = [
     f'"Claude Code" ("tips" OR "lessons" OR "workflow") {QUERY_EXCLUDES}',
     f'"built with Claude" {QUERY_EXCLUDES}',
     f'"coding agents" ("building" OR "learned") {QUERY_EXCLUDES}',
+    f'"Claude Code mods" {QUERY_EXCLUDES}',
+    f'"MCP server" ("stuck" OR "learned" OR "I built") {QUERY_EXCLUDES}',
+    f'"agent memory" OR "context window" agents {QUERY_EXCLUDES}',
+    f'"Claude Code" ("biggest issue" OR "I keep" OR "stuck") {QUERY_EXCLUDES}',
+    f'"coding agent" ("lost context" OR "forgot" OR "compaction") {QUERY_EXCLUDES}',
+    f'"building with Claude" {QUERY_EXCLUDES}',
 ]
 
 BLOCKED_TERMS = [
@@ -357,8 +365,18 @@ def extract_candidates(page: Any, checked_at: str) -> list[Candidate]:
     return candidates
 
 
-def search_url(query: str) -> str:
-    return f"https://x.com/search?q={quote(query)}&src=typed_query&f=live"
+def search_url(query: str, tab: str = "live") -> str:
+    if tab not in ("live", "top"):
+        raise ValueError(f"unknown search tab: {tab}")
+    return f"https://x.com/search?q={quote(query)}&src=typed_query&f={tab}"
+
+
+def with_since(query: str, days: int | None, today: date | None = None) -> str:
+    """Limit a query to recent posts so the Top tab does not surface stale threads."""
+    if not days:
+        return query
+    since = (today or date.today()) - timedelta(days=days)
+    return f"{query} since:{since.isoformat()}"
 
 
 def load_seen(path: Path) -> set[str]:
@@ -374,7 +392,8 @@ def save_seen(path: Path, urls: set[str]) -> None:
     path.write_text(json.dumps(sorted(urls), indent=2) + "\n", encoding="utf-8")
 
 
-def find_posts(state: Path, queries: list[str], limit: int, headless: bool, scrolls: int, channel: str | None = None, already_seen: set[str] | None = None) -> list[dict]:
+def find_posts(state: Path, queries: list[str] | None, limit: int, headless: bool, scrolls: int, channel: str | None = None, already_seen: set[str] | None = None, tab: str = DEFAULT_TAB, days: int | None = DEFAULT_DAYS) -> list[dict]:
+    queries = queries or DEFAULT_QUERIES
     seen: set[str] = set(already_seen or ())
     results: list[Candidate] = []
     checked_at = date.today().isoformat()
@@ -386,7 +405,7 @@ def find_posts(state: Path, queries: list[str], limit: int, headless: bool, scro
         context = browser.new_context(storage_state=str(state))
         page = context.new_page()
         for query in queries:
-            page.goto(search_url(query), wait_until="domcontentloaded")
+            page.goto(search_url(with_since(query, days), tab), wait_until="domcontentloaded")
             page.wait_for_timeout(2500)
             for _ in range(scrolls):
                 for candidate in extract_candidates(page, checked_at):
@@ -408,6 +427,8 @@ def main() -> int:
     parser.add_argument("--scrolls", type=int, default=DEFAULT_SCROLLS)
     parser.add_argument("--headed", action="store_true", help="show browser window")
     parser.add_argument("--channel", default=None, help="browser channel, for example chrome")
+    parser.add_argument("--tab", choices=["top", "live"], default=DEFAULT_TAB, help="X search tab: top (default) or live (newest first)")
+    parser.add_argument("--days", type=int, default=DEFAULT_DAYS, help="only posts from the last N days (0 for no limit)")
     parser.add_argument("--seen-file", type=Path, default=DEFAULT_SEEN, help="URLs already surfaced in earlier runs")
     parser.add_argument("--no-dedupe", action="store_true", help="ignore and do not update the seen file")
     parser.add_argument("--out", type=Path, required=True)
@@ -417,7 +438,7 @@ def main() -> int:
         raise SystemExit(f"missing storage state. Run login first: {args.state}")
     queries = args.query or DEFAULT_QUERIES
     previously_seen = set() if args.no_dedupe else load_seen(args.seen_file)
-    targets = find_posts(args.state, queries, args.limit, headless=not args.headed, scrolls=args.scrolls, channel=args.channel, already_seen=previously_seen)
+    targets = find_posts(args.state, queries, args.limit, headless=not args.headed, scrolls=args.scrolls, channel=args.channel, already_seen=previously_seen, tab=args.tab, days=args.days or None)
     if not args.no_dedupe:
         save_seen(args.seen_file, previously_seen | {target["url"] for target in targets})
     args.out.parent.mkdir(parents=True, exist_ok=True)

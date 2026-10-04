@@ -1,3 +1,4 @@
+from datetime import date
 from pathlib import Path
 import tempfile
 import unittest
@@ -6,7 +7,7 @@ from brand_agents.common import check_voice, require_all_pass
 from brand_agents.draft_agent import build_variants
 from brand_agents.issue_to_command import convert
 from brand_agents.mobile_runner import run
-from brand_agents.providers.x_playwright.find_posts import DEFAULT_QUERIES, DEFAULT_SCROLLS, KEYWORD_CAP, load_seen, order_reasons, save_seen, score_text, search_url
+from brand_agents.providers.x_playwright.find_posts import DEFAULT_DAYS, DEFAULT_QUERIES, DEFAULT_SCROLLS, DEFAULT_TAB, KEYWORD_CAP, load_seen, order_reasons, save_seen, score_text, search_url, with_since
 from brand_agents.reply_scout import apply_angles, draft_reply, load_angles, render_report
 from brand_agents.providers.x_playwright.save_cookies import build_state
 from brand_agents.reply_scout import load_targets
@@ -490,6 +491,29 @@ I build because it is fun.
     def test_queries_require_english(self):
         for query in DEFAULT_QUERIES:
             self.assertIn("lang:en", query)
+
+    def test_search_url_supports_top_and_live(self):
+        self.assertIn("f=top", search_url("claude code", "top"))
+        self.assertIn("f=live", search_url("claude code", "live"))
+        self.assertIn("f=live", search_url("claude code"))
+        with self.assertRaises(ValueError):
+            search_url("claude code", "media")
+
+    def test_default_tab_is_top_with_recency_window(self):
+        self.assertEqual(DEFAULT_TAB, "top")
+        self.assertEqual(DEFAULT_DAYS, 7)
+
+    def test_with_since_adds_recent_window(self):
+        self.assertEqual(with_since("q", 7, date(2026, 10, 4)), "q since:2026-09-27")
+        self.assertEqual(with_since("q", None), "q")
+        self.assertEqual(with_since("q", 0), "q")
+
+    def test_discovery_covers_problem_and_memory_topics(self):
+        joined = " ".join(DEFAULT_QUERIES)
+        for term in ["Claude Code mods", "agent memory", "context window", "compaction", "biggest issue"]:
+            self.assertIn(term, joined)
+        self.assertGreaterEqual(len(DEFAULT_QUERIES), 15)
+        self.assertEqual(len(DEFAULT_QUERIES), len(set(DEFAULT_QUERIES)))
 
 
 if __name__ == "__main__":
