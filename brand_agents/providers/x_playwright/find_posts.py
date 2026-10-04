@@ -127,6 +127,18 @@ NEWS_PATTERNS = [
     r"\bepisode\b",
 ]
 
+KEYWORD_CAP = 8
+
+PROFANITY_RE = re.compile(r"\b(?:fuck\w*|shit\w*|bullshit|asshole|bitch\w*|wtf)\b")
+
+HASHTAG_RE = re.compile(r"#\w+")
+
+# (reason, patterns, only when the post has no first-person voice)
+REJECT_RULES = [
+    ("automated account", [r"\bautomated by @"], False),
+    ("listicle or aggregator", [r"\bthe source describes\b", r"\bgithub projects\b", r"\bpick a starting point\b"], True),
+]
+
 ANNOUNCEMENT_PATTERNS = [
     r"\bjust launched\b",
     r"\bis now available\b",
@@ -219,6 +231,15 @@ def score_text(text: str) -> tuple[int, list[str]]:
         return -90, ["milestone or engagement bait"]
     if any(re.search(pattern, lowered) for pattern in POLL_PATTERNS):
         return -90, ["poll"]
+    if PROFANITY_RE.search(lowered):
+        return -90, ["profanity or rant"]
+    if len(HASHTAG_RE.findall(text)) >= 2:
+        return -90, ["hashtag farming"]
+    for reason, patterns, impersonal_only in REJECT_RULES:
+        if impersonal_only and personal:
+            continue
+        if any(re.search(pattern, lowered) for pattern in patterns):
+            return -90, [reason]
     if any(re.search(pattern, lowered) for pattern in NEWS_PATTERNS):
         return -90, ["news or third-party summary"]
     if not personal and any(re.search(pattern, lowered) for pattern in ANNOUNCEMENT_PATTERNS):
@@ -234,10 +255,9 @@ def score_text(text: str) -> tuple[int, list[str]]:
     if not (has_agent_signal and has_builder_signal):
         score -= 6
         reasons.append("missing agent+builder pair")
-    for term in HIGH_SIGNAL_TERMS:
-        if term in lowered:
-            score += 2
-            reasons.append(term)
+    keyword_hits = [term for term in HIGH_SIGNAL_TERMS if term in lowered]
+    reasons.extend(keyword_hits)
+    score += min(KEYWORD_CAP, 2 * len(keyword_hits))
     if "?" in text:
         score += 2
         reasons.append("question")

@@ -6,7 +6,7 @@ from brand_agents.common import check_voice, require_all_pass
 from brand_agents.draft_agent import build_variants
 from brand_agents.issue_to_command import convert
 from brand_agents.mobile_runner import run
-from brand_agents.providers.x_playwright.find_posts import DEFAULT_QUERIES, DEFAULT_SCROLLS, load_seen, order_reasons, save_seen, score_text, search_url
+from brand_agents.providers.x_playwright.find_posts import DEFAULT_QUERIES, DEFAULT_SCROLLS, KEYWORD_CAP, load_seen, order_reasons, save_seen, score_text, search_url
 from brand_agents.reply_scout import apply_angles, draft_reply, load_angles, render_report
 from brand_agents.providers.x_playwright.save_cookies import build_state
 from brand_agents.reply_scout import load_targets
@@ -372,6 +372,48 @@ I build because it is fun.
     def test_human_angle_with_reframe_fails_voice_check(self):
         target = {"url": "https://x.com/a/status/1", "post_text": "post", "angle": "It's not the model, it's the context."}
         self.assertIn("FAIL", render_report([target]))
+
+    def test_keyword_stuffing_is_capped(self):
+        stuffed = "claude code ai agents agent build building built builder workflow workflows gtm startup product vibe coding cursor codex"
+        _, reasons = score_text(stuffed)
+        score, _ = score_text(stuffed)
+        self.assertGreater(len(reasons), KEYWORD_CAP // 2)
+        self.assertLessEqual(score, KEYWORD_CAP + 2 + 3 + 2 + 2)
+
+    def test_x_scoring_rejects_automated_accounts(self):
+        score, reasons = score_text("Polsia @newonpolsia \u00b7 Automated by @polsia I built infrastructure for AI agents and workflows.")
+        self.assertLess(score, 0)
+        self.assertEqual(reasons, ["automated account"])
+
+    def test_x_scoring_rejects_profanity_and_rants(self):
+        for text in [
+            "AI @Davidwuuu92 \u00b7 Fuck Anthropic, Fuck claude code. I am building a mods for @claudeai. Why I got banned for no reason.",
+            "Dev @dev \u00b7 This agent workflow is bullshit and I built it myself with Claude Code.",
+        ]:
+            score, reasons = score_text(text)
+            self.assertLess(score, 0, text)
+            self.assertEqual(reasons, ["profanity or rant"])
+
+    def test_x_scoring_rejects_listicles_but_not_personal_github_posts(self):
+        score, reasons = score_text(
+            "Tung Air @tungair87 \u00b7 Connect apps, prototype AI agents, or turn scripts into automations. The source describes these GitHub projects "
+            "as open-source options for building automations, agents and workflows. Pick a starting point based on your stack."
+        )
+        self.assertLess(score, 0)
+        self.assertEqual(reasons, ["listicle or aggregator"])
+        score, _ = score_text("Dev @dev \u00b7 I built two GitHub projects with Claude Code agents and learned a lot about the workflow. What would you change?")
+        self.assertGreaterEqual(score, 6)
+
+    def test_x_scoring_rejects_hashtag_farming(self):
+        score, reasons = score_text(
+            "Siva @sivasankar___s \u00b7 AI has changed development speed. It hasn't cancelled debugging. Are you vibe coding or still trying to understand the code? #AICoding #VibeCoding"
+        )
+        self.assertLess(score, 0)
+        self.assertEqual(reasons, ["hashtag farming"])
+
+    def test_single_hashtag_is_allowed(self):
+        score, _ = score_text("Dev @dev \u00b7 I built an agent workflow with Claude Code and learned a lot. What do you use? #buildinpublic")
+        self.assertGreaterEqual(score, 6)
 
 
 if __name__ == "__main__":
