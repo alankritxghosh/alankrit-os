@@ -31,6 +31,25 @@ python3 -m brand_agents.reply_scout \
 
 Output: local draft replies with clickable URLs and checks. The scout does not browse by itself in this environment.
 
+Most posts get `NEEDS HUMAN ANGLE`: the built-in replies only cover a few specific post types, and a generic reply is worse than none. Write your own reply for the targets worth answering in an angles file, a JSON object mapping the post URL to your text, then rerun:
+
+```bash
+python3 -m brand_agents.reply_scout \
+  --targets /tmp/x-targets.json \
+  --angles ~/my-angles.json
+```
+
+```json
+{
+  "https://x.com/someone/status/123": "Your reply here.\nOne thought per line."
+}
+```
+
+- Query strings and trailing slashes on URLs are ignored. Blank values are skipped.
+- Your text is used as written and is never truncated. It goes through the same voice checks as any draft, so a `FAIL` line means rewrite it (over 280 characters, a long dash, a "not X, it is Y" reframe and so on).
+- A URL that matches no target prints a warning on stderr.
+- Nothing is posted. You copy the reply and post it yourself.
+
 ## 3. Weekly Report
 
 Input: manually checked follower counts.
@@ -74,5 +93,7 @@ python3 -m brand_agents.providers.x_playwright.login
 python3 -m brand_agents.providers.x_playwright.find_posts --limit 10 --out /tmp/x-targets.json
 python3 -m brand_agents.reply_scout --targets /tmp/x-targets.json
 ```
+
+`find_posts` remembers every URL it has surfaced in `~/.alankrit-os/x-seen-urls.json`, so repeat runs only show new posts. Pass `--no-dedupe` to ignore that file, or `--seen-file` to use another. A run searches 9 queries at 8 scrolls each and takes about 2 minutes.
 
 LinkedIn scouting is intentionally out of scope for this first pass.
