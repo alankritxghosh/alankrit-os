@@ -6,7 +6,7 @@ from brand_agents.common import check_voice, require_all_pass
 from brand_agents.draft_agent import build_variants
 from brand_agents.issue_to_command import convert
 from brand_agents.mobile_runner import run
-from brand_agents.providers.x_playwright.find_posts import load_seen, save_seen, score_text, search_url
+from brand_agents.providers.x_playwright.find_posts import DEFAULT_QUERIES, load_seen, order_reasons, save_seen, score_text, search_url
 from brand_agents.reply_scout import draft_reply
 from brand_agents.providers.x_playwright.save_cookies import build_state
 from brand_agents.reply_scout import load_targets
@@ -225,6 +225,36 @@ I build because it is fun.
     def test_vibe_coding_reply_needs_shipping_context(self):
         self.assertIsNone(draft_reply({"post_text": "i built this tool by vibe coding and i'm learning what features to add by using it"}))
         self.assertIsNotNone(draft_reply({"post_text": "Back before vibe coding got big, I built startups in weekends."}))
+
+    def test_x_scoring_blocks_agentic_finance_cluster(self):
+        posts = [
+            "Ho3in @Lucky_Man1990 \u00b7 @ama_protocol Exploring what is building around agentic finance. Confidential execution verifiable compute, and interoperable AI agents could make complex financial workflows much easier to use.",
+            "Emin @Eminweb3 \u00b7 B.AI Is Building The Economic Infrastructure That Could Turn AI Agents Into Digital Participants. AI progress is often measured through intelligence. More capable Agents.",
+            "Agentic Finance Graph @AgenticGraph \u00b7 Oct We are opening a free week for teams building with agents: platforms, wallets, x402 sellers. Bring your agents' wallets. DMs open",
+        ]
+        for text in posts:
+            score, reasons = score_text(text)
+            self.assertLess(score, 0, text)
+            self.assertEqual(reasons, ["blocked topic"])
+
+    def test_default_queries_exclude_finance_cluster(self):
+        for query in DEFAULT_QUERIES:
+            for term in ["-wallet", "-x402", '-"agentic finance"', "-crypto", "-filter:replies"]:
+                self.assertIn(term, query)
+
+    def test_why_lists_penalties_first(self):
+        reasons = ["a", "b", "c", "d", "e", "f", "no question or first-person angle"]
+        self.assertEqual(order_reasons(reasons)[0], "no question or first-person angle")
+        self.assertIn("no question or first-person angle", order_reasons(reasons)[:6])
+
+    def test_x_scoring_keeps_good_batch_3_posts(self):
+        keep = [
+            "MAIRU @lambdascript \u00b7 I\u2019ve been hitting the limits of Claude Code, so I\u2019m trying Ollama Cloud\u2019s Max plan. I\u2019m building an observability app right now, so this will be a real-world test of coding quality, agent reliability, speed, and cost.",
+            "Conor Murphy @cnrmurphy \u00b7 8h Very impressed by the new Opus model. I canceled my CC sub before. I\u2019ve never been happy with the whole vibe coding thing, but so far I\u2019ve built a few things.",
+        ]
+        for text in keep:
+            score, _ = score_text(text)
+            self.assertGreaterEqual(score, 6, text)
 
 
 if __name__ == "__main__":

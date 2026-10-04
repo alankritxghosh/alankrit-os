@@ -21,12 +21,14 @@ from typing import Any
 DEFAULT_STATE = Path.home() / ".alankrit-os" / "x-storage-state.json"
 DEFAULT_SEEN = Path.home() / ".alankrit-os" / "x-seen-urls.json"
 
+QUERY_EXCLUDES = '-crypto -web3 -solana -wallet -x402 -"agentic finance" -filter:replies'
+
 DEFAULT_QUERIES = [
-    '"Claude Code" ("built" OR "building") -crypto -web3 -solana -filter:replies',
-    '"AI agents" ("workflow" OR "workflows") -crypto -web3 -solana -filter:replies',
-    '"building with agents" -crypto -web3 -solana -filter:replies',
-    '"vibe coding" ("built" OR "learned") -crypto -web3 -solana -filter:replies',
-    '"GTM" "AI agents" -crypto -web3 -solana -filter:replies',
+    f'"Claude Code" ("built" OR "building") {QUERY_EXCLUDES}',
+    f'"AI agents" ("workflow" OR "workflows") {QUERY_EXCLUDES}',
+    f'"building with agents" {QUERY_EXCLUDES}',
+    f'"vibe coding" ("built" OR "learned") {QUERY_EXCLUDES}',
+    f'"GTM" "AI agents" {QUERY_EXCLUDES}',
 ]
 
 BLOCKED_TERMS = [
@@ -49,6 +51,14 @@ BLOCKED_TERMS = [
     "airdrop",
     "nft",
     "permissionless",
+    "agentic finance",
+    "x402",
+    "wallet",
+    "economic infrastructure",
+    "verifiable compute",
+    "confidential execution",
+    "ama_protocol",
+    "dms open",
     "gpu hours",
     "compute markets",
     "$",
@@ -220,6 +230,19 @@ def score_text(text: str) -> tuple[int, list[str]]:
     return score, reasons
 
 
+PENALTY_REASONS = {
+    "missing agent+builder pair",
+    "too long",
+    "no question or first-person angle",
+    "brand mention without personal angle",
+}
+
+
+def order_reasons(reasons: list[str]) -> list[str]:
+    """List penalties first so a truncated 'why' never hides them."""
+    return [r for r in reasons if r in PENALTY_REASONS] + [r for r in reasons if r not in PENALTY_REASONS]
+
+
 def extract_candidates(page: Any, checked_at: str) -> list[Candidate]:
     candidates: list[Candidate] = []
     articles = page.locator("article")
@@ -238,7 +261,7 @@ def extract_candidates(page: Any, checked_at: str) -> list[Candidate]:
             url=url,
             author=author_from_url(url),
             post_text=text[:1200],
-            why=f"X search candidate; score {score}; signals: {', '.join(reasons[:6])}",
+            why=f"X search candidate; score {score}; signals: {', '.join(order_reasons(reasons)[:6])}",
             checked_at=checked_at,
             score=score,
         ))
