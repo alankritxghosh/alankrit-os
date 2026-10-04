@@ -133,6 +133,10 @@ PROFANITY_RE = re.compile(r"\b(?:fuck\w*|shit\w*|bullshit|asshole|bitch\w*|wtf)\
 
 HASHTAG_RE = re.compile(r"#\w+")
 
+LINK_RE = re.compile(r"https?://")
+
+EMOJI_RE = re.compile(r"[\U0001F300-\U0001FAFF\u2600-\u27BF\U0001F1E6-\U0001F1FF]")
+
 # (reason, patterns, only when the post has no first-person voice)
 REJECT_RULES = [
     ("automated account", [r"\bautomated by @"], False),
@@ -279,6 +283,12 @@ def score_text(text: str) -> tuple[int, list[str]]:
     if not personal:
         score -= 4
         reasons.append("no question or first-person angle")
+    if LINK_RE.search(text):
+        score -= 4
+        reasons.append("link in post")
+    if len(EMOJI_RE.findall(text)) >= 2 and "?" not in text:
+        score -= 3
+        reasons.append("emoji-heavy without question")
     if re.search(r"@\w+", text) and not personal:
         score -= 4
         reasons.append("brand mention without personal angle")
@@ -290,6 +300,8 @@ PENALTY_REASONS = {
     "too long",
     "no question or first-person angle",
     "brand mention without personal angle",
+    "link in post",
+    "emoji-heavy without question",
 }
 
 

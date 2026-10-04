@@ -415,6 +415,37 @@ I build because it is fun.
         score, _ = score_text("Dev @dev \u00b7 I built an agent workflow with Claude Code and learned a lot. What do you use? #buildinpublic")
         self.assertGreaterEqual(score, 6)
 
+    def test_link_in_post_is_penalized(self):
+        base = "Dev @dev \u00b7 I built an agent workflow with Claude Code and learned a lot about it"
+        plain, _ = score_text(base)
+        linked, reasons = score_text(base + " https://example.com/post")
+        self.assertEqual(plain - linked, 4)
+        self.assertIn("link in post", reasons)
+
+    def test_emoji_heavy_post_without_question_is_penalized(self):
+        base = "Dev @dev \u00b7 I built an agent workflow with Claude Code and learned a lot about it"
+        plain, _ = score_text(base)
+        emoji, reasons = score_text(base + " \U0001F680\U0001F9E0")
+        self.assertEqual(plain - emoji, 3)
+        self.assertIn("emoji-heavy without question", reasons)
+
+    def test_single_emoji_is_not_penalized(self):
+        base = "Dev @dev \u00b7 I built an agent workflow with Claude Code and learned a lot about it"
+        plain, _ = score_text(base)
+        one, _ = score_text(base + " \U0001F680")
+        self.assertEqual(plain, one)
+
+    def test_emoji_with_question_is_not_penalized(self):
+        text = "Siim @Humunuk \u00b7 Been busy \U0001F41D this weekend, excited to explore Claude Code mods. Have you built anything cool yet? \U0001F604 Biggest issue I have is editing files from the agent workflow"
+        score, reasons = score_text(text)
+        self.assertNotIn("emoji-heavy without question", reasons)
+        self.assertGreaterEqual(score, 6)
+
+    def test_penalties_are_listed_first_in_why(self):
+        _, reasons = score_text("Dev @dev \u00b7 I built an agent workflow with Claude Code and learned a lot https://example.com \U0001F680\U0001F9E0")
+        ordered = order_reasons(reasons)
+        self.assertEqual(set(ordered[:2]), {"link in post", "emoji-heavy without question"})
+
 
 if __name__ == "__main__":
     unittest.main()
