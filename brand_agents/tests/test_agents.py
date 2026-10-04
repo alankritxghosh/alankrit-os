@@ -6,7 +6,7 @@ from brand_agents.common import check_voice, require_all_pass
 from brand_agents.draft_agent import build_variants
 from brand_agents.issue_to_command import convert
 from brand_agents.mobile_runner import run
-from brand_agents.providers.x_playwright.find_posts import score_text, search_url
+from brand_agents.providers.x_playwright.find_posts import load_seen, save_seen, score_text, search_url
 from brand_agents.reply_scout import draft_reply
 from brand_agents.providers.x_playwright.save_cookies import build_state
 from brand_agents.reply_scout import load_targets
@@ -184,6 +184,47 @@ I build because it is fun.
             "Building AI agents and workflows. Kiro deserves a seat at the table.",
         ]:
             self.assertIsNone(draft_reply({"post_text": post}), post)
+
+    def test_x_scoring_rejects_milestone_and_engagement_bait(self):
+        posts = [
+            "Founder Arc @FounderArcx \u00b7 Oct Just hit followers on LinkedIn. Started FounderArc to document building AI agents. Keep building.",
+            "Elias @eandualem \u00b7 14h Two days ago I had followers. Today I'm close to . Thank you to everyone who said hi. I build open-source tools for coding agents. If you're building too, what are you working on? Let's #connect",
+        ]
+        for text in posts:
+            score, reasons = score_text(text)
+            self.assertLess(score, 0, text)
+            self.assertIn("milestone or engagement bait", reasons)
+
+    def test_x_scoring_rejects_polls(self):
+        score, reasons = score_text("Pavel @PavelFlit \u00b7 Oct Building with agents got cheaper. Which bill hit you first? Acquisition % Support load % votes \u00b7 Final results")
+        self.assertLess(score, 0)
+        self.assertIn("poll", reasons)
+
+    def test_x_scoring_keeps_real_mcp_build_post(self):
+        score, _ = score_text(
+            "Raditya @perdhevi \u00b7 My Obsidian vault holds most of my thinking, and my AI assistants couldn't see any of it. "
+            "So I built a local MCP server for it. Ollama for embeddings, LanceDB for vectors, nothing leaves my machine. Claude Code agent search."
+        )
+        self.assertGreaterEqual(score, 6)
+
+    def test_seen_file_round_trip(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "nested" / "seen.json"
+            self.assertEqual(load_seen(path), set())
+            save_seen(path, {"https://x.com/a/status/1", "https://x.com/b/status/2"})
+            self.assertEqual(load_seen(path), {"https://x.com/a/status/1", "https://x.com/b/status/2"})
+
+    def test_seen_file_tolerates_garbage(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "seen.json"
+            path.write_text("not json", encoding="utf-8")
+            self.assertEqual(load_seen(path), set())
+            path.write_text('{"a": 1}', encoding="utf-8")
+            self.assertEqual(load_seen(path), set())
+
+    def test_vibe_coding_reply_needs_shipping_context(self):
+        self.assertIsNone(draft_reply({"post_text": "i built this tool by vibe coding and i'm learning what features to add by using it"}))
+        self.assertIsNotNone(draft_reply({"post_text": "Back before vibe coding got big, I built startups in weekends."}))
 
 
 if __name__ == "__main__":

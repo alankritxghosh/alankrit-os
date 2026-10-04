@@ -37,7 +37,7 @@ def draft_reply(target: dict) -> str | None:
         return "Switching for a month tells you more than any comparison thread. Pick the one whose failures you can read fastest."
     if "agent" in lowered and any(term in lowered for term in ["grades", "benchmark", "eval"]) and any(term in lowered for term in ["database", "records", "backend"]):
         return "Grading on the state an agent leaves behind is the right test. A clean transcript can hide a lot of broken writes."
-    if "vibe coding" in lowered and any(term in lowered for term in ["i built", "i've built", "i shipped"]):
+    if "vibe coding" in lowered and any(term in lowered for term in ["i built", "i've built", "i shipped"]) and any(term in lowered for term in ["startup", "shipped", "in production", "launched"]):
         return "Vibe coding still needs taste. Otherwise you just ship confusion faster."
     return None
 

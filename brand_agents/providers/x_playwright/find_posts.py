@@ -19,6 +19,7 @@ from urllib.parse import quote
 from typing import Any
 
 DEFAULT_STATE = Path.home() / ".alankrit-os" / "x-storage-state.json"
+DEFAULT_SEEN = Path.home() / ".alankrit-os" / "x-seen-urls.json"
 
 DEFAULT_QUERIES = [
     '"Claude Code" ("built" OR "building") -crypto -web3 -solana -filter:replies',
@@ -84,6 +85,20 @@ PROMO_PATTERNS = [
     r"\bcheat code\b",
     r"\blink in (?:bio|comments)\b",
     r"\bjoin (?:our|the) (?:community|discord|channel|group)\b",
+]
+
+MILESTONE_PATTERNS = [
+    r"\bthank you to everyone\b",
+    r"#connect\b",
+    r"\bfollow back\b",
+    r"\b(?:just )?(?:hit|reached|crossed|passed)\b[^.]{0,30}\bfollowers\b",
+    r"\bfollowers\b[^.]{0,30}\btoday\b",
+]
+
+POLL_PATTERNS = [
+    r"\bvotes?\b\s*\u00b7",
+    r"\bfinal results\b",
+    r"\bvote now\b",
 ]
 
 FIRST_PERSON_RE = re.compile(r"\b(?:i|i'm|i\u2019m|i've|i\u2019ve|my|me)\b")
@@ -160,6 +175,10 @@ def score_text(text: str) -> tuple[int, list[str]]:
     score = 0
     if promo_reasons(text):
         return -90, ["promo or hype post"]
+    if any(re.search(pattern, lowered) for pattern in MILESTONE_PATTERNS):
+        return -90, ["milestone or engagement bait"]
+    if any(re.search(pattern, lowered) for pattern in POLL_PATTERNS):
+        return -90, ["poll"]
     if any(term in lowered for term in BLOCKED_TERMS):
         return -100, ["blocked topic"]
     if any(term in lowered for term in ["works at", "joined ", "joining ", "hired", "we're hiring", "we are hiring"]):
@@ -230,8 +249,21 @@ def search_url(query: str) -> str:
     return f"https://x.com/search?q={quote(query)}&src=typed_query&f=live"
 
 
-def find_posts(state: Path, queries: list[str], limit: int, headless: bool, scrolls: int, channel: str | None = None) -> list[dict]:
-    seen: set[str] = set()
+def load_seen(path: Path) -> set[str]:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return set()
+    return {url for url in data if isinstance(url, str)} if isinstance(data, list) else set()
+
+
+def save_seen(path: Path, urls: set[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(sorted(urls), indent=2) + "\n", encoding="utf-8")
+
+
+def find_posts(state: Path, queries: list[str], limit: int, headless: bool, scrolls: int, channel: str | None = None, already_seen: set[str] | None = None) -> list[dict]:
+    seen: set[str] = set(already_seen or ())
     results: list[Candidate] = []
     checked_at = date.today().isoformat()
 
@@ -264,13 +296,18 @@ def main() -> int:
     parser.add_argument("--scrolls", type=int, default=4)
     parser.add_argument("--headed", action="store_true", help="show browser window")
     parser.add_argument("--channel", default=None, help="browser channel, for example chrome")
+    parser.add_argument("--seen-file", type=Path, default=DEFAULT_SEEN, help="URLs already surfaced in earlier runs")
+    parser.add_argument("--no-dedupe", action="store_true", help="ignore and do not update the seen file")
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
 
     if not args.state.exists():
         raise SystemExit(f"missing storage state. Run login first: {args.state}")
     queries = args.query or DEFAULT_QUERIES
-    targets = find_posts(args.state, queries, args.limit, headless=not args.headed, scrolls=args.scrolls, channel=args.channel)
+    previously_seen = set() if args.no_dedupe else load_seen(args.seen_file)
+    targets = find_posts(args.state, queries, args.limit, headless=not args.headed, scrolls=args.scrolls, channel=args.channel, already_seen=previously_seen)
+    if not args.no_dedupe:
+        save_seen(args.seen_file, previously_seen | {target["url"] for target in targets})
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(targets, indent=2) + "\n", encoding="utf-8")
     print(args.out)
