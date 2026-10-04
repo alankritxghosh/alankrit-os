@@ -523,6 +523,56 @@ I build because it is fun.
             self.assertGreaterEqual(score, 6, text)
             self.assertNotIn("growth-hack funnel", reasons)
 
+    def test_x_scoring_rejects_emoji_heavy_posts_even_with_a_question(self):
+        score, reasons = score_text(
+            "Akanksha @Akankshaku46881 \u00b7 Sep \U0001F680 LinkedIn Agents powered by Claude! A complete collection of AI agents for content, GTM and sales. "
+            "\u26a1 Research. Write. Personalize. \U0001F916 Work smarter. \U0001F4A1 Which LinkedIn agent would you try first?"
+        )
+        self.assertLess(score, 0)
+        self.assertEqual(reasons, ["emoji-heavy post"])
+
+    def test_casual_emoji_with_question_still_passes(self):
+        text = "Siim @Humunuk \u00b7 Been busy \U0001F41D this weekend, excited to explore Claude Code mods. Have you built anything cool yet? \U0001F604 Biggest issue I have is editing files from the agent workflow"
+        score, reasons = score_text(text)
+        self.assertGreaterEqual(score, 6)
+        self.assertNotIn("emoji-heavy post", reasons)
+
+    def test_x_scoring_rejects_dm_and_free_trial_calls_to_action(self):
+        for text in [
+            "Yoav @yoavac \u00b7 Sep As a PM building with Claude Code, local setup was my biggest headache. Base Code runs it all in the cloud. It's live. Want to try it free for days? DM",
+            "Dev @dev \u00b7 I built an agent workflow with Claude Code. Want to try it for yourself? Try it free for a week.",
+        ]:
+            score, reasons = score_text(text)
+            self.assertLess(score, 0, text)
+            self.assertEqual(reasons, ["dm or free-trial call to action"], text)
+
+    def test_dm_rule_does_not_hit_ordinary_text(self):
+        score, _ = score_text("Dev @dev \u00b7 I built an agent workflow with Claude Code and my dm settings were never the problem. What do you use?")
+        self.assertGreaterEqual(score, 6)
+
+    def test_x_scoring_rejects_paid_service_announcements(self):
+        for text in [
+            "Tanmoy @godofdarkshadow \u00b7 Sep Vibe coding made building an iOS app easy. Apple still makes the last part painful. So I'm opening a small iOS Launch Rescue service. Already built the app? I'll help.",
+            "Dev @dev \u00b7 I built agents with Claude Code workflows and I'm now offering setup for teams.",
+        ]:
+            score, reasons = score_text(text)
+            self.assertLess(score, 0, text)
+            self.assertEqual(reasons, ["paid service announcement"], text)
+
+    def test_service_rule_keeps_posts_about_services_you_built(self):
+        score, _ = score_text("Dev @dev \u00b7 I built a small service with Claude Code agents that tracks my workflow. What would you add?")
+        self.assertGreaterEqual(score, 6)
+
+    def test_x_scoring_rejects_link_in_comments_or_replies_promos(self):
+        for text in [
+            "Avtandil @AvtandilAb67375 \u00b7 Oct Your Jira dashboard is lying to you. I built Jira AI Auditor, an MCP server for Claude agents. Link in replies",
+            "Julian @JulianGoldieSEO \u00b7 Oct Claude Code mods are getting ridiculous. I turned my AI agents into fish. I'll show you mod ideas. Link in the comments",
+            "Dev @dev \u00b7 I built a Claude Code agent workflow. Link in my bio",
+        ]:
+            score, reasons = score_text(text)
+            self.assertLess(score, 0, text)
+            self.assertEqual(reasons, ["promo or hype post"], text)
+
 
 if __name__ == "__main__":
     unittest.main()

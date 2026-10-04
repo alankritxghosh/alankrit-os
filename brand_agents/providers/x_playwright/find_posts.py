@@ -108,7 +108,7 @@ PROMO_PATTERNS = [
     r"\bfollow for\b",
     r"\bbookmark this\b",
     r"\bcheat code\b",
-    r"\blink in (?:bio|comments)\b",
+    r"\blink in (?:the |my )?(?:bio|comments|replies)\b",
     r"\bjoin (?:our|the) (?:community|discord|channel|group)\b",
     r"\bhere(?:'|\u2019)?s how you can\b",
     r"\bhow you can do the same\b",
@@ -137,6 +137,20 @@ NEWS_PATTERNS = [
 ]
 
 KEYWORD_CAP = 8
+
+EMOJI_REJECT_COUNT = 4
+
+DM_CTA_PATTERNS = [
+    r"\bwant to try (?:it|this)\b",
+    r"\btry it free\b",
+    r"\bfree for \w* ?days\b",
+    r"\bdm\s*$",
+]
+
+PAID_SERVICE_PATTERNS = [
+    r"\bi(?:'|\u2019)?m (?:opening|launching|offering) (?:a |an )?(?:\w+ ){0,5}service\b",
+    r"\bnow offering\b",
+]
 
 FUNNEL_STRONG_PATTERNS = [
     r"\bstupidly simple\b",
@@ -271,6 +285,12 @@ def score_text(text: str) -> tuple[int, list[str]]:
         re.search(r"\bthe crazy part\b", lowered) and ("\U0001F447" in text or "article " in lowered)
     ):
         return -90, ["growth-hack funnel"]
+    if len(EMOJI_RE.findall(text)) >= EMOJI_REJECT_COUNT:
+        return -90, ["emoji-heavy post"]
+    if any(re.search(pattern, lowered.strip()) for pattern in DM_CTA_PATTERNS):
+        return -90, ["dm or free-trial call to action"]
+    if any(re.search(pattern, lowered) for pattern in PAID_SERVICE_PATTERNS):
+        return -90, ["paid service announcement"]
     if any(re.search(pattern, lowered) for pattern in JOB_PATTERNS):
         return -90, ["job or career content"]
     if any(re.search(pattern, lowered) for pattern in SOLICITATION_PATTERNS):
