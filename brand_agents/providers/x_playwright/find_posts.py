@@ -106,6 +106,7 @@ PROMO_PATTERNS = [
     r"\bhow you can do the same\b",
     r"\bstep\s*:",
     r"\bset up (?:a )?free account\b",
+    r"\bfollow me\b",
 ]
 
 MILESTONE_PATTERNS = [
@@ -114,6 +115,23 @@ MILESTONE_PATTERNS = [
     r"\bfollow back\b",
     r"\b(?:just )?(?:hit|reached|crossed|passed)\b[^.]{0,30}\bfollowers\b",
     r"\bfollowers\b[^.]{0,30}\btoday\b",
+    r"\bhelp me find\b",
+    r"\bi want to meet\b",
+    r"\blooking to connect\b",
+]
+
+NEWS_PATTERNS = [
+    r"\bacquires\b",
+    r"\bhas acquired\b",
+    r"\bdiscusses\b",
+    r"\bepisode\b",
+]
+
+ANNOUNCEMENT_PATTERNS = [
+    r"\bjust launched\b",
+    r"\bis now available\b",
+    r"\bintroducing\b",
+    r"\bnow live\b",
 ]
 
 POLL_PATTERNS = [
@@ -194,12 +212,17 @@ def score_text(text: str) -> tuple[int, list[str]]:
     lowered = text.lower()
     reasons: list[str] = []
     score = 0
+    personal = "?" in text or bool(FIRST_PERSON_RE.search(lowered))
     if promo_reasons(text):
         return -90, ["promo or hype post"]
     if any(re.search(pattern, lowered) for pattern in MILESTONE_PATTERNS):
         return -90, ["milestone or engagement bait"]
     if any(re.search(pattern, lowered) for pattern in POLL_PATTERNS):
         return -90, ["poll"]
+    if any(re.search(pattern, lowered) for pattern in NEWS_PATTERNS):
+        return -90, ["news or third-party summary"]
+    if not personal and any(re.search(pattern, lowered) for pattern in ANNOUNCEMENT_PATTERNS):
+        return -90, ["corporate announcement"]
     if any(term in lowered for term in BLOCKED_TERMS):
         return -100, ["blocked topic"]
     if any(term in lowered for term in ["works at", "joined ", "joining ", "hired", "we're hiring", "we are hiring"]):
@@ -231,7 +254,6 @@ def score_text(text: str) -> tuple[int, list[str]]:
     if any(term in lowered for term in ["learned", "mistake", "problem", "workflow", "how i"]):
         score += 2
         reasons.append("has comment hook")
-    personal = "?" in text or bool(FIRST_PERSON_RE.search(lowered))
     if lowered.startswith("article "):
         return -90, ["article card without commentary"]
     if not personal:

@@ -7,7 +7,7 @@ from brand_agents.draft_agent import build_variants
 from brand_agents.issue_to_command import convert
 from brand_agents.mobile_runner import run
 from brand_agents.providers.x_playwright.find_posts import DEFAULT_QUERIES, DEFAULT_SCROLLS, load_seen, order_reasons, save_seen, score_text, search_url
-from brand_agents.reply_scout import draft_reply
+from brand_agents.reply_scout import apply_angles, draft_reply, load_angles, render_report
 from brand_agents.providers.x_playwright.save_cookies import build_state
 from brand_agents.reply_scout import load_targets
 from brand_agents.weekly_report import next_milestone
@@ -296,6 +296,82 @@ I build because it is fun.
         self.assertGreaterEqual(len(DEFAULT_QUERIES), 9)
         self.assertEqual(DEFAULT_SCROLLS, 8)
         self.assertTrue(any("MCP server" in query for query in DEFAULT_QUERIES))
+
+    def test_x_scoring_rejects_follow_me_and_networking_bait(self):
+        posts = [
+            "Rashad @AI_Acq \u00b7 3h Build an AI team for your agents. Follow me for practical AI workflows for revenue.",
+            "Rohan @RohanBhanotAI \u00b7 Oct Hey @X, help me find the builders. I'm Rohan, founder. I want to meet more people building with agents.",
+        ]
+        for text in posts:
+            score, _ = score_text(text)
+            self.assertLess(score, 0, text)
+
+    def test_x_scoring_rejects_news_and_third_party_summaries(self):
+        posts = [
+            "Guth Labs @GuthLabs \u00b7 Oct Bolt.new acquires Dokai, bringing its enterprise agent team into its AI organization. The startup built agents.",
+            "Light @LightSciencXXII \u00b7 5h Abhi Aiyer, CTO at Mastra, discusses building AI applications with TypeScript during an Open Source Friday episode. Agents, workflows, memory.",
+        ]
+        for text in posts:
+            score, reasons = score_text(text)
+            self.assertLess(score, 0, text)
+            self.assertEqual(reasons, ["news or third-party summary"])
+
+    def test_x_scoring_rejects_corporate_launch_but_keeps_personal_launch(self):
+        corporate = "Swami @SwamiSivasubram \u00b7 Oct The team just launched Kiro workflows, which addresses time spent supervising agents building complex work."
+        score, reasons = score_text(corporate)
+        self.assertLess(score, 0)
+        self.assertEqual(reasons, ["corporate announcement"])
+        personal = "Eddie @eaftandilian \u00b7 I just launched SafeRE, a Java regex library. I learned a lot about building with agents and wrote about the workflow."
+        score, _ = score_text(personal)
+        self.assertGreaterEqual(score, 6)
+
+    def test_x_scoring_keeps_context_compaction_post(self):
+        score, _ = score_text(
+            "Niall @nialldarwinlabs \u00b7 1h I keep noticing the same problem with AI coding agents: once context gets compacted, "
+            "they can forget what was rejected, redo old work, or say something is done when it isn't. So I'm building Agent Guardian, "
+            "a persistent reliability layer. Claude Code workflow."
+        )
+        self.assertGreaterEqual(score, 6)
+
+    def test_load_angles_and_apply(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "angles.json"
+            path.write_text(
+                '{"https://x.com/a/status/1?s=20": "My take on a.", "https://x.com/b/status/2/": "   ", "https://x.com/z/status/9": "Orphan."}',
+                encoding="utf-8",
+            )
+            angles = load_angles(path)
+        self.assertEqual(set(angles), {"https://x.com/a/status/1", "https://x.com/z/status/9"})
+        targets = [
+            {"url": "https://x.com/a/status/1", "post_text": "post a"},
+            {"url": "https://x.com/b/status/2", "post_text": "post b"},
+        ]
+        result, unmatched = apply_angles(targets, angles)
+        self.assertEqual(result[0]["angle"], "My take on a.")
+        self.assertNotIn("angle", result[1])
+        self.assertEqual(unmatched, ["https://x.com/z/status/9"])
+        self.assertNotIn("angle", targets[0])
+
+    def test_load_angles_rejects_bad_shapes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "angles.json"
+            path.write_text("[]", encoding="utf-8")
+            with self.assertRaises(ValueError):
+                load_angles(path)
+            path.write_text('{"https://x.com/a/status/1": 5}', encoding="utf-8")
+            with self.assertRaises(ValueError):
+                load_angles(path)
+
+    def test_human_angle_is_voice_checked_and_not_truncated(self):
+        long_angle = "A thought. " * 40
+        target = {"url": "https://x.com/a/status/1", "post_text": "post", "angle": long_angle, "opened": True}
+        self.assertEqual(draft_reply(target), long_angle.strip())
+        report = render_report([target])
+        self.assertIn("FAIL", report)
+
+    def test_human_angle_with_reframe_fails_voice_check(self):
+        target = {"url": "https://x.com/a/status/1", "post_text": "post", "angle": "It's not the model, it's the context."}
+        self.assertIn("FAIL", render_report([target]))
 
 
 if __name__ == "__main__":

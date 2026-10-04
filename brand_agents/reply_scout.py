@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 from .common import add_common_args, check_voice, output_path, render_checks, write_markdown
@@ -22,11 +23,39 @@ def load_targets(path: Path) -> list[dict]:
     return data
 
 
+def normalize_url(url: str) -> str:
+    return str(url).split("?")[0].rstrip("/")
+
+
+def load_angles(path: Path) -> dict[str, str]:
+    """Load {post url: your own reply text}. Blank values are ignored."""
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError("angles must be a JSON object mapping post URL to reply text")
+    angles: dict[str, str] = {}
+    for url, text in data.items():
+        if not isinstance(text, str):
+            raise ValueError(f"angle for {url} must be a string")
+        if text.strip():
+            angles[normalize_url(url)] = text.strip()
+    return angles
+
+
+def apply_angles(targets: list[dict], angles: dict[str, str]) -> tuple[list[dict], list[str]]:
+    """Attach angles to matching targets. Returns (targets, angle URLs that matched nothing)."""
+    wanted = dict(angles)
+    result = []
+    for target in targets:
+        angle = wanted.pop(normalize_url(target["url"]), None)
+        result.append({**target, "angle": angle} if angle else target)
+    return result, sorted(wanted)
+
+
 def draft_reply(target: dict) -> str | None:
     """Return a draft reply, or None when the post needs a human angle."""
     angle = (target.get("angle") or "").strip()
     if angle:
-        return angle[:260].strip()
+        return angle
     post = " ".join(str(target["post_text"]).split())
     lowered = post.lower()
     if all(term in lowered for term in ["claude code", "codex"]) and any(term in lowered for term in ["switching", "terminal", "parallel", "sessions"]):
@@ -102,10 +131,15 @@ def render_report(targets: list[dict]) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--targets", type=Path, required=True, help="JSON array of browser-verified targets")
+    parser.add_argument("--angles", type=Path, default=None, help="JSON object mapping post URL to your own reply text")
     add_common_args(parser)
     args = parser.parse_args()
 
     targets = load_targets(args.targets)
+    if args.angles:
+        targets, unmatched = apply_angles(targets, load_angles(args.angles))
+        for url in unmatched:
+            print(f"warning: angle matches no target: {url}", file=sys.stderr)
     out = args.out or output_path("reply-targets")
     write_markdown(out, render_report(targets))
     print(out)
