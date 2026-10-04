@@ -515,6 +515,32 @@ I build because it is fun.
         self.assertGreaterEqual(len(DEFAULT_QUERIES), 15)
         self.assertEqual(len(DEFAULT_QUERIES), len(set(DEFAULT_QUERIES)))
 
+    def test_x_scoring_rejects_paid_partnership_posts(self):
+        score, reasons = score_text(
+            "PARSA @Parsats_eth \u00b7 14h A big part of my day goes to switching between tools. Hedwig AI brings them into one workspace, "
+            "with AI agents that have the full picture. Paid partnership"
+        )
+        self.assertLess(score, 0)
+        self.assertEqual(reasons, ["promo or hype post"])
+
+    def test_x_scoring_rejects_growth_hack_funnels(self):
+        score, reasons = score_text(
+            "Umer @UmerShips \u00b7 Sep I went from to users for my B2B SaaS in days. No ads. No content agency. No editor. "
+            "Just one Reel format, posted twice a day. The crazy part? The system is stupidly simple \U0001F447 Article How I Turned UGC Reactions Into Users "
+            "for the AI sales tool I'm building. The product was built."
+        )
+        self.assertLess(score, 0)
+        self.assertEqual(reasons, ["growth-hack funnel"])
+
+    def test_funnel_rule_keeps_ordinary_down_arrow_and_crazy_part(self):
+        for text in [
+            "Raditya @perdhevi \u00b7 My Obsidian vault holds my thinking, so I built a local MCP server with Claude Code agent search. Here's the walkthrough \U0001F447",
+            "Dev @dev \u00b7 I built an agent workflow with Claude Code. The crazy part is how often the agent fixed its own bugs. What do you use?",
+        ]:
+            score, reasons = score_text(text)
+            self.assertGreaterEqual(score, 6, text)
+            self.assertNotIn("growth-hack funnel", reasons)
+
 
 if __name__ == "__main__":
     unittest.main()

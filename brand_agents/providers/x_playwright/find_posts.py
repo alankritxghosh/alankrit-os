@@ -115,6 +115,7 @@ PROMO_PATTERNS = [
     r"\bstep\s*:",
     r"\bset up (?:a )?free account\b",
     r"\bfollow me\b",
+    r"\bpaid partnership\b",
 ]
 
 MILESTONE_PATTERNS = [
@@ -136,6 +137,11 @@ NEWS_PATTERNS = [
 ]
 
 KEYWORD_CAP = 8
+
+FUNNEL_STRONG_PATTERNS = [
+    r"\bstupidly simple\b",
+    r"\bno ads\.\s*no\b",
+]
 
 SOLICITATION_PATTERNS = [
     r"\btell your story\b",
@@ -261,6 +267,10 @@ def score_text(text: str) -> tuple[int, list[str]]:
         return -90, ["milestone or engagement bait"]
     if any(re.search(pattern, lowered) for pattern in POLL_PATTERNS):
         return -90, ["poll"]
+    if any(re.search(pattern, lowered) for pattern in FUNNEL_STRONG_PATTERNS) or (
+        re.search(r"\bthe crazy part\b", lowered) and ("\U0001F447" in text or "article " in lowered)
+    ):
+        return -90, ["growth-hack funnel"]
     if any(re.search(pattern, lowered) for pattern in JOB_PATTERNS):
         return -90, ["job or career content"]
     if any(re.search(pattern, lowered) for pattern in SOLICITATION_PATTERNS):
