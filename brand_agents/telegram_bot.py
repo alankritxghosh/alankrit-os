@@ -22,12 +22,15 @@ import subprocess
 import sys
 import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 import urllib.error
 import urllib.request
 from datetime import date
 from pathlib import Path
 from typing import Callable
 
+from . import decisions
+from . import drafter as drafting
 from .common import check_voice, require_all_pass
 from .daily import DEFAULT_ROOT, day_dir, excerpt, read_json, write_json
 from .reply_scout import normalize_url
@@ -45,8 +48,9 @@ HELP = (
     "/ready  your replies that passed the voice check\n"
     "/status  counts for today\n"
     "/cancel  stop writing a reply\n\n"
-    "Tap Write reply under a post, then send your reply as one message. "
-    "I check it and send it back ready to copy. You post it yourself."
+    "Each target comes with a draft reply. Tap Use draft to keep it, Edit to send your own version, "
+    "or Redraft for another angle. I check every reply against your voice rules and send it back ready "
+    "to copy. You post it yourself."
 )
 
 
@@ -112,6 +116,10 @@ def subprocess_scouter(force: bool) -> tuple[bool, str]:
     return True, "ok"
 
 
+def default_drafter(item: dict, avoid: str | None = None) -> drafting.DraftResult:
+    return drafting.draft_reply(item["post_text"], item.get("author", "UNKNOWN"), avoid=avoid)
+
+
 class Bot:
     def __init__(
         self,
@@ -121,6 +129,8 @@ class Bot:
         scouter: Callable[[bool], tuple[bool, str]] = subprocess_scouter,
         today: Callable[[], str] = lambda: date.today().isoformat(),
         run_async: bool = True,
+        drafter: Callable[[dict, str | None], drafting.DraftResult] = default_drafter,
+        decisions_path: Path = decisions.DEFAULT_LOG,
     ):
         self.api = api
         self.owner_id = int(owner_id)
@@ -128,8 +138,12 @@ class Bot:
         self.scouter = scouter
         self.today = today
         self.run_async = run_async
+        self.drafter = drafter
+        self.decisions_path = decisions_path
         self._lock = threading.Lock()
+        self._state_lock = threading.RLock()
         self._scouting = False
+        self._paging = False
 
     # ----- files -----
     @property
@@ -147,9 +161,22 @@ class Bot:
             items = [item for item in items if normalize_url(item["url"]) in wanted]
         return items
 
+    def item_for(self, url: str) -> dict:
+        wanted = normalize_url(url)
+        return next((c for c in self.candidates() if normalize_url(c["url"]) == wanted), {"url": url})
+
     def author_for(self, url: str) -> str:
         wanted = normalize_url(url)
         return next((c.get("author", "UNKNOWN") for c in self.candidates() if normalize_url(c["url"]) == wanted), "UNKNOWN")
+
+    def log(self, action: str, item: dict | None = None, **fields) -> None:
+        """Record a decision. Never raises: logging must not break the bot."""
+        event: dict = {"action": action, "day": self.today(), "model": drafting.DEFAULT_MODEL}
+        if item is not None:
+            event.update(url=normalize_url(item["url"]), author=item.get("author", "UNKNOWN"), score=item.get("score"),
+                         why=item.get("why"), post_text=item.get("post_text"))
+        event.update(fields)
+        decisions.log_event(event, self.decisions_path)
 
     def state(self) -> dict:
         state = read_json(self.directory / "bot_state.json", {})
@@ -157,6 +184,7 @@ class Bot:
         state.setdefault("pending", None)
         state.setdefault("shown", [])
         state.setdefault("skipped", [])
+        state.setdefault("drafts", {})
         return state
 
     def save_state(self, state: dict) -> None:
@@ -179,33 +207,94 @@ class Bot:
             params["parse_mode"] = "HTML"
         self.api.call("sendMessage", params)
 
-    def send_candidate(self, number: int, item: dict) -> None:
-        text = f"{number}. @{item.get('author', 'UNKNOWN')} (score {item.get('score', '?')})\n{item['url']}\n\n{excerpt(item['post_text'], POST_EXCERPT_CHARS)}"
+    def draft_for(self, item: dict, avoid: str | None = None) -> drafting.DraftResult:
+        try:
+            return self.drafter(item, avoid)
+        except Exception as exc:  # a drafter bug must never take the bot down
+            return drafting.DraftResult(None, "failed", f"drafting error ({type(exc).__name__})", 0)
+
+    def draft_all(self, items: list[dict]) -> list[drafting.DraftResult]:
+        if not self.run_async or len(items) < 2:
+            return [self.draft_for(item) for item in items]
+        with ThreadPoolExecutor(max_workers=3) as pool:
+            return list(pool.map(self.draft_for, items))
+
+    def card_text(self, number: int, item: dict, draft: drafting.DraftResult | None) -> str:
+        head = (
+            f"{number}. @{html.escape(item.get('author', 'UNKNOWN'))} (score {item.get('score', '?')})\n"
+            f"{html.escape(item['url'])}\n\n{html.escape(excerpt(item['post_text'], POST_EXCERPT_CHARS))}"
+        )
+        if draft is None:
+            return head
+        if draft.text:
+            return f"{head}\n\nDraft:\n<code>{html.escape(draft.text)}</code>"
+        return f"{head}\n\nNo draft ({html.escape(draft.note or draft.status)}). Tap Edit to write your own."
+
+    def send_candidate(self, number: int, item: dict, draft: drafting.DraftResult | None = None) -> None:
         tag = url_tag(item["url"])
-        markup = {"inline_keyboard": [[
-            {"text": "Write reply", "callback_data": f"w:{tag}"},
-            {"text": "Skip", "callback_data": f"s:{tag}"},
-        ]]}
-        self.send(text, markup)
+        if draft is not None and draft.text:
+            rows = [
+                [{"text": "Use draft", "callback_data": f"u:{tag}"}, {"text": "Edit", "callback_data": f"e:{tag}"}],
+                [{"text": "Redraft", "callback_data": f"r:{tag}"}, {"text": "Skip", "callback_data": f"s:{tag}"}],
+            ]
+        else:
+            rows = [
+                [{"text": "Edit", "callback_data": f"e:{tag}"}, {"text": "Redraft", "callback_data": f"r:{tag}"}],
+                [{"text": "Skip", "callback_data": f"s:{tag}"}],
+            ]
+        self.send(self.card_text(number, item, draft), {"inline_keyboard": rows}, html_mode=True)
 
     def send_page(self) -> None:
-        state = self.state()
-        hidden = set(state["shown"]) | set(state["skipped"])
-        items = self.visible()
-        remaining = [item for item in items if normalize_url(item["url"]) not in hidden]
-        if not items:
-            self.send("No targets for today yet. Send /scout.")
+        with self._state_lock:
+            if self._paging:
+                self.send("Still drafting the last page. One moment.")
+                return
+            state = self.state()
+            hidden = set(state["shown"]) | set(state["skipped"])
+            items = self.visible()
+            remaining = [item for item in items if normalize_url(item["url"]) not in hidden]
+            if not items:
+                self.send("No targets for today yet. Send /scout.")
+                return
+            if not remaining:
+                self.send("That is every target for today. Send /ready to see your replies, or /scout force for a fresh search.")
+                return
+            page = remaining[:PAGE_SIZE]
+            self._paging = True
+        try:
+            self.send(f"Drafting {len(page)} replies. About {20 * len(page) // 3 + 10} seconds.")
+            drafts = self.draft_all(page)
+            with self._state_lock:
+                state = self.state()
+                for item, draft in zip(page, drafts):
+                    url = normalize_url(item["url"])
+                    state["shown"].append(url)
+                    if draft.text:
+                        state["drafts"][url] = draft.text
+                self.save_state(state)
+            for item, draft in zip(page, drafts):
+                self.log("shown", item, draft=draft.text, draft_status=draft.status, draft_note=draft.note, draft_attempts=draft.attempts)
+                self.send_candidate(items.index(item) + 1, item, draft)
+            left = len(remaining) - len(page)
+            if left > 0:
+                self.send(f"{left} more. Send /more.")
+        finally:
+            self._paging = False
+
+    def run_job(self, fn, *args) -> None:
+        if not self.run_async:
+            fn(*args)
             return
-        if not remaining:
-            self.send("That is every target for today. Send /ready to see your replies, or /scout force for a fresh search.")
-            return
-        for item in remaining[:PAGE_SIZE]:
-            state["shown"].append(normalize_url(item["url"]))
-            self.send_candidate(items.index(item) + 1, item)
-        self.save_state(state)
-        left = len(remaining) - PAGE_SIZE
-        if left > 0:
-            self.send(f"{left} more. Send /more.")
+
+        def guarded():
+            try:
+                fn(*args)
+            except TelegramError as exc:
+                print(f"warning: {exc}", file=sys.stderr)
+            except Exception as exc:
+                print(f"warning: background job failed ({type(exc).__name__})", file=sys.stderr)
+
+        threading.Thread(target=guarded, daemon=True).start()
 
     # ----- updates -----
     def handle_update(self, update: dict) -> None:
@@ -237,7 +326,7 @@ class Bot:
         elif command == "/scout":
             self.start_scout(force=argument == "force")
         elif command == "/more":
-            self.send_page()
+            self.run_job(self.send_page)
         elif command == "/ready":
             self.send_ready()
         elif command == "/status":
@@ -253,29 +342,86 @@ class Bot:
     def handle_callback(self, query: dict) -> None:
         data = query.get("data", "")
         action, _, tag = data.partition(":")
+        action = "e" if action == "w" else action  # old "Write reply" buttons still in the chat
         item = next((c for c in self.candidates() if url_tag(c["url"]) == tag), None)
         try:
             self.api.call("answerCallbackQuery", {"callback_query_id": query.get("id")})
         except TelegramError:
             pass
-        if item is None or action not in ("w", "s"):
+        if item is None or action not in ("e", "s", "u", "r"):
             self.send("That post is no longer in today's list. Send /more.")
             return
         url = normalize_url(item["url"])
-        state = self.state()
-        if action == "s":
-            if url not in state["skipped"]:
-                state["skipped"].append(url)
-            self.save_state(state)
-            self.remove_buttons(query)
+        author = html.escape(item.get("author", "UNKNOWN"))
+        if action == "r":
+            self.send(f"Redrafting for @{author}. About 20 seconds.", html_mode=True)
+            self.run_job(self.redraft, item)
             return
-        previous = state.get("pending")
-        state["pending"] = url
-        self.save_state(state)
-        note = ""
-        if previous and previous != url:
-            note = f"Switched. I dropped @{self.author_for(previous)}; tap Write reply on it again if you still want it.\n\n"
-        self.send(f"{note}Send your reply to @{item.get('author', 'UNKNOWN')} as one message. /cancel to stop.\n{item['url']}")
+        with self._state_lock:
+            state = self.state()
+            if action == "s":
+                if url not in state["skipped"]:
+                    state["skipped"].append(url)
+                self.save_state(state)
+                self.log("skip", item, draft=state["drafts"].get(url), has_draft=bool(state["drafts"].get(url)))
+                self.remove_buttons(query)
+                return
+            if action == "u":
+                self.use_draft(state, item)
+                return
+            previous = state.get("pending")
+            state["pending"] = url
+            self.save_state(state)
+            note = ""
+            if previous and previous != url:
+                note = f"Switched. I dropped @{html.escape(self.author_for(previous))}; tap Edit on it again if you still want it.\n\n"
+            draft = state["drafts"].get(url)
+            self.log("edit_started", item, draft=draft)
+            reference = f"\n\nDraft for reference:\n<code>{html.escape(draft)}</code>" if draft else ""
+            self.send(
+                f"{note}Send your reply to @{author} as one message. /cancel to stop.\n{html.escape(item['url'])}{reference}",
+                html_mode=True,
+            )
+
+    def use_draft(self, state: dict, item: dict) -> None:
+        url = normalize_url(item["url"])
+        text = state["drafts"].get(url)
+        if not text:
+            self.send("There is no draft for that post. Tap Edit to write your own.")
+            return
+        checks = check_voice(text, "x")
+        if not require_all_pass(checks):
+            problems = "\n".join(f"- {c.name}: {c.detail}" for c in checks if not c.passed)
+            self.send(f"That draft no longer passes the voice check. Tap Edit.\n\n{problems}")
+            return
+        angles = self.angles()
+        angles[url] = text
+        write_json(self.directory / "angles.json", angles)
+        self.log("use_draft", item, draft=text, final=text, final_source="draft_as_is")
+        if state.get("pending") == url:
+            state["pending"] = None
+            self.save_state(state)
+        self.send(
+            f"Ready for @{html.escape(item.get('author', 'UNKNOWN'))}. Copy it and post it yourself:\n\n"
+            f"<code>{html.escape(text)}</code>\n\n{html.escape(item['url'])}",
+            html_mode=True,
+        )
+
+    def redraft(self, item: dict) -> None:
+        url = normalize_url(item["url"])
+        with self._state_lock:
+            previous = self.state()["drafts"].get(url)
+        draft = self.draft_for(item, avoid=previous)
+        if draft.text:
+            with self._state_lock:
+                state = self.state()
+                state["drafts"][url] = draft.text
+                self.save_state(state)
+        self.log("redraft", item, previous_draft=previous, draft=draft.text, draft_status=draft.status,
+                 draft_note=draft.note, draft_attempts=draft.attempts)
+        items = self.visible()
+        number = next((i for i, c in enumerate(items, 1) if normalize_url(c["url"]) == url), 0)
+        self.send_candidate(number, item, draft)
 
     def remove_buttons(self, query: dict) -> None:
         message = query.get("message") or {}
@@ -289,19 +435,28 @@ class Bot:
             pass
 
     def handle_text(self, text: str) -> None:
+        with self._state_lock:
+            self._handle_text(text)
+
+    def _handle_text(self, text: str) -> None:
         state = self.state()
         pending = state.get("pending")
         if not pending:
-            self.send("Tap Write reply under a post first, or send /help.")
+            self.send("Tap Edit under a post first, or send /help.")
             return
         checks = check_voice(text, "x")
         if not require_all_pass(checks):
             problems = "\n".join(f"- {c.name}: {c.detail}" for c in checks if not c.passed)
+            self.log("edit_rejected", self.item_for(pending), draft=state["drafts"].get(pending), attempt=text,
+                     failed_checks=[c.name for c in checks if not c.passed])
             self.send(f"Not ready. Fix and send it again, or /cancel.\n\n{problems}")
             return
         angles = self.angles()
         angles[pending] = text
         write_json(self.directory / "angles.json", angles)
+        draft = state["drafts"].get(pending)
+        self.log("edit_saved", self.item_for(pending), draft=draft, final=text, final_source="typed_by_alankrit",
+                 similarity=decisions.similarity(draft, text))
         state["pending"] = None
         self.save_state(state)
         self.send(

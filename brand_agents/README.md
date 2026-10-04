@@ -122,15 +122,36 @@ python3 -m brand_agents.telegram_bot run           # keep this running
 | Command | What it does |
 |---|---|
 | `/scout` | finds today's targets (about 3 minutes); `/scout force` searches again |
-| `/more` | shows the next 5 targets, each with **Write reply** and **Skip** buttons |
-| Write reply | then send your reply as one message; the bot voice-checks it and sends it back as tap-to-copy text, or lists what failed |
+| `/more` | drafts and shows the next 5 targets. Each card has the post, its link and a draft reply, with **Use draft**, **Edit**, **Redraft** and **Skip** buttons |
+| Use draft | saves the draft as ready and sends it back as tap-to-copy text |
+| Edit | shows the draft for reference; your next message replaces it and is voice-checked (the bot lists what failed) |
+| Redraft | asks for a different angle and sends a new card |
 | `/ready` | your replies that passed the voice check |
 | `/status` / `/cancel` | counts for today / stop writing a reply |
 
-- One reply is pending at a time. Tapping Write reply on another post says which one it dropped, and a saved reply says which post it belongs to.
+- Drafts are written by headless Claude Code on this Mac (`claude -p`, so run `claude auth login` once). It has every tool, MCP server and skill turned off, treats the post as untrusted data, and uses only your own typed voice examples. A draft that fails the voice check, contains a link, an @mention or a number that is not in the post is retried up to 3 times and then dropped, never shown. If it cannot write a specific reply without inventing facts about you it answers SKIP and the card offers Edit. Set `BRAND_DRAFT_MODEL` to change the model (default `sonnet`).
+- A draft is never saved as ready until you tap Use draft or send your own text.
+- One reply is pending at a time. Tapping Edit on another post says which one it dropped, and a saved reply says which post it belongs to.
 - If you ran `triage` for the day, the bot shows only that shortlist.
 - Replies are saved to the same `angles.json` the `daily replies` command reads.
 - The token never goes in the repo. `TELEGRAM_BOT_TOKEN` in the environment overrides the file. To rotate it, revoke it in BotFather, then run `set-token` again.
+
+## Decision log
+
+Every card shown and every tap (Use draft, Edit, Redraft, Skip) is appended to `~/.alankrit-os/decisions.jsonl`, outside the repo and mode 600, because it holds post text and your own replies. Each line records the post, its author, score and signals, Claude's draft, and what you did. Logging never blocks the bot: if the file cannot be written the bot carries on.
+
+```bash
+python3 -m brand_agents.decisions summary --days 14   # use / edit / skip rates, how much of each draft survived your edits, most-skipped authors
+```
+
+Two fields stay apart on purpose, so the log can feed drafting later without breaking the voice policy (first drafts come from text you typed, not agent text you approved):
+
+| Field | Meaning |
+|---|---|
+| `draft` | what Claude wrote |
+| `final_source` | `draft_as_is` (you approved agent text) or `typed_by_alankrit` (your own words) |
+
+An `edit_saved` event also stores `similarity`, from 0 to 1, for how much of the draft survived. Only `typed_by_alankrit` text should ever be used as a voice example.
 
 ## X discovery provider
 
