@@ -99,6 +99,39 @@ python3 -m brand_agents.daily replies                # voice-checks angles.json,
 - `scout` refuses to overwrite an existing day. `--force` refreshes the candidates and keeps every reply you already wrote. `--date` uses another folder.
 - Nothing is posted, liked, followed or sent. You copy the text and post it by hand.
 
+## Telegram bot
+
+The same routine from your phone. It runs on the Mac (the X login lives there), so the Mac has to be awake while it runs. It is owner-only and draft-only: it never posts, likes, follows or messages anyone on X, and it ignores every Telegram account except the one you paired.
+
+One-time setup:
+
+```bash
+python3 -m brand_agents.telegram_bot set-token     # hidden prompt; stores the BotFather token in ~/.alankrit-os/telegram.json (mode 600)
+# send /start to your bot from your own Telegram account
+python3 -m brand_agents.telegram_bot pair          # prints who messaged first
+python3 -m brand_agents.telegram_bot pair --save-id <id>   # only after you confirm that id is you
+python3 -m brand_agents.telegram_bot check         # confirms the bot is reachable
+```
+
+Daily use:
+
+```bash
+python3 -m brand_agents.telegram_bot run           # keep this running
+```
+
+| Command | What it does |
+|---|---|
+| `/scout` | finds today's targets (about 3 minutes); `/scout force` searches again |
+| `/more` | shows the next 5 targets, each with **Write reply** and **Skip** buttons |
+| Write reply | then send your reply as one message; the bot voice-checks it and sends it back as tap-to-copy text, or lists what failed |
+| `/ready` | your replies that passed the voice check |
+| `/status` / `/cancel` | counts for today / stop writing a reply |
+
+- One reply is pending at a time. Tapping Write reply on another post says which one it dropped, and a saved reply says which post it belongs to.
+- If you ran `triage` for the day, the bot shows only that shortlist.
+- Replies are saved to the same `angles.json` the `daily replies` command reads.
+- The token never goes in the repo. `TELEGRAM_BOT_TOKEN` in the environment overrides the file. To rotate it, revoke it in BotFather, then run `set-token` again.
+
 ## X discovery provider
 
 For the one-day automation path, use X only:
