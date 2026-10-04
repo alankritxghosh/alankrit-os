@@ -79,7 +79,7 @@ def run_find_x_replies(command: dict) -> str:
     state = Path(command.get("state", str(DEFAULT_STATE)))
     if not state.exists():
         raise ValueError(f"missing X login state at {state}. Run the X Playwright login first.")
-    targets = find_posts(state=state, queries=queries, limit=limit, headless=True, scrolls=int(command.get("scrolls", 4)))
+    targets = find_posts(state=state, queries=queries, limit=limit, headless=True, scrolls=int(command.get("scrolls", 8)))
     return render_reply_report(targets)
 
 

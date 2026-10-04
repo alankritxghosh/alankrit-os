@@ -6,7 +6,7 @@ from brand_agents.common import check_voice, require_all_pass
 from brand_agents.draft_agent import build_variants
 from brand_agents.issue_to_command import convert
 from brand_agents.mobile_runner import run
-from brand_agents.providers.x_playwright.find_posts import DEFAULT_QUERIES, load_seen, order_reasons, save_seen, score_text, search_url
+from brand_agents.providers.x_playwright.find_posts import DEFAULT_QUERIES, DEFAULT_SCROLLS, load_seen, order_reasons, save_seen, score_text, search_url
 from brand_agents.reply_scout import draft_reply
 from brand_agents.providers.x_playwright.save_cookies import build_state
 from brand_agents.reply_scout import load_targets
@@ -255,6 +255,47 @@ I build because it is fun.
         for text in keep:
             score, _ = score_text(text)
             self.assertGreaterEqual(score, 6, text)
+
+    def test_x_scoring_rejects_tutorial_funnels(self):
+        score, reasons = score_text(
+            "Davidd Tech @DaviddDotTech \u00b7 Claude built me a trading bot in hours and I never wrote a line of code. "
+            "Here's how you can do the same: Step : Get set up Download Claude desktop and open Claude Code."
+        )
+        self.assertLess(score, 0)
+        score, reasons = score_text("Dev @dev \u00b7 I built an agent workflow with Claude Code. Step : install it, set up free account, done.")
+        self.assertEqual(reasons, ["promo or hype post"])
+
+    def test_x_scoring_blocks_trading_bots(self):
+        score, reasons = score_text("I built a trading bot with Claude Code agents and a workflow")
+        self.assertLess(score, 0)
+        self.assertEqual(reasons, ["blocked topic"])
+
+    def test_x_scoring_rejects_article_repost_without_opinion(self):
+        score, reasons = score_text(
+            "456X @OptionKing666 \u00b7 Oct Article OpenAI\u2019s Dots Lead Explains the Future of ChatGPT and Proactive Agents "
+            "Host: Okay, Alex, I want to go deep on Dots. There are so many new products in the agent space."
+        )
+        self.assertLess(score, 0)
+
+    def test_x_scoring_keeps_article_post_with_personal_angle(self):
+        score, _ = score_text(
+            "Raditya @perdhevi \u00b7 My Obsidian vault holds most of my thinking. So I built a local MCP server for it. "
+            "Here's the walkthrough Article I built an MCP server for my Obsidian vault, with Claude Code agent search."
+        )
+        self.assertGreaterEqual(score, 6)
+
+    def test_x_scoring_keeps_agent_opinion_post(self):
+        score, _ = score_text(
+            "Reuben Roy @ReubenRoy10 \u00b7 One of the advantages of building with agents is that you can relate much more with the user. "
+            "Because you yourself have little understanding on how your app works, you make several of the mistakes your users will make "
+            "once product gets released. So agents let you find them early."
+        )
+        self.assertGreaterEqual(score, 6)
+
+    def test_discovery_is_wider(self):
+        self.assertGreaterEqual(len(DEFAULT_QUERIES), 9)
+        self.assertEqual(DEFAULT_SCROLLS, 8)
+        self.assertTrue(any("MCP server" in query for query in DEFAULT_QUERIES))
 
 
 if __name__ == "__main__":

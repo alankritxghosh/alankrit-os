@@ -19,6 +19,7 @@ from urllib.parse import quote
 from typing import Any
 
 DEFAULT_STATE = Path.home() / ".alankrit-os" / "x-storage-state.json"
+DEFAULT_SCROLLS = 8
 DEFAULT_SEEN = Path.home() / ".alankrit-os" / "x-seen-urls.json"
 
 QUERY_EXCLUDES = '-crypto -web3 -solana -wallet -x402 -"agentic finance" -filter:replies'
@@ -29,6 +30,10 @@ DEFAULT_QUERIES = [
     f'"building with agents" {QUERY_EXCLUDES}',
     f'"vibe coding" ("built" OR "learned") {QUERY_EXCLUDES}',
     f'"GTM" "AI agents" {QUERY_EXCLUDES}',
+    f'"MCP server" ("built" OR "building") {QUERY_EXCLUDES}',
+    f'"Claude Code" ("tips" OR "lessons" OR "workflow") {QUERY_EXCLUDES}',
+    f'"built with Claude" {QUERY_EXCLUDES}',
+    f'"coding agents" ("building" OR "learned") {QUERY_EXCLUDES}',
 ]
 
 BLOCKED_TERMS = [
@@ -59,6 +64,8 @@ BLOCKED_TERMS = [
     "confidential execution",
     "ama_protocol",
     "dms open",
+    "trading bot",
+    "trading agent",
     "gpu hours",
     "compute markets",
     "$",
@@ -95,6 +102,10 @@ PROMO_PATTERNS = [
     r"\bcheat code\b",
     r"\blink in (?:bio|comments)\b",
     r"\bjoin (?:our|the) (?:community|discord|channel|group)\b",
+    r"\bhere(?:'|\u2019)?s how you can\b",
+    r"\bhow you can do the same\b",
+    r"\bstep\s*:",
+    r"\bset up (?:a )?free account\b",
 ]
 
 MILESTONE_PATTERNS = [
@@ -221,6 +232,8 @@ def score_text(text: str) -> tuple[int, list[str]]:
         score += 2
         reasons.append("has comment hook")
     personal = "?" in text or bool(FIRST_PERSON_RE.search(lowered))
+    if lowered.startswith("article "):
+        return -90, ["article card without commentary"]
     if not personal:
         score -= 4
         reasons.append("no question or first-person angle")
@@ -316,7 +329,7 @@ def main() -> int:
     parser.add_argument("--state", type=Path, default=DEFAULT_STATE)
     parser.add_argument("--query", action="append", help="X search query. Can be repeated.")
     parser.add_argument("--limit", type=int, default=10)
-    parser.add_argument("--scrolls", type=int, default=4)
+    parser.add_argument("--scrolls", type=int, default=DEFAULT_SCROLLS)
     parser.add_argument("--headed", action="store_true", help="show browser window")
     parser.add_argument("--channel", default=None, help="browser channel, for example chrome")
     parser.add_argument("--seen-file", type=Path, default=DEFAULT_SEEN, help="URLs already surfaced in earlier runs")
