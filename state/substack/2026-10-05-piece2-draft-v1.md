@@ -42,7 +42,7 @@ That is the only version of the claim I can support. Being near a task is what l
 
 For me that moment was Icarus.
 
-I'm a finance student, not an engineer. I took it from idea to a live product in under 60 days.
+I'm a finance student, not an engineer. I took it from idea to a live product.
 That meant engineering, marketing and distribution, research, costing it properly, and the design language, where I studied what Wispr Flow had done and how simple they kept it.
 
 Each of those was a lane next to the one I knew.
