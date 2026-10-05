@@ -47,7 +47,15 @@ That meant engineering, marketing and distribution, research, costing it properl
 
 Each of those was a lane next to the one I knew.
 
-[HIS WORDS NEEDED: one specific moment on Icarus where knowing the neighbouring lane let you judge or steer what an agent gave you. The line above restates your 2026-10-01 piece. The research claim needs a concrete example, e.g. "the agent produced X, I could tell it was wrong because Y". I won't make one up.]
+When I was engineering Icarus, I looked at marketing and distribution the way a builder would.
+I kept asking what an agent could do instead of me, because a lot of those tasks looked trivial.
+That got me to a marketing system I could use much earlier than I otherwise would have.
+
+Finance worked the same way. I understand economics, so I could build the whole product without spending money.
+
+I had a usable product in under 50 days. [CHECK: your 1 October piece says under 60 days. Pick one number and use it in both.]
+
+I could see each problem through more than one lens. [CHECK: "without spending money" is a strong claim. Keep it only if it is literally true, or say what you did spend on.]
 
 **Where it breaks**
 
