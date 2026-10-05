@@ -12,7 +12,12 @@ Last time I went through the research on generalists. The short version: breadth
 
 That left a question. What changes when you have agents?
 
-[HIS WORDS: one or two lines on why he is asking. What he noticed while building with agents that made him want to check the research.]
+I'm a curious builder with a degree in finance who works inside tech and marketing.
+I love art, beautiful design, poetry and photos, and I try to bring all of it into my work.
+
+With agents I can do a lot of things that I think a specialist would take longer on, or couldn't do at all.
+
+That's my view. I wanted to see what the research says about it.
 
 **The test that fits best**
 
@@ -35,7 +40,14 @@ A generalist is, by definition, close to a lot of tasks. Not expert in them. Clo
 
 That is the only version of the claim I can support. Being near a task is what lets you judge what the model gives you back.
 
-[HIS WORDS: a moment where being one lane over helped him use an agent well. Distribution on Icarus is one candidate, but only if it is true and he wants to use it. Policy: Icarus appears as evidence inside a story, with no relaunch.]
+For me that moment was Icarus.
+
+I'm a finance student, not an engineer. I took it from idea to a live product in under 60 days.
+That meant engineering, marketing and distribution, research, costing it properly, and the design language, where I studied what Wispr Flow had done and how simple they kept it.
+
+Each of those was a lane next to the one I knew.
+
+[HIS WORDS NEEDED: one specific moment on Icarus where knowing the neighbouring lane let you judge or steer what an agent gave you. The line above restates your 2026-10-01 piece. The research claim needs a concrete example, e.g. "the agent produced X, I could tell it was wrong because Y". I won't make one up.]
 
 **Where it breaks**
 
@@ -64,7 +76,12 @@ Agents seem to widen the circle of tasks you can do well. The circle has an edge
 A specialist without agents is slow but knows where the edge is.
 A generalist with agents is fast but can walk off it without noticing.
 
-[HIS WORDS: what he does to know where his own edge is. A check, a habit, a test he runs. Only what he actually does.]
+Here is what I actually do.
+I work relentlessly. I run into complex problems, build things, watch them break, and work out a way around.
+
+Breaking is how I find the edge. [CHECK: this line is my inference from your words, keep only if true.]
+
+[HIS WORDS NEEDED, optional: one example of something that broke and what it told you about your edge.]
 
 What I'd want to know next: how do you find your edge before an agent finds it for you?
 
