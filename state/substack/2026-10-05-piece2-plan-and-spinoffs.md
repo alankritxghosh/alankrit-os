@@ -15,7 +15,9 @@ Status: DRAFT. Read from the text Alankrit pasted on 2026-10-05. Every number be
 
 Better framing: agents change who gets value from breadth. The evidence I found says AI helps most when you are close to the task (IG Group, 78 staff, adjacent marketers nearly matched experts, distant developers lagged by 13%, excerpt only). That is a condition on breadth, not a win for it.
 
-Title options (policy: "Why" question):
+Title chosen by Alankrit 2026-10-05: "Why does a generalist with agents sometimes beat a specialist without them?" Standing rule from him: keep titles simple, always.
+
+Title options considered (policy: "Why" question):
 1. Why does being close to a task matter more once AI can do it?   (recommended)
 2. Why do agents help the person next door more than the person far away?
 3. Why does a generalist with agents sometimes beat a specialist without them?   (keeps the hook, hedges the claim; use only if he wants it)
