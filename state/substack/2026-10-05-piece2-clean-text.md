@@ -41,4 +41,4 @@ Engineering isn't my lane. But I knew what I wanted the system to be, and I coul
 How do you find your edge before an agent finds it for you?
 
 ---
-Posted by Alankrit on Substack, 2026-10-05. Epigraph: "Chance favors only the prepared mind", Louis Pasteur, 1854 (wording not verified by the agent). URL not recorded, add it here.
+Posted by Alankrit on Substack, 2026-10-05. Epigraph: "Chance favors only the prepared mind", Louis Pasteur, 1854 (wording not verified by the agent). URL: https://alankritghosh.substack.com/p/why-does-a-generalist-with-agents
