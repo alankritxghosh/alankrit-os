@@ -94,10 +94,10 @@ Early on, Icarus ran on keyword searches. That made it another sophisticated RAG
 I kept moving toward a semantic retrieval system and things kept breaking.
 Then there were timeouts in the cloud where the brain was hosted.
 
-A few days of headaches and too many hours.
-Two days after the timeouts started, we had it fixed and understood.
+The timeout bug lasted 30 hours.
+My agents and I fixed it and understood why it happened.
 
-[CHECK: "Two days after the timeouts started" is my reading of your message. Fix the timeline if it was two days for the whole thing, and say what "we" means (you and an agent?) so the reader knows.]
+[CHECK: your earlier message said "a few days of headaches". I used the 30 hours for the bug itself. If the wider retrieval work took days, say that as a separate line.]
 [HIS WORDS, optional: one line on what that told you about where your edge is. The engineering was a lane you were not trained in, so what did you have to learn to get through it?]
 
 What I'd want to know next: how do you find your edge before an agent finds it for you?
