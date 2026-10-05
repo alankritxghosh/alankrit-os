@@ -1,11 +1,5 @@
 # Why does a generalist with agents sometimes beat a specialist without them?
 
-Status: v2.1, 2026-10-05. Voice-rewritten, study figures checked against the sources, his answers applied. Draft for Alankrit to read once more and publish himself.
-Figures checked 2026-10-05 against: the BCG paper PDF (SSRN 4573321), the HBS Working Knowledge piece on the IG Group study, the NBER page and paper PDF and the HBS AI Institute page for P&G. The IG Group working paper itself was not opened, only HBS's write-up of it.
-His own sentences are kept as he wrote them. What changed: my connective text, which had a polished, rhythmic pattern, is now plainer and first person, closer to his typed examples.
-
----
-
 Last time I went through the research on generalists. Breadth predicts who starts things. It doesn't reliably predict who does well.
 
 Which leaves the question I actually care about. What changes once you have agents?
@@ -45,14 +39,3 @@ The one that stuck with me was Icarus's retrieval. It started on keyword searche
 Engineering isn't my lane. But I knew what I wanted the system to be, and I could tell when it wasn't that. That weekend is where I found out how far my edge goes.
 
 How do you find your edge before an agent finds it for you?
-
----
-
-## What I changed from v1 and why
-- Dropped the bold section headings and sentence-per-line breaks in my own text. Your 1 October piece uses short headed sections, so if you prefer that layout say so and I will put the headings back.
-- Merged fragments like "Three groups." into normal sentences. Removed the symmetric "X is slow but Y, A is fast but B" patterns where they stacked up, and the "That is a cost of entry, though. It is a different thing from winning." line, which was a reframe in disguise.
-- Added "which leaves the question I actually care about" style connectives you could plausibly type. Treat all connective lines as mine, and cut any that don't sound like you.
-
-## About "running a humaniser"
-I have no AI-detector or humaniser tool here and would not trust one. Those tools swap words to dodge detectors and tend to make the writing worse and less like you. A detector score also says nothing about whether it sounds like a person. What actually makes it sound like you is your own wording, so the real step left is yours: read it aloud, rewrite every connective line I wrote in how you'd say it, and keep the parts that are already yours (your intro, the Icarus example, the retrieval story).
-Per policy, if this still reads as AI generic, send me your raw words and I will reshape those instead of tuning further.
