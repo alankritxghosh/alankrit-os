@@ -87,9 +87,18 @@ A generalist with agents is fast but can walk off it without noticing.
 Here is what I actually do.
 I work relentlessly. I run into complex problems, build things, watch them break, and work out a way around.
 
-Breaking is how I find the edge. [CHECK: this line is my inference from your words, keep only if true.]
+Breaking is how I find the edge.
 
-[HIS WORDS NEEDED, optional: one example of something that broke and what it told you about your edge.]
+Here is the one that stuck.
+Early on, Icarus ran on keyword searches. That made it another sophisticated RAG pipeline, which I didn't want.
+I kept moving toward a semantic retrieval system and things kept breaking.
+Then there were timeouts in the cloud where the brain was hosted.
+
+A few days of headaches and too many hours.
+Two days after the timeouts started, we had it fixed and understood.
+
+[CHECK: "Two days after the timeouts started" is my reading of your message. Fix the timeline if it was two days for the whole thing, and say what "we" means (you and an agent?) so the reader knows.]
+[HIS WORDS, optional: one line on what that told you about where your edge is. The engineering was a lane you were not trained in, so what did you have to learn to get through it?]
 
 What I'd want to know next: how do you find your edge before an agent finds it for you?
 
