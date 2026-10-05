@@ -39,3 +39,6 @@ The one that stuck with me was Icarus's retrieval. It started on keyword searche
 Engineering isn't my lane. But I knew what I wanted the system to be, and I could tell when it wasn't that. That weekend is where I found out how far my edge goes.
 
 How do you find your edge before an agent finds it for you?
+
+---
+Posted by Alankrit on Substack, 2026-10-05. Epigraph: "Chance favors only the prepared mind", Louis Pasteur, 1854 (wording not verified by the agent). URL not recorded, add it here.
